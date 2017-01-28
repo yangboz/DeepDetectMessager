@@ -132,23 +132,24 @@
 }
 
 - (NSString *) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section {
+    
     if (section == 0)
     {
-        return @"Teen";
+        return @"Human";
     }
     if (section == 1)
     {
-        return @"EveryOne";
+        return @"Nature";
     }
     if (section == 2)
     {
-        return @"Mature";
+        return @"Artifacts";
     }
     if (section == 3)
     {
-        return @"Adult";
+        return @"Others";
     }
-    return @"#";
+    return @"###";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -169,38 +170,39 @@
 {
     _listOfRatings = [[NSMutableArray alloc] init];
     //Rating variables for grouping data set.
-    NSMutableArray *teenRating = [[NSMutableArray alloc] init];
-    NSMutableArray *matureRating = [[NSMutableArray alloc] init];
-    NSMutableArray *adultRating = [[NSMutableArray alloc] init];
-    NSMutableArray *everyoneRating = [[NSMutableArray alloc] init];
+    NSMutableArray *humanRating = [[NSMutableArray alloc] init];
+    NSMutableArray *natureRating = [[NSMutableArray alloc] init];
+    NSMutableArray *artifactsRating = [[NSMutableArray alloc] init];
+    NSMutableArray *othersRating = [[NSMutableArray alloc] init];
     //Grouping
     NSArray *listItems = [self getChatBots];
     ChatBotVoModel *object;
     for (int i=0; i<listItems.count; i++) {
         object = (ChatBotVoModel *)[listItems objectAtIndex:i];
-        if ([object.Rating isEqualToString:@"E"]) {
-            [everyoneRating addObject:object];
-        }
-        if ([object.Rating isEqualToString:@"T"]) {
-            [teenRating addObject:object];
-        }
-        if ([object.Rating isEqualToString:@"M"]) {
-            [matureRating addObject:object];
-        }
         if ([object.Rating isEqualToString:@"A"]) {
-            [adultRating addObject:object];
+            [artifactsRating addObject:object];
+        }
+        if ([object.Rating isEqualToString:@"N"]) {
+            [natureRating addObject:object];
+        }
+        if ([object.Rating isEqualToString:@"H"]) {
+            [humanRating addObject:object];
+        }
+        if ([object.Rating isEqualToString:@"O"]) {
+            [othersRating addObject:object];
         }
     }
     //
-    NSDictionary *teenRatingDict = [NSDictionary dictionaryWithObject:teenRating forKey:RATINGS];
-    NSDictionary *matureRatingDict = [NSDictionary dictionaryWithObject:matureRating forKey:RATINGS];
-    NSDictionary *adultRatingDict = [NSDictionary dictionaryWithObject:adultRating forKey:RATINGS];
-    NSDictionary *everyoneRatingDict = [NSDictionary dictionaryWithObject:everyoneRating forKey:RATINGS];
+    NSDictionary *humanRatingDict = [NSDictionary dictionaryWithObject:humanRating forKey:RATINGS];
+    NSDictionary *natureRatingDict = [NSDictionary dictionaryWithObject:natureRating forKey:RATINGS];
+    NSDictionary *artifactsRatingDict = [NSDictionary dictionaryWithObject:artifactsRating forKey:RATINGS];
+     NSDictionary *othersRatingDict = [NSDictionary dictionaryWithObject:othersRating forKey:RATINGS];
     //
-    [_listOfRatings addObject:teenRatingDict];
-    [_listOfRatings addObject:everyoneRatingDict];
-    [_listOfRatings addObject:matureRatingDict];
-    [_listOfRatings addObject:adultRatingDict];
+    [_listOfRatings addObject:humanRatingDict];
+    [_listOfRatings addObject:natureRatingDict];
+    [_listOfRatings addObject:artifactsRatingDict];
+    [_listOfRatings addObject:othersRatingDict];
+    
     //
     return _listOfRatings;
 }
