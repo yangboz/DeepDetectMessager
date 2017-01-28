@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Bots-->
+        <scene sceneID="pY4-Hu-kfo">
+            <objects>
+                <navigationController title="Bots" id="RMx-3f-FxP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="tsl-Nk-0bq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-38" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KOR-wE-jEZ">
+            <objects>
+                <navigationController id="f9q-yp-8Uw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SkR-tQ-G1q"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3V1-CP-1CV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tKu-Pn-6oY" kind="relationship" relationship="rootViewController" id="qaD-e2-zeY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ms3-T2-7Pm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="127"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="GWW-6c-YNz">
+            <objects>
+                <tableViewController id="LNh-gZ-30z" customClass="VC_Segue_ChatBotInfo" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0MH-3R-3v2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Osx-Dz-sQE">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Osx-Dz-sQE" id="xHq-zv-Db1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LNh-gZ-30z" id="J5d-pf-90x"/>
+                            <outlet property="delegate" destination="LNh-gZ-30z" id="odx-jb-Qvf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="9ec-cL-GPY">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="dZp-sW-eEh">
+                            <connections>
+                                <action selector="dissmiss:" destination="LNh-gZ-30z" id="GAb-GT-gfa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Suf-7d-hYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473" y="854"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="z4u-G2-Psy">
+            <objects>
+                <viewController id="aee-qr-71M" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qCg-G9-Epf"/>
+                        <viewControllerLayoutGuide type="bottom" id="0wG-5e-pAF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8V8-50-KNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rHF-06-mpS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yz1-Vj-mJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="853"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qu7-oF-7eQ">
+            <objects>
+                <navigationController id="3aC-Al-RNT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iau-Qc-Eb7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LNh-gZ-30z" kind="relationship" relationship="rootViewController" id="qBt-9Y-tEQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heD-d4-exY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="854"/>
+        </scene>
+        <!--Demo Messages View Controller-->
+        <scene sceneID="AFp-Ji-ePg">
+            <objects>
+                <viewController id="tKu-Pn-6oY" customClass="DemoMessagesViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Phs-Dc-Quc">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="BKd-l5-1Oq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="J0Q-6L-BGG">
+                                <rect key="frame" x="337" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="3aC-Al-RNT" kind="modal" id="xOv-84-1PK"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cVc-Ak-6k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473" y="128"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Nki-YV-4Qg">
+            <objects>
+                <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <connections>
+                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
+                        <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="Tll-UG-LXB"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-856" y="-330"/>
+        </scene>
+        <!--Bots-->
+        <scene sceneID="smW-Zh-WAh">
+            <objects>
+                <tableViewController title="Bots" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" detailTextLabel="cF4-XK-5KJ" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cF4-XK-5KJ">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="f9q-yp-8Uw" kind="showDetail" id="T6J-wB-h3G"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="7bK-jq-Zjz" id="Gho-Na-rnu"/>
+                            <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Bots" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bWT-GQ-xav">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="uvw-xT-PBg">
+                                <rect key="frame" x="337" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="tOp-j9-VTF" kind="modal" id="Bll-r2-exL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="-630"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="JAh-Wp-sQc">
+            <objects>
+                <tableViewController id="0EU-Rv-dYO" customClass="VC_Segue_AppInfo" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="enC-Pl-unM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="IpB-qb-Nye">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="735"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <string key="text">About The Personality Forge 
+
+Welcome to the Personality Forge, one of the most advanced artificial intelligence platforms in the world. Here people create and work on AI Personalities called chat bots who, once created, have an independent existence, chatting with both real people and other chat bots. While you're away, they're having conversations, making friends, and making memories that you can look in on.
+
+The Personality Forge's AI Engine integrates memories, emotions, knowledge of hundreds of thousands of words, sentence structure, unmatched pattern-matching capabilities, and a scripting language called AIScript. It's the heart and mind of all the bots here, and it's easy enough to work with that you need no programming experience to get started. Read more about the AI Engine's features.
+
+You can chat with bots, post messages on different topics in the forums, and become a part of the first-ever AI &amp; Human online community. For information on how to post messages, chat, and other general information, keep reading. You can find information on how to create AI Personalities in The Book of AI.
+
+Getting Started:
+You may want to start by chatting with some of our chat bots. You can find them by doing a search for any kind of personality, by selecting from the most advanced, checking the contest winners at our Hall of Fame, or by browsing the other chat bot lists under "Chat With Bots". 
+
+You can talk about the chat bots, AI, and the site in the forums. Then, when you're ready, create your own AI Personality by creating an account and then going to your personal Bot Workshop and reading The Book of AI. 
+
+
+
+Interacting With Users
+
+Forums: 
+You can find out more about the Personality Forge forums here.
+
+Chat Messages: 
+If another user is online at the same time as you, you can send then a realtime chat message that pops up on their screen as soon as they change pages. Simply hover over "Botmasters On" to see who is logged in to their account, and if they have an open-mouthed smile icon, you can send them a chat message by clicking on it.
+
+
+
+Logging Out
+
+Logging Out &amp; Session Timeouts: 
+There are several advantages to logging out when you are done. Simply closing the window or quitting your browser will not log you out, as such an action can not be detected by the system. In such cases, and cases in which you leave the window open while you are doing something else, there is a 40-minute timeout. If there is no activity (such as posting or changing pages) for 40 minutes, you will get a message and then if you dont respond, you will be logged out. Logging out marks you as gone and so people wont be trying to send you messages when you are not there.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="0EU-Rv-dYO" id="U0u-B7-S5y"/>
+                            <outlet property="delegate" destination="0EU-Rv-dYO" id="bkm-Xd-YWe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About" id="gRu-9R-NNc">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="Rko-J1-SLl">
+                            <connections>
+                                <action selector="dissmiss:" destination="0EU-Rv-dYO" id="3yM-sw-DJo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="appInfoTxtView" destination="IpB-qb-Nye" id="K1e-qu-PfT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zA6-3L-156" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2132" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lLJ-yF-GfR">
+            <objects>
+                <navigationController id="tOp-j9-VTF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hFK-dA-i4u"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wAX-bC-2fe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0EU-Rv-dYO" kind="relationship" relationship="rootViewController" id="iZG-HR-ko6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dzn-Zu-MMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1391" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r7l-gg-dq7">
+            <objects>
+                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aee-qr-71M" kind="relationship" relationship="rootViewController" id="W1R-MZ-Gdv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+    </scenes>
+</document>
