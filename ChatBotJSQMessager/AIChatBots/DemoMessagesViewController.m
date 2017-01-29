@@ -21,15 +21,16 @@
 #import "Reachability.h"
 #import "MBProgressHUD.h"
 #import <ASIHttpRequest.h>
+#import <ASIFormDataRequest.h>
 #import "StringUtil.h"
 #import "Constants.h"
-#import "ResponseVoModel.h"
-#import "APIMessageVoModel.h"
-#import "APIUserVoModel.h"
-#import "APIFullMessageVoModel.h"
 #import "NSString+Emoji.h"
 #import "DataModel.h"
 #import "ChatBotVoModel.h"
+#import "APIDeepDetectModel.h"
+#import "APIDeepDetectResponseModel.h"
+#import "APIDeepDetectResponseBodyPrediction.h"
+#import "APIDeepDetectResponseBodyPredictionClass.h"
 
 #define BEGIN_FLAG @"[/"
 #define END_FLAG @"]"
@@ -68,18 +69,13 @@ MBProgressHUD *hud;
     NSString *msgJsonStr = [self getMessageJsonString:content];
     NSLog(@"msgJsonStr:%@",msgJsonStr);
     //
-    //    NSString *hashStr = [self HMACWithSecret:API_SECERT andData:msgJsonStr];
-    //NSString *hashStr = [StringUtil HMACWithSecret:API_SECERT andData:msgJsonStr];
-    NSString *hashStr = [StringUtil HMACSHA1withKey:API_SECERT forString:msgJsonStr];
-    if(nil == hashStr) return;
-    NSString *urlEncodeStr = [self getUrlEncodeString:msgJsonStr];
-    NSLog(@"msgJsonStr: %@",msgJsonStr);
-    NSLog(@"hashStr: %@",hashStr);
-    NSLog(@"urlEncodeStr: %@",urlEncodeStr);
-    NSString *url = [NSString stringWithFormat:@"%@%@%@%@%@%@",API_DOMAIN,API_KEY,@"&hash=",hashStr,@"&message=",urlEncodeStr ];
-    NSLog(@"sendMessage_Click! url: %@",url);
+    NSString *url = [NSString stringWithFormat:@"%@",API_DOMAIN];
     NSURL *nsUrl = [NSURL URLWithString:url];
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
+    [request setTimeOutSeconds:120];
+    [request appendPostData:[msgJsonStr dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setRequestMethod:@"POST"];
     [request setDelegate:self];
     [request startAsynchronous];
     //
@@ -93,41 +89,12 @@ MBProgressHUD *hud;
     NSString *responseString = [request responseString];
     NSLog(@"API request response str:%@",responseString);
     //
-    NSScanner *scanner = [NSScanner scannerWithString:responseString];
-    //
-    NSString *text = nil;
-    //Find the last pair of { }.
-    while ([scanner isAtEnd] == NO) {
-        // find start of tag
-        [scanner scanUpToString:@"{" intoString:NULL] ;
-        // find end of tag
-        [scanner scanUpToString:@"}" intoString:&text] ;
-        // appending tags(}})
-        text = [text stringByAppendingString:@"}"];
-    } // while //
-    NSLog(@"Scanned text:%@",text);
-    // Pretend like you've called a REST service here and it returns a string.
-    // We'll just create a string from the sample json constant at the top
-    // of this file.
-//    NSLog(@"string from JSONKit: \n%@", text);
-    // 1) Create a dictionary, from the result string,
-    // using JSONKit's NSString category; objectFromJSONString.
-//    NSDictionary* dict = [text objectFromJSONString];
-    
-    // 2) Dump the dictionary to the debug console.
-//    NSLog(@"Dictionary => %@\n", dict);
-    
     // 3) Now, let's create a Person object from the dictionary.
     NSError *error=nil;
-    ResponseVoModel *responseVO = [[ResponseVoModel alloc] initWithString:text error:&error];
-    // 4) Dump the contents of the person object
+    APIDeepDetectResponseModel *responseVO = [[APIDeepDetectResponseModel alloc] initWithString:responseString error:&error];
     // to the debug console.
 //    NSString *message = responseVO.message.message;
     NSLog(@"responseVO => %@\n", responseVO);
-    NSLog(@"responseVO.message.chatBotName: %@\n", [[responseVO message] chatBotName]);
-    NSLog(@"responseVO.message.chatBotID: %@\n", [[responseVO message] chatBotID]);
-    NSLog(@"responseVO.message.message: %@\n", [[responseVO message] message]);
-    NSLog(@"responseVO.message.emotion: %@\n", [[responseVO message] emotion]);
     //
     [hud hideAnimated:YES];
     //go to receive message
@@ -148,56 +115,25 @@ MBProgressHUD *hud;
 }
 
 -(NSString *)getMessageJsonString:(NSString *)content
-{
-    //    NSTimeInterval interval64Bit = (63522762851317000/1000000)-62135596800;
-    //    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval64Bit];
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    long long int dateInt = (long long int)time;
-    //    NSLog(@"date %lld",dateInt);
-    int chatBotId = [self.detailItem.Id intValue];
-    NSLog(@"chatBotID:%d",chatBotId);
-    if(0 == chatBotId)
-    {
-        chatBotId = 6;//Default chatbot id;
-    }
-    //
-//    NSMutableDictionary *messageDict = [[NSMutableDictionary alloc] init];
-//    [messageDict setValue:content forKey:@"message"];
-//    [messageDict setValue:[NSNumber numberWithInt:chatBotId] forKey:@"chatBotID"];
-//    [messageDict setValue:[NSNumber numberWithInt:dateInt] forKey:@"timestamp"];
-//    NSLog(@"messageDict:%@",messageDict);
-    //
-    APIMessageVoModel *messageModel = [APIMessageVoModel new];
-    messageModel.message = content;
-    messageModel.chatBotID = [NSNumber numberWithInt:chatBotId];
-    messageModel.timestamp = [NSNumber numberWithInt:dateInt];
-     NSLog(@"messageModel json:%@",messageModel.toJSONString);
-    //    NSLog(@"messageDict json str:%@",[messageDict JSONString]);
-    
-//    NSMutableDictionary *userDict = [[NSMutableDictionary alloc] init];
-//    [userDict setValue:@"Tugger" forKey:@"firstName"];
-//    [userDict setValue:@"Sufani" forKey:@"lastName"];
-//    [userDict setValue:@"m" forKey:@"gender"];
-//    [userDict setValue:@"abc-639184572" forKey:@"externalID"];
-//    NSLog(@"userDict:%@",userDict);
-    APIUserVoModel *userModel = [APIUserVoModel new];
-    userModel.firstName = @"Tugger";
-    userModel.lastName = @"Sufani";
-    userModel.gender = @"m";
-    userModel.externalID = @"abc-639184572";
-        NSLog(@"userModel json str:%@",userModel.toJSONString);
-    
-//    NSMutableDictionary *messageFullDict = [[NSMutableDictionary alloc] init];
-//    [messageFullDict setValue:messageDict forKey:@"message"];
-//    [messageFullDict setValue:userDict forKey:@"user"];
-//    NSLog(@"messageFullDict:%@",messageFullDict);
-    APIFullMessageVoModel *messageFullModel = [APIFullMessageVoModel new];
-    messageFullModel.message = messageModel;
-    messageFullModel.user = userModel;
+{//    curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
+    APIDeepDetectModel *apiDeepDetectModel = [APIDeepDetectModel new];
+    apiDeepDetectModel.service = @"imageserv";
+    APIDeepDetectParameters *parameters = [APIDeepDetectParameters new];
+    APIDeepDetectParametersInput *input = [APIDeepDetectParametersInput new];
+    [input setWidth:224];
+    [input setHeight:224];
+    APIDeepDetectParametersOutput *output = [APIDeepDetectParametersOutput new];
+    [output setBest:2];
+    APIDeepDetectParametersMLlib *mllib = [APIDeepDetectParametersMLlib new];
+    [mllib setGpu:NO];
+    [parameters setInput:input];
+    [parameters setOutput:output];
+    [parameters setMllib:mllib];
+    apiDeepDetectModel.parameters = parameters;
+    apiDeepDetectModel.data = @[@"https://deepdetect.com/img/ambulance.jpg"];
     //Json writer
-    NSLog(@"messageFullDict json:%@",messageFullModel.toJSONString);
-    //
-    return messageFullModel.toJSONString;
+    NSLog(@"apiDeepDetectModel json:%@",apiDeepDetectModel.toJSONString);
+    return apiDeepDetectModel.toJSONString;
 }
 
 -(NSString *)getUrlEncodeString:(NSString *)unEscapedString
@@ -205,7 +141,7 @@ MBProgressHUD *hud;
     return [unEscapedString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
--(void)receiveMessageFromAPI:(ResponseVoModel *)response
+-(void)receiveMessageFromAPI:(APIDeepDetectResponseModel *)response
 {
     
     /**
@@ -239,13 +175,16 @@ MBProgressHUD *hud;
         JSQMessage *newMessage = nil;
         id<JSQMessageMediaData> newMediaData = nil;
         id newMediaAttachmentCopy = nil;
+
+    NSString *bodyMsg = [response.body.predictions description];
+    NSArray *predictions= response.body.predictions;
+    APIDeepDetectResponseBodyPredictionClass *classes= (APIDeepDetectResponseBodyPredictionClass *)[predictions objectAtIndex:1];
         //Always text message with emoji
-    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:%@",response.message.emotion,response.message.message] stringByReplacingEmojiCheatCodesWithUnicode];
-            newMessage = [JSQMessage messageWithSenderId:response.message.chatBotID.stringValue
-                                             displayName:response.message.chatBotName
+    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:%@",response.status.msg,bodyMsg] stringByReplacingEmojiCheatCodesWithUnicode];
+            newMessage = [JSQMessage messageWithSenderId:self.detailItem.Id.stringValue
+                                             displayName:self.detailItem.Name
                                                     text:emotionalMessage];
-//        }
-    
+
         /**
          *  Upon receiving a message, you should:
          *
@@ -340,7 +279,7 @@ MBProgressHUD *hud;
 
     
     self.inputToolbar.contentView.textView.pasteDelegate = self;
-    self.inputToolbar.contentView.leftBarButtonItem.enabled = NO;
+    self.inputToolbar.contentView.leftBarButtonItem.enabled = YES;
     
     /**
      *  Load up our fake data for the demo
@@ -351,8 +290,19 @@ MBProgressHUD *hud;
     /**
      *  Set up message accessory button delegate and configuration
      */
+//    self.inputToolbar.contentView.textView.hidden = YES;
 //    self.collectionView.accessoryDelegate = self;
-
+//background image
+//    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.detailItem.Image]];
+//    [self.collectionView addSubview:background];
+//    [self.collectionView sendSubviewToBack:background];
+//    self.collectionView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:self.detailItem.Image]];
+    //UInavigation image title view
+//    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
+//    image.contentMode = UIViewContentModeScaleAspectFit;
+//    [image setImage: [UIImage imageNamed:curChatBot.Image]];
+//    self.navigationItem.titleView = image;
     /**
      *  You can set custom avatar sizes
      */
@@ -476,16 +426,21 @@ MBProgressHUD *hud;
 
     // [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                             senderDisplayName:senderDisplayName
-                                                          date:date
-                                                          text:text];
+//    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+//                                             senderDisplayName:senderDisplayName
+//                                                          date:date
+//                                                          text:text];
     
-    [self.demoData.messages addObject:message];
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"https://deepdetect.com/img/ambulance.jpg"]];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    [self.demoData.messages addObject:photoMessage];
     
     [self finishSendingMessageAnimated:YES];
     //
-    [self sendMessageToAPI:message.text];
+    [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
+//    [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender
@@ -496,7 +451,10 @@ MBProgressHUD *hud;
                                                        delegate:self
                                               cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil), NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil), NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil), nil];
+                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil)
+                            , NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil),
+                            NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil)
+                            , nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -511,6 +469,8 @@ MBProgressHUD *hud;
     switch (buttonIndex) {
         case 0:
             [self.demoData addPhotoMediaMessage];
+            //
+            
             break;
             
         case 1:

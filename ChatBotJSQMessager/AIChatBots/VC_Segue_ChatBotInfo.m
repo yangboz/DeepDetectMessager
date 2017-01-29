@@ -22,6 +22,7 @@ NSMutableDictionary *curChatBotProfile;
     if (self) {
         // Custom initialization
         self.title = curChatBot.Name;
+        
     }
     return self;
 }
@@ -60,6 +61,7 @@ NSMutableDictionary *curChatBotProfile;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = curChatBot.Name;
+    
 }
 
 - (void)didReceiveMemoryWarning

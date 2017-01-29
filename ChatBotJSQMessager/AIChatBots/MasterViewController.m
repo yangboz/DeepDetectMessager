@@ -61,7 +61,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.chatbots[indexPath.row];
+//        NSDate *object = self.chatbots[indexPath.row];
         
         //Update current selecte chat bot
         NSDictionary *dictionary = [_listOfRatings objectAtIndex:indexPath.section];
@@ -133,21 +133,21 @@
 
 - (NSString *) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section {
     
-    if (section == 0)
+    if (section == 1)
     {
         return @"Human";
     }
-    if (section == 1)
+    if (section == 2)
     {
         return @"Nature";
     }
-    if (section == 2)
+    if (section == 3)
     {
         return @"Artifacts";
     }
-    if (section == 3)
+    if (section == 0)
     {
-        return @"Others";
+        return @"Everyone";
     }
     return @"###";
 }
@@ -188,7 +188,7 @@
         if ([object.Rating isEqualToString:@"H"]) {
             [humanRating addObject:object];
         }
-        if ([object.Rating isEqualToString:@"O"]) {
+        if ([object.Rating isEqualToString:@"E"]) {
             [othersRating addObject:object];
         }
     }
@@ -198,10 +198,10 @@
     NSDictionary *artifactsRatingDict = [NSDictionary dictionaryWithObject:artifactsRating forKey:RATINGS];
      NSDictionary *othersRatingDict = [NSDictionary dictionaryWithObject:othersRating forKey:RATINGS];
     //
+    [_listOfRatings addObject:othersRatingDict];
     [_listOfRatings addObject:humanRatingDict];
     [_listOfRatings addObject:natureRatingDict];
     [_listOfRatings addObject:artifactsRatingDict];
-    [_listOfRatings addObject:othersRatingDict];
     
     //
     return _listOfRatings;

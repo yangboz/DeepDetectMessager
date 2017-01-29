@@ -83,7 +83,7 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
         _leftBarButtonItem = nil;
         self.leftHorizontalSpacingConstraint.constant = 0.0f;
         self.leftBarButtonItemWidth = 0.0f;
-        self.leftBarButtonContainerView.hidden = YES;
+        self.leftBarButtonContainerView.hidden = NO;
         return;
     }
 

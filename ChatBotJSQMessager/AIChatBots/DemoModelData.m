@@ -171,7 +171,7 @@
 
 - (void)addPhotoMediaMessage
 {
-    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"age.png"]];
     JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
                                                    displayName:kJSQDemoAvatarDisplayNameSquires
                                                          media:photoItem];
