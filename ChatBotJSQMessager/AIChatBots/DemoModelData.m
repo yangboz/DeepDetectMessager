@@ -19,6 +19,7 @@
 #import "DemoModelData.h"
 
 #import "NSUserDefaults+DemoSettings.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 /**
@@ -131,7 +132,7 @@
                                                      text:NSLocalizedString(@"Now with media messages!", nil)],
                      nil];
     
-    [self addPhotoMediaMessage];
+//    [self addPhotoMediaMessage];
     [self addAudioMediaMessage];
     
     /**
@@ -169,13 +170,32 @@
     [self.messages addObject:audioMessage];
 }
 
-- (void)addPhotoMediaMessage
+- (void)addPhotoMediaMessage:(NSString*)imgeUrlStr
 {
-    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"age.png"]];
-    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                   displayName:kJSQDemoAvatarDisplayNameSquires
-                                                         media:photoItem];
-    [self.messages addObject:photoMessage];
+    UIImageView *imageView = [[UIImageView alloc] init];
+    
+    UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imgeUrlStr];
+    if(image == nil)
+    {
+        NSURL *imageUrl = [NSURL URLWithString:imgeUrlStr];
+        
+        [imageView setImageWithURL:imageUrl completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+         {
+             JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:image];
+             JSQMessage *message = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                       displayName:kJSQDemoAvatarDisplayNameSquires
+                                                             media:photoItem];
+             [self.messages addObject:message];
+         }];
+    }
+    else
+    {
+        JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:image];
+        JSQMessage *message = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                       displayName:kJSQDemoAvatarDisplayNameSquires
+                                                             media:photoItem];
+        [self.messages addObject:message];
+    }
 }
 
 - (void)addLocationMediaMessageCompletion:(JSQLocationMediaItemCompletionBlock)completion

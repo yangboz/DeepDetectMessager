@@ -9,5 +9,9 @@
 #import "APIDeepDetectResponseBodyPredictionClass.h"
 
 @implementation APIDeepDetectResponseBodyPredictionClass
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    if ([propertyName isEqualToString: @"last"]) return YES;
+    return NO;
+}
 @end

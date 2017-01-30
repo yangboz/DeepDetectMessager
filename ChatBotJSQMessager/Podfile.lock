@@ -18,6 +18,9 @@ PODS:
   - NSData+Base64 (1.0.0)
   - NSString+Emoji (0.2.0)
   - Reachability (3.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - ASIHTTPRequest
@@ -27,6 +30,7 @@ DEPENDENCIES:
   - NSData+Base64
   - NSString+Emoji
   - Reachability (~> 3.2)
+  - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
@@ -36,7 +40,8 @@ SPEC CHECKSUMS:
   NSData+Base64: 4e84902c4db907a15673474677e57763ef3903e4
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: c2a4f5c87a9967726eaf6838f0e746277e5df043
+PODFILE CHECKSUM: 6ab73f058b871c60c6fc80157fdefd74e0c53f95
 
 COCOAPODS: 1.1.1

@@ -32,11 +32,15 @@
 #import "APIDeepDetectResponseBodyPrediction.h"
 #import "APIDeepDetectResponseBodyPredictionClass.h"
 
+#import "UIImageUtils.h"
+
 #define BEGIN_FLAG @"[/"
 #define END_FLAG @"]"
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
+
 @end
 
 @implementation DemoMessagesViewController
@@ -114,7 +118,7 @@ MBProgressHUD *hud;
     [hud hideAnimated:YES];
 }
 
--(NSString *)getMessageJsonString:(NSString *)content
+-(NSString *)getMessageJsonString:(NSString *)urlStr
 {//    curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
     APIDeepDetectModel *apiDeepDetectModel = [APIDeepDetectModel new];
     apiDeepDetectModel.service = @"imageserv";
@@ -130,7 +134,7 @@ MBProgressHUD *hud;
     [parameters setOutput:output];
     [parameters setMllib:mllib];
     apiDeepDetectModel.parameters = parameters;
-    apiDeepDetectModel.data = @[@"https://deepdetect.com/img/ambulance.jpg"];
+    apiDeepDetectModel.data = @[urlStr];
     //Json writer
     NSLog(@"apiDeepDetectModel json:%@",apiDeepDetectModel.toJSONString);
     return apiDeepDetectModel.toJSONString;
@@ -178,9 +182,15 @@ MBProgressHUD *hud;
 
     NSString *bodyMsg = [response.body.predictions description];
     NSArray *predictions= response.body.predictions;
-    APIDeepDetectResponseBodyPredictionClass *classes= (APIDeepDetectResponseBodyPredictionClass *)[predictions objectAtIndex:1];
+    APIDeepDetectResponseBodyPrediction *prediction = [[APIDeepDetectResponseBodyPrediction alloc ] initWithDictionary:[predictions objectAtIndex:0] error:nil];
+    NSArray *classes = prediction.classes;
+    NSLog(@"predition classes:%@",[classes description]);
+    NSDictionary *predClass = (NSDictionary *)[classes objectAtIndex:0];
+    NSLog(@"predition classes[0]:%@",[predClass description]);
+    NSString *category = [[[predClass objectForKey:@"cat"] componentsSeparatedByString:@" "] objectAtIndex:1];
+    CGFloat prob = (CGFloat)[[predClass objectForKey:@"prob"] floatValue]*100;
         //Always text message with emoji
-    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:%@",response.status.msg,bodyMsg] stringByReplacingEmojiCheatCodesWithUnicode];
+    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,category]stringByReplacingEmojiCheatCodesWithUnicode];
             newMessage = [JSQMessage messageWithSenderId:self.detailItem.Id.stringValue
                                              displayName:self.detailItem.Name
                                                     text:emotionalMessage];
@@ -292,17 +302,33 @@ MBProgressHUD *hud;
      */
 //    self.inputToolbar.contentView.textView.hidden = YES;
 //    self.collectionView.accessoryDelegate = self;
-//background image
-//    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.detailItem.Image]];
-//    [self.collectionView addSubview:background];
-//    [self.collectionView sendSubviewToBack:background];
-//    self.collectionView.contentMode = UIViewContentModeScaleAspectFit;
-//    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:self.detailItem.Image]];
-    //UInavigation image title view
-//    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
-//    image.contentMode = UIViewContentModeScaleAspectFit;
-//    [image setImage: [UIImage imageNamed:curChatBot.Image]];
-//    self.navigationItem.titleView = image;
+    UIImage *headerOrignalIcon =  [UIImage imageNamed:self.detailItem.Image];
+    UIImage *headerIcon =  [UIImageUtils imageWithImage:headerOrignalIcon scaledToSize:CGSizeMake(40, 40)];
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = headerIcon;
+    NSAttributedString *icon = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    
+    // space between icon and title
+    NSAttributedString *space = [[NSAttributedString alloc] initWithString:@" "];
+    
+    // Title
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:self.navigationItem.title];
+    
+    // new title
+    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithAttributedString:icon];
+    [attributedTitle appendAttributedString:space];
+    [attributedTitle appendAttributedString:title];
+    
+    // move text up to align with image
+    [attributedTitle addAttribute:NSBaselineOffsetAttributeName
+                            value:@(10.0)
+                            range:NSMakeRange(1, attributedTitle.length-1)];
+    
+    UILabel *titleLabel = [UILabel new];
+//    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.f];
+    titleLabel.attributedText = attributedTitle;
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
     /**
      *  You can set custom avatar sizes
      */
@@ -347,6 +373,17 @@ MBProgressHUD *hud;
      *  self.inputToolbar.maximumHeight = 150;
      */
 }
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -424,23 +461,18 @@ MBProgressHUD *hud;
      *  3. Call `finishSendingMessage`
      */
 
-    // [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    
     
 //    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
 //                                             senderDisplayName:senderDisplayName
 //                                                          date:date
 //                                                          text:text];
-    
-    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"https://deepdetect.com/img/ambulance.jpg"]];
-    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                   displayName:kJSQDemoAvatarDisplayNameSquires
-                                                         media:photoItem];
-    [self.demoData.messages addObject:photoMessage];
-    
+    [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
     [self finishSendingMessageAnimated:YES];
     //
     [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
 //    [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
+     [JSQSystemSoundPlayer jsq_playMessageSentSound];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender
@@ -468,7 +500,8 @@ MBProgressHUD *hud;
     
     switch (buttonIndex) {
         case 0:
-            [self.demoData addPhotoMediaMessage];
+           [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
+            [JSQSystemSoundPlayer jsq_playMessageSentSound];
             //
             
             break;

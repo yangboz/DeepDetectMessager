@@ -10,6 +10,6 @@
 
 @implementation Constants
 
-NSString *const API_DOMAIN = @"http://localhost:8080/predict";
+NSString *const API_DOMAIN = @"http://192.168.0.11:8080/predict";
 
 @end

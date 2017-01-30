@@ -9,7 +9,8 @@ pod 'Reachability', '~> 3.2'
 pod 'NSData+Base64'
 pod 'JSONModel'
 pod 'NSString+Emoji'
+pod 'SDWebImage', '~>3.8'
 
-target 'AIChatBots' do
+target 'DeepDetectChatBots' do
 	
 end
