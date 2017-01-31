@@ -1,0 +1,6 @@
+framework module Pods_DeepDetectChatBots {
+  umbrella header "Pods-DeepDetectChatBots-umbrella.h"
+
+  export *
+  module * { export * }
+}

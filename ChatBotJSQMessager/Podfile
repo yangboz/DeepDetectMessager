@@ -1,4 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
+use_frameworks!
 
 # For latest release in cocoapods
 pod 'JSQSystemSoundPlayer'
@@ -10,7 +12,8 @@ pod 'NSData+Base64'
 pod 'JSONModel'
 pod 'NSString+Emoji'
 pod 'SDWebImage', '~>3.8'
+pod 'Cloudinary'
 
 target 'DeepDetectChatBots' do
-	
+    
 end

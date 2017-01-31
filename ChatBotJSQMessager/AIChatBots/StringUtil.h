@@ -16,4 +16,6 @@
 + (NSString*) HMACWithSecret:(NSString*)secret andData:(NSString *)data;
 //
 + (NSString *)HMACSHA1withKey:(NSString *)secret forString:(NSString *)data;
+//
++ (BOOL) validateUrl: (NSString *) candidate;
 @end

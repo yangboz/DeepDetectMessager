@@ -10,6 +10,22 @@
 
 @implementation StringUtil
 //
++ (BOOL) validateUrl: (NSString *) candidate {
+    NSString *urlRegEx =
+    @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    
+    //
+//     NSURL *theURL = [NSURL URLWithString:candidate];
+//    NSError *err;
+//    if ([theURL checkResourceIsReachableAndReturnError:&err] == NO)
+//    {
+//        NSLog(@"resource not reachable");
+//        return NO;
+//    }
+    return [urlTest evaluateWithObject:candidate];
+}
+//
 + (NSString*) HMACWithSecret:(NSString*)secret andData:(NSString *)data
 {
     //return @"NSString";

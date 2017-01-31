@@ -82,3 +82,26 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/ASIHTTPRequest/ASIHTTPRequest.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cloudinary/Cloudinary.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSONModel/JSONModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSData+Base64/NSData_Base64.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSString+Emoji/NSString_Emoji.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/ASIHTTPRequest/ASIHTTPRequest.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cloudinary/Cloudinary.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSONModel/JSONModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSData+Base64/NSData_Base64.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSString+Emoji/NSString_Emoji.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+fi

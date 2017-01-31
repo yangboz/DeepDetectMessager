@@ -1,0 +1,6 @@
+framework module NSString_Emoji {
+  umbrella header "NSString+Emoji-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -47,4 +47,6 @@
 
 - (void)closePressed:(UIBarButtonItem *)sender;
 
+- (void)sendUrlMessage:(NSString *)url;
+- (void)alertInvalidMessage;
 @end

@@ -12,6 +12,7 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - Cloudinary (1.0.15)
   - JSONModel (1.7.0)
   - JSQSystemSoundPlayer (4.4.0)
   - MBProgressHUD (1.0.0)
@@ -24,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - Cloudinary
   - JSONModel
   - JSQSystemSoundPlayer
   - MBProgressHUD (~> 1.0.0)
@@ -34,6 +36,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   JSQSystemSoundPlayer: 126ccc4a08db8fc3036bd07d33b0f8eda1559476
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -42,6 +45,6 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 6ab73f058b871c60c6fc80157fdefd74e0c53f95
+PODFILE CHECKSUM: f8ca66b21e3d0f491d6d3aded0da13f8f9ff609a
 
 COCOAPODS: 1.1.1

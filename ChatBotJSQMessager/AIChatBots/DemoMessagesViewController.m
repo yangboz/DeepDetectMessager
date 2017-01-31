@@ -20,8 +20,8 @@
 #import "JSQMessagesViewAccessoryButtonDelegate.h"
 #import "Reachability.h"
 #import "MBProgressHUD.h"
-#import <ASIHttpRequest.h>
-#import <ASIFormDataRequest.h>
+#import "ASIHttpRequest.h"
+#import "ASIFormDataRequest.h"
 #import "StringUtil.h"
 #import "Constants.h"
 #import "NSString+Emoji.h"
@@ -33,11 +33,15 @@
 #import "APIDeepDetectResponseBodyPredictionClass.h"
 
 #import "UIImageUtils.h"
+#import "JSImagePickerViewController.h"
+
+#import "Cloudinary/Cloudinary.h"
+#import "Cloudinary/CLUploader.h"
 
 #define BEGIN_FLAG @"[/"
 #define END_FLAG @"]"
 
-@interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate>
+@interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
@@ -99,11 +103,19 @@ MBProgressHUD *hud;
     // to the debug console.
 //    NSString *message = responseVO.message.message;
     NSLog(@"responseVO => %@\n", responseVO);
+    if(responseVO == NULL)
+    {
+        [self alertInvalidMessage];
+    }
     //
     [hud hideAnimated:YES];
     //go to receive message
     if(error==nil){
-        [self receiveMessageFromAPI:responseVO];
+        if([responseVO status].code==200){
+            [self receiveMessageFromAPI:responseVO];
+        }else{
+            [self alertInvalidMessage];
+        }
     }else{
         NSLog(@"API parse error:%@",error.description);
     }
@@ -373,17 +385,6 @@ MBProgressHUD *hud;
      *  self.inputToolbar.maximumHeight = 150;
      */
 }
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -467,28 +468,48 @@ MBProgressHUD *hud;
 //                                             senderDisplayName:senderDisplayName
 //                                                          date:date
 //                                                          text:text];
-    [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
-    [self finishSendingMessageAnimated:YES];
-    //
-    [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
-//    [self sendMessageToAPI:@"https://deepdetect.com/img/ambulance.jpg"];
-     [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    [self sendUrlMessage:text];
 }
+-(void)alertInvalidMessage{
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                     message:@"Invalid Image URL"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    
+    [alert show];
+}
+-(void)sendUrlMessage:(NSString *)url{
+    //validate URL first
+    if([StringUtil validateUrl:url]){
+        //for demo data
+        [self.demoData addPhotoMediaMessage:url];
+        [self finishSendingMessageAnimated:YES];
+        //for API
+        [self sendMessageToAPI:url];
+        [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    }else{
+        [self alertInvalidMessage];
+    }
+}
+
 
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
 
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
-                                                       delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil)
-                            , NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil),
-                            NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil)
-                            , nil];
-    
-    [sheet showFromToolbar:self.inputToolbar];
+//    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
+//                                                       delegate:self
+//                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+//                                         destructiveButtonTitle:nil
+//                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil)
+//                            , NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil),
+//                            NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil)
+//                            , nil];
+//    [sheet showFromToolbar:self.inputToolbar];
+    JSImagePickerViewController *imagePicker = [[JSImagePickerViewController alloc] init];
+    imagePicker.delegate = self;
+    [imagePicker showImagePickerInController:self animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -500,8 +521,8 @@ MBProgressHUD *hud;
     
     switch (buttonIndex) {
         case 0:
-           [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
-            [JSQSystemSoundPlayer jsq_playMessageSentSound];
+//           [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
+//            [JSQSystemSoundPlayer jsq_playMessageSentSound];
             //
             
             break;
@@ -850,5 +871,46 @@ MBProgressHUD *hud;
 {
     NSLog(@"Tapped accessory button!");
 }
+
+#pragma mark - JSImagePikcerViewControllerDelegate
+
+- (void)imagePicker:(JSImagePickerViewController *)imagePicker didSelectImages:(NSArray *)images{
+    //Cloudinary Safe mobile uploading,@see: https://github.com/cloudinary/cloudinary_ios
+    CLCloudinary *cloudinary = [[CLCloudinary alloc] initWithUrl: API_CLOUDINARY];
+    CLUploader* mobileUploader = [[CLUploader alloc] init:cloudinary delegate:self];
+    NSData *imageData = UIImageJPEGRepresentation([images objectAtIndex:0], 1.0); // 1.0 is JPG quality
+//
+    //    NSData *imageData = [NSData dataWithContentsOfFile:imageUrl];
+    [mobileUploader upload:imageData options:@{}];
+    //@see https://github.com/jdg/MBProgressHUD
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    self.imageView.image = image;
+    
+}
+
+#pragma mark CLUploader delegate
+- (void) uploaderSuccess:(NSDictionary*)result context:(id)context {
+    NSString* publicId = [result valueForKey:@"public_id"];
+    NSLog(@"Upload success. Public ID=%@, Full result=%@", publicId, result);
+    //Save url to local data model.
+    NSString *Url = [result objectForKey:@"url"];
+    [self sendUrlMessage:Url];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    //
+    
+}
+#pragma mark Cloudinary delegation
+- (void) uploaderError:(NSString*)result code:(int) code context:(id)context {
+    NSLog(@"Upload error: %@, %d", result, code);
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                     message:@"Upload Error"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    
+    [alert show];
+}
+
+
 
 @end
