@@ -25,6 +25,10 @@ curl -X PUT "http://localhost:8080/services/imageserv" -d "{\"mllib\":\"caffe\",
 `
 curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
 `
+4.kill docker
+`
+docker rm -fv 1ca885426d1a
+`
 
 #References
 
