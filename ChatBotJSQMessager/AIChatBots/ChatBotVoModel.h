@@ -12,6 +12,7 @@
 
 //"image": "prob_23958.gif",
 //"id": 23958,
+//"Service":"imageserv",
 //"name": "prob",
 //"Development": 29715,
 //"AI": "•••••••••",
@@ -29,6 +30,8 @@
 //,"Rating": "E"
 @property(nonatomic) NSString *Image;
 @property(nonatomic) NSNumber *Id;
+@property(nonatomic) NSNumber *numberOfClasses;
+@property(nonatomic) NSString *Service;
 @property(nonatomic) NSString *Name;
 @property(nonatomic) NSNumber *Development;
 @property(nonatomic) NSString *AI;

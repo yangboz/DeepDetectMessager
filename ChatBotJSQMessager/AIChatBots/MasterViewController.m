@@ -117,7 +117,7 @@
     //FIXME:    if(indexPath.row<0 || indexPath.row>3) rowIndex = 0;
     ChatBotVoModel *object = [array objectAtIndex:rowIndex];
     
-    cell.textLabel.text = [object Name];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%@)",[object Name],[object numberOfClasses]];
     cell.imageView.image = [UIImage imageNamed:[object Image]];
     cell.detailTextLabel.text = [object Bio];
     

@@ -133,7 +133,7 @@ MBProgressHUD *hud;
 -(NSString *)getMessageJsonString:(NSString *)urlStr
 {//    curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
     APIDeepDetectModel *apiDeepDetectModel = [APIDeepDetectModel new];
-    apiDeepDetectModel.service = @"imageserv";
+    apiDeepDetectModel.service = self.detailItem.Service;
     APIDeepDetectParameters *parameters = [APIDeepDetectParameters new];
     APIDeepDetectParametersInput *input = [APIDeepDetectParametersInput new];
     [input setWidth:224];
@@ -199,7 +199,7 @@ MBProgressHUD *hud;
     NSLog(@"predition classes:%@",[classes description]);
     NSDictionary *predClass = (NSDictionary *)[classes objectAtIndex:0];
     NSLog(@"predition classes[0]:%@",[predClass description]);
-    NSString *category = [[[predClass objectForKey:@"cat"] componentsSeparatedByString:@" "] objectAtIndex:1];
+    NSString *category = [predClass objectForKey:@"cat"];
     CGFloat prob = (CGFloat)[[predClass objectForKey:@"prob"] floatValue]*100;
         //Always text message with emoji
     NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,category]stringByReplacingEmojiCheatCodesWithUnicode];
@@ -214,7 +214,7 @@ MBProgressHUD *hud;
          *  2. Add new id<JSQMessageData> object to your data source
          *  3. Call `finishReceivingMessage`
          */
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
         
         [self.demoData.messages addObject:newMessage];

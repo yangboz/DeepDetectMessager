@@ -3,6 +3,7 @@
     [   {
              "Image": "age.png",
              "Id": 1,
+     "Service":"age",
              "Name": "Age detection",
              "numberOfClasses": 304,
              "Development": 29715,
@@ -23,6 +24,7 @@
         {
              "Image": "gender.png",
              "Id": 2,
+     "Service":"gender",
              "Name": "Gender classification",
              "numberOfClasses": 2,
              "Development": 29715,
@@ -43,6 +45,7 @@
         {
              "Image": "clothing.png",
              "Id": 3,
+             "Service":"clothing",
              "Name": "Clothing classification",
              "numberOfClasses": 304,
              "Development": 29715,
@@ -63,6 +66,7 @@
         {
              "Image": "bags.png",
              "Id": 4,
+     "Service":"bags",
              "Name": "Bags classification",
              "numberOfClasses": 37,
              "Development": 29715,
@@ -83,6 +87,7 @@
         {
              "Image": "footwear.png",
              "Id": 5,
+     "Service":"footwear",
              "Name": "Footwear classification",
              "numberOfClasses": 51,
              "Development": 29715,
@@ -103,6 +108,7 @@
         {
              "Image": "sports.png",
              "Id": 6,
+     "Service":"sports",
              "Name": "Sports classification",
              "numberOfClasses": 143,
              "Development": 29715,
@@ -122,6 +128,7 @@
         },
         {
              "Image": "buildings.png",
+     "Service":"buildings",
              "Id": 7,
              "Name": "Buildings classification",
              "numberOfClasses": 185,
@@ -143,6 +150,7 @@
         {
              "Image": "fabric.png",
              "Id": 8,
+     "Service":"fabric",
              "Name": "Fabric classification",
              "numberOfClasses": 185,
              "Development": 29715,
@@ -163,6 +171,7 @@
         {
              "Image": "furnitures.png",
              "Id": 9,
+     "Service":"furnitures",
              "Name": "Furnitures classification",
              "numberOfClasses": 179,
              "Development": 29715,
@@ -183,6 +192,7 @@
         {
              "Image": "trees.png",
              "Id": 23958,
+     "Service":"trees",
              "Name": "Trees classification",
              "numberOfClasses": 890,
              "Development": 29715,
@@ -203,6 +213,7 @@
         {
              "Image": "imagenet.png",
              "Id": 11,
+             "Service":"imageserv",
              "Name": "ImageNet classification",
              "numberOfClasses": 890,
              "Development": 29715,
@@ -223,6 +234,7 @@
         {
              "Image": "sentiment.png",
              "Id": 12,
+     "Service":"sentiment",
              "Name": "Sentiment analysis",
              "numberOfClasses": 10,
              "Development": 29715,
@@ -243,6 +255,7 @@
         {
              "Image": "mreviews.png",
              "Id": 13,
+     "Service":"mreviews",
              "Name": "Reviews analysis",
              "numberOfClasses": 10,
              "Development": 29715,
@@ -263,6 +276,7 @@
         {
              "Image": "ad-blocking.png",
              "Id": 14,
+            "Service":"ad-blocking",
              "Name": "Ad-blocking",
              "numberOfClasses": 10,
              "Development": 29715,
