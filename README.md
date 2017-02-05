@@ -184,7 +184,7 @@ curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "para
 #References
 
 DeepDetect(LGPL): https://deepdetect.com/
-
+DeepDetect Models: https://deepdetect.com/applications/model/
 iOS ChatbotMessager: https://github.com/yangboz/ChatBotsMessager
 
 ## Support on Beerpay
