@@ -37,19 +37,19 @@
 
 #import "Cloudinary/Cloudinary.h"
 #import "Cloudinary/CLUploader.h"
+#import "DataModel.h"
+#import "Constants.h"
 
-#define BEGIN_FLAG @"[/"
-#define END_FLAG @"]"
 
-@interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate>
+@interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
-
 @end
 
 @implementation DemoMessagesViewController
 @synthesize masterPopoverController = _masterPopoverController;
 MBProgressHUD *hud;
+UIPickerView *picker;
+NSArray *dataSource;
 
 #pragma mark - Split view
 
@@ -300,9 +300,6 @@ MBProgressHUD *hud;
     self.title = curChatBot.Name;
 
     
-    self.inputToolbar.contentView.textView.pasteDelegate = self;
-    self.inputToolbar.contentView.leftBarButtonItem.enabled = YES;
-    
     /**
      *  Load up our fake data for the demo
      */
@@ -378,12 +375,21 @@ MBProgressHUD *hud;
      *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
      *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
      */
-
+//self.inputToolbar customization
+    self.inputToolbar.contentView.textView.pasteDelegate = self;
+    self.inputToolbar.contentView.leftBarButtonItem.enabled = YES;
     /**
      *  Set a maximum height for the input toolbar
      *
      *  self.inputToolbar.maximumHeight = 150;
      */
+    //UIPickerView for UITextView
+    picker = [[UIPickerView alloc] init];
+    dataSource = [[DataModel sharedInstance] getAllChatBots].chatbots;
+    picker.dataSource = self;
+    picker.delegate = self;
+    self.inputToolbar.contentView.textView.inputView = picker;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -471,8 +477,8 @@ MBProgressHUD *hud;
     [self sendUrlMessage:text];
 }
 -(void)alertInvalidMessage{
-    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
-                                                     message:@"Invalid Image URL"
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry!"
+                                                     message:@"Deep Detect failed."
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles: nil];
@@ -481,16 +487,16 @@ MBProgressHUD *hud;
 }
 -(void)sendUrlMessage:(NSString *)url{
     //validate URL first
-    if([StringUtil validateUrl:url]){
+//    if([StringUtil validateUrl:url]){
         //for demo data
         [self.demoData addPhotoMediaMessage:url];
         [self finishSendingMessageAnimated:YES];
         //for API
         [self sendMessageToAPI:url];
         [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    }else{
-        [self alertInvalidMessage];
-    }
+//    }else{
+//        [self alertInvalidMessage];
+//    }
 }
 
 
@@ -911,6 +917,28 @@ MBProgressHUD *hud;
     [alert show];
 }
 
+#pragma mark UIPickerView delegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [dataSource count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [(ChatBotVoModel*)[dataSource objectAtIndex:row] Name];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSString *exampleUrl = [NSString stringWithFormat:@"http://%@/images/%@",API_HOST,[(ChatBotVoModel*)[dataSource objectAtIndex:row] Example]];
+    [self.inputToolbar.contentView.textView setText:exampleUrl];
+    [self.inputToolbar toggleSendButtonEnabled];
+}
 
 
 @end

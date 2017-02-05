@@ -61,6 +61,15 @@ NSMutableDictionary *curChatBotProfile;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = curChatBot.Name;
+    //Controlling the Background of a UITableView
+    //setting an image as the background of UITableView through four steps
+    
+    //1.set backgroundColor property of tableView to clearColor, so that background image is visible
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    
+    UIImage *image = [UIImage imageNamed:[curChatBotProfile objectForKey:@"Image"]];
+    self.tableView.backgroundView = nil;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
 }
 

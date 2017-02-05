@@ -47,5 +47,6 @@
 @property(nonatomic) NSString *Created;
 @property(nonatomic) NSString *Interests;
 @property(nonatomic) NSString *Rating;
+@property(nonatomic) NSString *Example;
 
 @end

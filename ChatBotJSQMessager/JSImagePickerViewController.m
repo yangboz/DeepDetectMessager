@@ -180,12 +180,12 @@
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     [cell addSubview:imageView];
     
-    UIImageView *sel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PreviewSupplementaryView-Checkmark.png"]];
+    UIImageView *sel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PreviewSupplementaryView-Checkmark"]];
     [sel setFrame:CGRectMake(95, 5, 25, 25)];
     //[sel setBackgroundColor:[UIColor blackColor]];
     
     if ([selectedPhotos containsObject:asset]) {
-        [sel setImage:[UIImage imageNamed:@"PreviewSupplementaryView-Checkmark-Selected.png"]];
+        [sel setImage:[UIImage imageNamed:@"PreviewSupplementaryView-Checkmark-Selected"]];
     }
     
     [cell addSubview:sel];

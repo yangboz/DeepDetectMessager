@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
-
+FOUNDATION_EXTERN NSString *const API_HOST;
 FOUNDATION_EXTERN NSString *const API_DOMAIN;
 FOUNDATION_EXTERN NSString *const API_CLOUDINARY;
 
