@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataModel.h"
 #import "ChatBotVoModel.h"
+#import "UIImageUtils.h"
 
 @interface VC_Segue_ChatBotInfo : UITableViewController
 {}

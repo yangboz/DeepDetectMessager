@@ -64,12 +64,33 @@ NSMutableDictionary *curChatBotProfile;
     //Controlling the Background of a UITableView
     //setting an image as the background of UITableView through four steps
     
-    //1.set backgroundColor property of tableView to clearColor, so that background image is visible
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    UIImage *headerOrignalIcon =  [UIImage imageNamed:curChatBot.Image];
+    UIImage *headerIcon =  [UIImageUtils imageWithImage:headerOrignalIcon scaledToSize:CGSizeMake(40, 40)];
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = headerIcon;
+    NSAttributedString *icon = [NSAttributedString attributedStringWithAttachment:textAttachment];
     
-    UIImage *image = [UIImage imageNamed:[curChatBotProfile objectForKey:@"Image"]];
-    self.tableView.backgroundView = nil;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    // space between icon and title
+    NSAttributedString *space = [[NSAttributedString alloc] initWithString:@" "];
+    
+    // Title
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:self.navigationItem.title];
+    
+    // new title
+    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithAttributedString:icon];
+    [attributedTitle appendAttributedString:space];
+    [attributedTitle appendAttributedString:title];
+    
+    // move text up to align with image
+    [attributedTitle addAttribute:NSBaselineOffsetAttributeName
+                            value:@(10.0)
+                            range:NSMakeRange(1, attributedTitle.length-1)];
+    
+    UILabel *titleLabel = [UILabel new];
+    //    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.f];
+    titleLabel.attributedText = attributedTitle;
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
     
 }
 
