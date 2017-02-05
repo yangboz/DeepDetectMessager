@@ -12,18 +12,23 @@ iMessager for DeepDetect demostration.
 
 3.deepdetect:https://deepdetect.com/overview/installing/
 
-##ImageNet Classification
+##ImageNet Classification Service
 
 1.pull and run docker
 
 `
 docker run -d -p 8080:8080 beniz/deepdetect_cpu
 `
-
-2.create ggnet service
+1.1 build and run
 
 `
-curl -X PUT "http://localhost:8080/services/imageserv" -d "{\"mllib\":\"caffe\",\"description\":\"image classification service\",\"type\":\"supervised\",\"parameters\":{\"input\":{\"connector\":\"image\"},\"mllib\":{\"nclasses\":1000}},\"model\":{\"repository\":\"/opt/models/ggnet/\"}}"
+nohup ./main/dede -host 118.190.3.169
+`
+
+2.create ImageNet/ggnet service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image"}, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"../templates/caffe/", "repository":"/root/models/imgnet"} }'
 `
 
 3.test service
@@ -31,12 +36,14 @@ curl -X PUT "http://localhost:8080/services/imageserv" -d "{\"mllib\":\"caffe\",
 `
 curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
 `
+
 4.kill docker
+
 `
 docker rm -fv 1ca885426d1a
 `
 
-##Clothing Classification
+##Clothing Classification Service
 
 
 1.create clothing service
@@ -51,7 +58,7 @@ curl -X PUT "http://localhost:8080/services/clothing" -d '{"mllib":"caffe", "des
 curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
-##Bags Classification
+##Bags Classification Service
 
 
 1.create bags service
@@ -66,7 +73,7 @@ curl -X PUT "http://localhost:8080/services/bags" -d '{"mllib":"caffe", "descrip
 curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://i.ebayimg.com/00/s/ODQ5WDU2Ng==/z/nDMAAOSw7I5TtqWl/$_32.JPG\"]}"
 `
 
-##Sentiment analysis
+##Sentiment analysis Service
 
 
 1.create sentiment service
