@@ -88,3 +88,8 @@ curl -X POST 'http://localhost:8080/predict' -d '{"service":"sent_en", "paramete
 DeepDetect(LGPL): https://deepdetect.com/
 
 iOS ChatbotMessager: https://github.com/yangboz/ChatBotsMessager
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/yangboz/DeepDetectMessager/badge.svg?style=beer-square)](https://beerpay.io/yangboz/DeepDetectMessager)  [![Beerpay](https://beerpay.io/yangboz/DeepDetectMessager/make-wish.svg?style=flat-square)](https://beerpay.io/yangboz/DeepDetectMessager?focus=wish)
