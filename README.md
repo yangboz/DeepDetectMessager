@@ -104,6 +104,20 @@ curl -X PUT "http://118.190.3.169:8080/services/buildings" -d '{"mllib":"caffe",
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"buildings\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Temple-of-Heaven.jpg\"]}"
 `
 
+##Fabric Classification Service
+
+
+1.create fabric service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/fabric" -d '{"mllib":"caffe", "description":"fabric classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":233 } }, "model":{"repository":"/root/models/fabric"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
+`
 
 ##Sports Classification Service
 
