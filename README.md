@@ -89,6 +89,22 @@ curl -X PUT "http://118.190.3.169:8080/services/footwear" -d '{"mllib":"caffe", 
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
+##Buildings Classification Service
+
+
+1.create buildings service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/buildings" -d '{"mllib":"caffe", "description":"buildings classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":185 } }, "model":{"repository":"/root/models/buildings"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"buildings\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Temple-of-Heaven.jpg\"]}"
+`
+
+
 ##Sports Classification Service
 
 
@@ -102,7 +118,7 @@ curl -X PUT "http://118.190.3.169:8080/services/sports" -d '{"mllib":"caffe", "d
 
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://en.wikipedia.org/wiki/Basketball#/media/File:Jordan_by_Lipofsky_16577.jpg\"]}"
-
+`
 
 ##Sentiment analysis Service
 
