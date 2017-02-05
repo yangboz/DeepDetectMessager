@@ -119,6 +119,21 @@ curl -X PUT "http://118.190.3.169:8080/services/fabric" -d '{"mllib":"caffe", "d
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
 `
 
+##Gender Classification Service
+
+
+1.create gender service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/gender" -d '{"mllib":"caffe", "description":"gender classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/gender"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"gender\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
+`
+
 ##Sports Classification Service
 
 
@@ -132,6 +147,21 @@ curl -X PUT "http://118.190.3.169:8080/services/sports" -d '{"mllib":"caffe", "d
 
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://en.wikipedia.org/wiki/Basketball#/media/File:Jordan_by_Lipofsky_16577.jpg\"]}"
+`
+
+##Trees Classification Service
+
+
+1.create trees service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/trees" -d '{"mllib":"caffe", "description":"trees classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":890 } }, "model":{"repository":"/root/models/trees"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/cherry-plum-tree.jpg\"]}"
 `
 
 ##Sentiment analysis Service
