@@ -19,6 +19,7 @@ iMessager for DeepDetect demostration.
 `
 docker run -d -p 8080:8080 beniz/deepdetect_cpu
 `
+
 1.1 build and run
 
 `
@@ -34,7 +35,7 @@ curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe",
 3.test service
 
 `
-curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
 `
 
 4.kill docker
@@ -49,13 +50,13 @@ docker rm -fv 1ca885426d1a
 1.create clothing service
 
 `
-curl -X PUT "http://localhost:8080/services/clothing" -d '{"mllib":"caffe", "description":"clothes classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/data/models/clothing"} }'
+curl -X PUT "http://118.190.3.169:8080/services/clothing" -d '{"mllib":"caffe", "description":"clothes classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/root/models/clothing"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
 ##Bags Classification Service
@@ -64,13 +65,13 @@ curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"clothing\",\"par
 1.create bags service
 
 `
-curl -X PUT "http://localhost:8080/services/bags" -d '{"mllib":"caffe", "description":"bags classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/data/models/bags"} }'
+curl -X PUT "http://118.190.3.169:8080/services/bags" -d '{"mllib":"caffe", "description":"bags classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/root/models/bags"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://i.ebayimg.com/00/s/ODQ5WDU2Ng==/z/nDMAAOSw7I5TtqWl/$_32.JPG\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://i.ebayimg.com/00/s/ODQ5WDU2Ng==/z/nDMAAOSw7I5TtqWl/$_32.JPG\"]}"
 `
 
 ##Sentiment analysis Service
@@ -79,13 +80,13 @@ curl -X POST "http://localhost:8080/predict" -d "{\"service\":\"bags\",\"paramet
 1.create sentiment service
 
 `
-curl -X PUT 'http://localhost:8080/services/sent_en' -d '{"mllib":"caffe", "description":"English sentiment classification", "type":"supervised", "parameters":{"input":{"connector":"txt", "characters":true, "alphabet":"abcdefghijklmnopqrstuvwxyz0123456789,;.!?'\''", "sequence":140 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/data/sent_en_char"} }'
+curl -X PUT 'http://118.190.3.169:8080/services/sent_en' -d '{"mllib":"caffe", "description":"English sentiment classification", "type":"supervised", "parameters":{"input":{"connector":"txt", "characters":true, "alphabet":"abcdefghijklmnopqrstuvwxyz0123456789,;.!?'\''", "sequence":140 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/sent_en_char"} }'
 `
 
 2.test service
 
 `
-curl -X POST 'http://localhost:8080/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
+curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
 `
 
 
