@@ -11,4 +11,5 @@
 
 @interface UIImageUtils : NSObject
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
++ (UIImage*) grayishImage: (UIImage*) inputImage;
 @end

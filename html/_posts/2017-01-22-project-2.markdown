@@ -1,0 +1,12 @@
+---
+layout: default
+modal-id: 2
+date: 2017-01-22
+img: Sentiment.png
+alt: DeepDetect with Sentiment analysis
+project-date: Jan 2017
+client: AppleStore
+category: Deep Learning
+description:  A Set of Character-Based Models for Sentiment Analysis in many languages, and other tasks.
+
+---

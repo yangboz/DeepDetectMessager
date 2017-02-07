@@ -39,6 +39,7 @@
 		A42F6B721E3EDCC10096351C /* UIImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B711E3EDCC10096351C /* UIImageUtils.m */; };
 		A42F6B751E3F408A0096351C /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B741E3F408A0096351C /* JSImagePickerViewController.m */; };
 		A42F6B7B1E4053D50096351C /* ChatAsyncPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */; };
+		A43794221E497BA300EC44AD /* icon24.png in Resources */ = {isa = PBXBuildFile; fileRef = A43794211E497BA200EC44AD /* icon24.png */; };
 		A493CE151E3C6DB10097C113 /* age.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0B1E3C6DB10097C113 /* age.png */; };
 		A493CE161E3C6DB10097C113 /* bags.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0C1E3C6DB10097C113 /* bags.png */; };
 		A493CE171E3C6DB10097C113 /* buildings.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0D1E3C6DB10097C113 /* buildings.png */; };
@@ -190,6 +191,7 @@
 		A42F6B741E3F408A0096351C /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
 		A42F6B791E4053D50096351C /* ChatAsyncPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAsyncPhoto.h; sourceTree = "<group>"; };
 		A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAsyncPhoto.m; sourceTree = "<group>"; };
+		A43794211E497BA200EC44AD /* icon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon24.png; path = Resources/icon24.png; sourceTree = SOURCE_ROOT; };
 		A493CE0B1E3C6DB10097C113 /* age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = age.png; path = robots/age.png; sourceTree = "<group>"; };
 		A493CE0C1E3C6DB10097C113 /* bags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bags.png; path = robots/bags.png; sourceTree = "<group>"; };
 		A493CE0D1E3C6DB10097C113 /* buildings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buildings.png; path = robots/buildings.png; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 		A4A314DD1E120B28009EDA74 /* robots */ = {
 			isa = PBXGroup;
 			children = (
+				A43794211E497BA200EC44AD /* icon24.png */,
 				A4A622A11E3D748F0014881F /* ad-blocking.png */,
 				A4A622A21E3D748F0014881F /* mreviews.png */,
 				A4A622A31E3D748F0014881F /* sentiment.png */,
@@ -792,6 +795,7 @@
 				A493CE1E1E3C6DB10097C113 /* trees.png in Resources */,
 				A409A0991E10E1C80083A3CA /* LaunchScreen.storyboard in Resources */,
 				A493CE171E3C6DB10097C113 /* buildings.png in Resources */,
+				A43794221E497BA300EC44AD /* icon24.png in Resources */,
 				A4A622A61E3D748F0014881F /* sentiment.png in Resources */,
 				A409A1A01E1153800083A3CA /* Main.storyboard in Resources */,
 				A4A622A51E3D748F0014881F /* mreviews.png in Resources */,

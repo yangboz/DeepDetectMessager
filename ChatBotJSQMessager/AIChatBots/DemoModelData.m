@@ -170,38 +170,22 @@
     [self.messages addObject:audioMessage];
 }
 
+- (void)addTextMessage:(NSString*)text{
+    //
+    JSQMessage *textMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                       displayName:kJSQDemoAvatarDisplayNameSquires
+                                                              text:text];
+    [self.messages addObject:textMessage];
+}
+
 - (void)addPhotoMediaMessage:(NSString*)imgeUrlStr{
-    UIImageView *imageView = [[UIImageView alloc] init];
-//    NSURL *imageUrl = [NSURL URLWithString:imgeUrlStr];
-//ChatAsyncPhoto *photoItem = [[ChatAsyncPhoto alloc] initWithURL:[NSURL URLWithString:imgeUrlStr] isUserSend:NO imageData:nil];
+//    UIImageView *imageView = [[UIImageView alloc] init];
     NSURL *imagrUrl = [NSURL URLWithString:imgeUrlStr];
     ChatAsyncPhoto *photoItem = [[ChatAsyncPhoto alloc] initWithURL:imagrUrl isUserSend:YES imageData:nil isSuccess:NO];
     JSQMessage *message = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
                                 displayName:kJSQDemoAvatarDisplayNameSquires
                             media:photoItem];
     [self.messages addObject:message];
-    
-//    UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imgeUrlStr];
-//    if(image == nil)
-//    {
-//        NSURL *imageUrl = [NSURL URLWithString:imgeUrlStr];
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:imgeUrlStr]
-//                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-//
-//        JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:image];
-//        JSQMessage *message = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-//                                                       displayName:kJSQDemoAvatarDisplayNameSquires
-//                                                             media:photoItem];
-//        [self.messages addObject:message];
-//    }
-//    else
-//    {
-//        JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:image];
-//        JSQMessage *message = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-//                                                       displayName:kJSQDemoAvatarDisplayNameSquires
-//                                                             media:photoItem];
-//        [self.messages addObject:message];
-//    }
 }
 
 - (void)addLocationMediaMessageCompletion:(JSQLocationMediaItemCompletionBlock)completion

@@ -126,6 +126,7 @@ NSArray *dataSource;
 {
     NSError *error = [request error];
     NSLog(@"API request error:%@",error);
+    [self alertInvalidMessage];
     //
     [hud hideAnimated:YES];
 }
@@ -389,6 +390,10 @@ NSArray *dataSource;
     picker.dataSource = self;
     picker.delegate = self;
     self.inputToolbar.contentView.textView.inputView = picker;
+    //Disable attache UIButton if neccessary
+    if(self.detailItem.Media & MediaText){
+        self.inputToolbar.contentView.leftBarButtonItem.enabled = NO;
+    }
     
 }
 
@@ -474,7 +479,12 @@ NSArray *dataSource;
 //                                             senderDisplayName:senderDisplayName
 //                                                          date:date
 //                                                          text:text];
-    [self sendUrlMessage:text];
+    if(self.detailItem.Media & MediaImage){
+        [self sendUrlMessage:text];
+    }else if(self.detailItem.Media & MediaText){
+        [self sendTextMessage:text];
+    }
+    
 }
 -(void)alertInvalidMessage{
     UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry!"
@@ -484,6 +494,17 @@ NSArray *dataSource;
                                            otherButtonTitles: nil];
     
     [alert show];
+}
+-(void)sendTextMessage:(NSString *)text{
+    //validate text first
+    [self.demoData addTextMessage:text];
+    [self finishSendingMessageAnimated:YES];
+    //for API
+    [self sendMessageToAPI:text];
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    //    }else{
+    //        [self alertInvalidMessage];
+    //    }
 }
 -(void)sendUrlMessage:(NSString *)url{
     //validate URL first
@@ -935,7 +956,7 @@ NSArray *dataSource;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSString *exampleUrl = [NSString stringWithFormat:@"http://%@/images/%@",API_HOST,[(ChatBotVoModel*)[dataSource objectAtIndex:row] Example]];
+    NSString *exampleUrl = [(ChatBotVoModel*)[dataSource objectAtIndex:row] Example];
     [self.inputToolbar.contentView.textView setText:exampleUrl];
     [self.inputToolbar toggleSendButtonEnabled];
 }

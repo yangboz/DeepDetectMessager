@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 #import "DataModel.h"
+#import "UIImageUtils.h"
 
 @class DetailViewController;
 

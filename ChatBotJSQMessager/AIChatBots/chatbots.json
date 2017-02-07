@@ -5,7 +5,7 @@
                  "Id": 1,
                  "Service": "age",
                  "Name": "Age detection",
-                 "numberOfClasses": 304,
+                 "numberOfClasses": 8,
                  "Development": 29715,
                  "AI": "•••••••••",
                  "Bio": "Estimates person’s age as within one of eight buckets:0_2, 4_6, 8_13, 15_20, 25_32, 38_43, 48_53, 60+ ",
@@ -20,7 +20,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s age",
                  "Rating": "H",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/President_Barack_Obama.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "gender.png",
@@ -42,7 +43,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s gender",
                  "Rating": "H",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/President_Barack_Obama.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "clothing.png",
@@ -64,7 +66,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s Clothing categories",
                  "Rating": "H",
-                 "Example": "faux-fur-coat-winter-2014-big-trend-10.jpg"
+                 "Example": "http://dd.smartkit.info/images/faux-fur-coat-winter-2014-big-trend-10.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "bags.png",
@@ -86,7 +89,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s Bags categories",
                  "Rating": "H",
-                 "Example": "nike-golf-bag.jpg"
+                 "Example": "http://dd.smartkit.info/images/nike-golf-bag.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "footwear.png",
@@ -108,7 +112,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s Footwear categories",
                  "Rating": "H",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/men-footwear.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "sports.png",
@@ -130,7 +135,8 @@
                  "Updated": "Cold",
                  "Interests": "Person’s Sports categories",
                  "Rating": "H",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/Jordan_by_Lipofsky_16577.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "buildings.png",
@@ -152,7 +158,8 @@
                  "Updated": "Cold",
                  "Interests": "Buildings categories",
                  "Rating": "A",
-                 "Example": "maxresdefault.jpg"
+                 "Example": "http://dd.smartkit.info/images/maxresdefault.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "fabric.png",
@@ -174,7 +181,8 @@
                  "Updated": "Cold",
                  "Interests": "Fabric categories",
                  "Rating": "A",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/maxresdefault.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "furnitures.png",
@@ -196,7 +204,8 @@
                  "Updated": "Cold",
                  "Interests": "Furnitures categories",
                  "Rating": "A",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/furnitures-friends.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "trees.png",
@@ -218,7 +227,8 @@
                  "Updated": "Cold",
                  "Interests": "Trees categories",
                  "Rating": "N",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info/images/trees-palm.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "imagenet.png",
@@ -240,12 +250,13 @@
                  "Updated": "Cold",
                  "Interests": "ImageNet's categories",
                  "Rating": "E",
-                 "Example": "ambulance.jpg"
+                 "Example": "http://dd.smartkit.info/images/ambulance.jpg"
+                 ,"Media":2
                  },
                  {
                  "Image": "sentiment.png",
                  "Id": 12,
-                 "Service": "sentiment",
+                 "Service": "sent_en",
                  "Name": "Sentiment analysis",
                  "numberOfClasses": 10,
                  "Development": 29715,
@@ -262,7 +273,8 @@
                  "Updated": "Cold",
                  "Interests": "over 10 languages",
                  "Rating": "E",
-                 "Example": ""
+                 "Example": "Chilling in the West Indies"
+                 ,"Media":1
                  },
                  {
                  "Image": "mreviews.png",
@@ -284,7 +296,8 @@
                  "Updated": "Cold",
                  "Interests": "Movie Reviews",
                  "Rating": "E",
-                 "Example": ""
+                 "Example": "This movie is awsome."
+                 ,"Media":32
                  },
                  {
                  "Image": "ad-blocking.png",
@@ -306,7 +319,8 @@
                  "Updated": "Cold",
                  "Interests": "Ad",
                  "Rating": "E",
-                 "Example": ""
+                 "Example": "http://dd.smartkit.info"
+                 ,"Media":32
                  }
                  ]
 }

@@ -1,0 +1,12 @@
+---
+layout: default
+modal-id: 1
+date: 2017-01-22
+img: ImageNet.png
+alt: DeepDetect with ImageNet classification
+project-date: Jan 2017
+client: AppleStore
+category: Deep Learning
+description:  Large Neural Networks from GoogleNet for image classification. Inception network with Tensorflow. Finetuning GoogleNet.
+
+---

@@ -120,7 +120,15 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@(%@)",[object Name],[object numberOfClasses]];
     cell.imageView.image = [UIImage imageNamed:[object Image]];
     cell.detailTextLabel.text = [object Bio];
-    
+    //Disable
+    if(object.Media & MediaOthers){
+        cell.imageView.image=[cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAutomatic];
+        cell.imageView.image = [UIImageUtils grayishImage:cell.imageView.image];
+        cell.textLabel.enabled = NO;
+        cell.detailTextLabel.enabled = NO;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
+    }
     return cell;
 
 }

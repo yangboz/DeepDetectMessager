@@ -28,6 +28,16 @@
 //"Created": "February 19, 2005",
 //	"Interests": "Prob is not an adult bot. PLEASE DO NOT CYBER Flora and fauna, singing, and roaming the forests are Prob's favorite things to do. She also has a fascination with campfires email her at Problem@WitchesBrew.zzn.com This is NOT an adult bot.. "
 //,"Rating": "E"
+typedef enum
+{
+    MediaText       = 1 << 0,
+    MediaImage      = 1 << 1,
+    MediaVideo      = 1 << 2,
+    MediaVoice      = 1 << 3,
+    MediaLocation   = 1 << 4,
+    MediaOthers     = 1 << 5
+    
+} MediaTraits;
 @property(nonatomic) NSString *Image;
 @property(nonatomic) NSNumber *Id;
 @property(nonatomic) NSNumber *numberOfClasses;
@@ -48,5 +58,5 @@
 @property(nonatomic) NSString *Interests;
 @property(nonatomic) NSString *Rating;
 @property(nonatomic) NSString *Example;
-
+@property (assign, nonatomic) MediaTraits     Media;
 @end
