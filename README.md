@@ -29,7 +29,7 @@ nohup ./main/dede -host 118.190.3.169 > dede.out 2>&1&
 2.create ImageNet/ggnet service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image"}, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"./templates/caffe/", "repository":"/root/models/imgnet"} }'
+curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image", "width":224, "height":224 }, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"../templates/caffe/", "repository":"/root/models/imgnet"} }'
 `
 
 3.test service
@@ -124,6 +124,20 @@ curl -X PUT "http://118.190.3.169:8080/services/fabric" -d '{"mllib":"caffe", "d
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
 `
+
+##Age Classification Service
+
+
+1.create age service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/age" -d '{"mllib":"caffe", "description":"age classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":8 } }, "model":{"repository":"/root/models/age_model"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"age\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
 
 ##Gender Classification Service
 
