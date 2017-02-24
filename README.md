@@ -213,7 +213,7 @@ curl -X PUT "http://118.190.3.169:8080/services/furnitrues" -d '{"mllib":"caffe"
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
 `
-##Object detection Service(179)
+##Object detection Service(21)
 
 
 1.create object detection service
