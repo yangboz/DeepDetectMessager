@@ -23,13 +23,13 @@ docker run -d -p 8080:8080 beniz/deepdetect_cpu
 1.1 build and run
 
 `
-nohup ./main/dede -host 118.190.3.169
+nohup ./main/dede -host 118.190.3.169 > dede.out 2>&1&
 `
 
 2.create ImageNet/ggnet service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image"}, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"../templates/caffe/", "repository":"/root/models/imgnet"} }'
+curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image"}, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"./templates/caffe/", "repository":"/root/models/imgnet"} }'
 `
 
 3.test service
@@ -190,7 +190,9 @@ curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "para
 #References
 
 DeepDetect(LGPL): https://deepdetect.com/
+
 DeepDetect Models: https://deepdetect.com/applications/model/
+
 iOS ChatbotMessager: https://github.com/yangboz/ChatBotsMessager
 
 ## Support on Beerpay
