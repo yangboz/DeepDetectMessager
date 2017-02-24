@@ -44,6 +44,12 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"imageserv\",
 docker rm -fv 1ca885426d1a
 `
 
+5.delete a service
+
+`
+curl -X DELETE "http://localhost:8080/services/imageserv?clear=full"
+`
+
 ##Clothing Classification Service
 
 
