@@ -213,7 +213,20 @@ curl -X PUT "http://118.190.3.169:8080/services/furnitrues" -d '{"mllib":"caffe"
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
 `
+##Object detection Service(179)
 
+
+1.create object detection service
+
+`
+curl -X PUT "http://localhost:8080/services/objectdetect" -d '{"mllib":"caffe", "description":"object detection service", "type":"supervised", "parameters":{"input":{"connector":"image", "height": 300, "width": 300 }, "mllib":{"nclasses":21 } }, "model":{"repository:"root/models/voc0712/"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://localhost:8080/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
+`
 
 
 #References
