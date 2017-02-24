@@ -152,7 +152,7 @@ curl -X PUT "http://118.190.3.169:8080/services/sports" -d '{"mllib":"caffe", "d
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://en.wikipedia.org/wiki/Basketball#/media/File:Jordan_by_Lipofsky_16577.jpg\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Jordan_by_Lipofsky_16577.jpg\"]}"
 `
 
 ##Trees Classification Service
