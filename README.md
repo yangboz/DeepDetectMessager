@@ -185,6 +185,21 @@ curl -X PUT 'http://118.190.3.169:8080/services/sent_en' -d '{"mllib":"caffe", "
 curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
 `
 
+##Furnitrues classification Service(179)
+
+
+1.create furnitrues service
+
+`
+curl -X PUT "http://118.190.3.169:8080/services/furnitrues" -d '{"mllib":"caffe", "description":"Furnitrues classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":143 } }, "model":{"repository":"/root/models/furnitures"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
+`
+
 
 
 #References
