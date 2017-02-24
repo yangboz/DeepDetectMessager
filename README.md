@@ -53,7 +53,7 @@ curl -X DELETE "http://localhost:8080/services/imageserv?clear=full"
 ##Clothing Classification Service
 
 
-1.create clothing service
+1.create clothing service (Error while proceeding with prediction forward pass, not enough memory?)
 
 `
 curl -X PUT "http://118.190.3.169:8080/services/clothing" -d '{"mllib":"caffe", "description":"clothes classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/root/models/clothing"} }'
@@ -62,7 +62,7 @@ curl -X PUT "http://118.190.3.169:8080/services/clothing" -d '{"mllib":"caffe", 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
 ##Bags Classification Service
@@ -77,13 +77,13 @@ curl -X PUT "http://118.190.3.169:8080/services/bags" -d '{"mllib":"caffe", "des
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://i.ebayimg.com/00/s/ODQ5WDU2Ng==/z/nDMAAOSw7I5TtqWl/$_32.JPG\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/nike-golf-bag.jpg\"]}"
 `
 
 ##Footwear Classification Service
 
 
-1.create clothing service
+1.create footwear service
 
 `
 curl -X PUT "http://118.190.3.169:8080/services/footwear" -d '{"mllib":"caffe", "description":"footwear classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":51 } }, "model":{"repository":"/root/models/footwear"} }'
@@ -92,7 +92,7 @@ curl -X PUT "http://118.190.3.169:8080/services/footwear" -d '{"mllib":"caffe", 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://4.bp.blogspot.com/-uwu7SmTbBXI/VD_NNJc4Y-I/AAAAAAAAK1I/rt9de3mWXJo/s1600/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
+curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"footwear\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/men-footwear.jpg\"]}"
 `
 
 ##Buildings Classification Service
