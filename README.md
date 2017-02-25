@@ -219,7 +219,7 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"pa
 1.create object detection service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/objectdetect" -d '{"mllib":"caffe", "description":"object detection service", "type":"supervised", "parameters":{"input":{"connector":"image", "height": 300, "width": 300 }, "mllib":{"nclasses":21 } }, "model":{"repository:"root/models/voc0712/"} }'
+curl -X PUT "http://118.190.3.169:8080/services/objectdetect" -d '{"mllib":"caffe", "description":"object detection service", "type":"supervised", "parameters":{"input":{"connector":"image", "height": 300, "width": 300 }, "mllib":{"nclasses":21 } }, "model":{"repository":"/root/models/voc0712/"} }'
 `
 
 2.test service
