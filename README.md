@@ -23,7 +23,11 @@ docker run -d -p 8080:8080 beniz/deepdetect_cpu
 1.1 build and run
 
 `
-nohup ./main/dede -host 118.190.3.169 > dede.out 2>&1&
+git clone https://github.com/beniz/deepdetect.git
+`
+
+`
+nohup ./main/dede -host 118.190.3.169 -port 8090 > dede.out 2>&1&
 `
 
 2.create ImageNet/ggnet service
