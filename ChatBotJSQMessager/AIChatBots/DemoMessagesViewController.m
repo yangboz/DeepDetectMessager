@@ -39,6 +39,7 @@
 #import "Cloudinary/CLUploader.h"
 #import "DataModel.h"
 #import "Constants.h"
+#import "Snap415API.h"
 
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
@@ -91,6 +92,29 @@ NSArray *dataSource;
     hud.userInteractionEnabled = NO;
 }
 
+-(void)getSqootDeals{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        //Delegate to Snap415API.
+//        [[Snap415API sharedInstance] getOverviews];
+//        [[Snap415API sharedInstance] getTaxEvents];
+        [[Snap415API sharedInstance] getDeals];
+    });
+    //NotificationCenter handler
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
+}
+
+-(void)loadSqootDealsHandler:(NSNotification *) notification{
+    //Loading end
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    //    NSLog(@"loadOverviewsHandler:%@",notification.userInfo);
+    SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
+    self.sqootDealObjectsResult = [sqootDealsObject deals];
+    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
+}
+
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     // Use when fetching text data
@@ -113,6 +137,8 @@ NSArray *dataSource;
     if(error==nil){
         if([responseVO status].code==200){
             [self receiveMessageFromAPI:responseVO];
+            //
+            [self getSqootDeals];
         }else{
             [self alertInvalidMessage];
         }
@@ -648,20 +674,6 @@ NSArray *dataSource;
     
     JSQMessagesAvatarImage *chatBotImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:self.detailItem.Image] diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
     return chatBotImage;
-    
-    if ([message.senderId isEqualToString:self.senderId]) {
-        if (![NSUserDefaults outgoingAvatarSetting]) {
-            return nil;
-        }
-    }
-    else {
-        if (![NSUserDefaults incomingAvatarSetting]) {
-            return nil;
-        }
-    }
-    
-    
-    return [self.demoData.avatars objectForKey:message.senderId];
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath

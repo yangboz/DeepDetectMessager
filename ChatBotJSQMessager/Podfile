@@ -13,6 +13,7 @@ pod 'JSONModel'
 pod 'NSString+Emoji'
 pod 'SDWebImage', '~>3.8'
 pod 'Cloudinary'
+pod 'RestKit', '~> 0.26', :inhibit_warnings => true
 
 target 'DeepDetectChatBots' do
     

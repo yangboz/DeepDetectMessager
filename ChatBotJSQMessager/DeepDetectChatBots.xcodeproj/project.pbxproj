@@ -107,6 +107,30 @@
 		A4A622A41E3D748F0014881F /* ad-blocking.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A622A11E3D748F0014881F /* ad-blocking.png */; };
 		A4A622A51E3D748F0014881F /* mreviews.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A622A21E3D748F0014881F /* mreviews.png */; };
 		A4A622A61E3D748F0014881F /* sentiment.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A622A31E3D748F0014881F /* sentiment.png */; };
+		A4AA50341E63C8FE00F4BB8D /* ChildrenCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50071E63C8FE00F4BB8D /* ChildrenCategory.m */; };
+		A4AA50351E63C8FE00F4BB8D /* ChildrenKeywords.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50091E63C8FE00F4BB8D /* ChildrenKeywords.m */; };
+		A4AA50361E63C8FE00F4BB8D /* EITCCreditObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA500B1E63C8FE00F4BB8D /* EITCCreditObject.m */; };
+		A4AA50371E63C8FE00F4BB8D /* LabelGroupObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA500D1E63C8FE00F4BB8D /* LabelGroupObject.m */; };
+		A4AA50381E63C8FE00F4BB8D /* LabelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA500F1E63C8FE00F4BB8D /* LabelObject.m */; };
+		A4AA50391E63C8FE00F4BB8D /* LabelValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50111E63C8FE00F4BB8D /* LabelValueObject.m */; };
+		A4AA503A1E63C8FE00F4BB8D /* Snap415Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50131E63C8FE00F4BB8D /* Snap415Deal.m */; };
+		A4AA503B1E63C8FE00F4BB8D /* Snap415RwUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50151E63C8FE00F4BB8D /* Snap415RwUserProfile.m */; };
+		A4AA503C1E63C8FE00F4BB8D /* Snap415TaxEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50171E63C8FE00F4BB8D /* Snap415TaxEvent.m */; };
+		A4AA503D1E63C8FE00F4BB8D /* Snap415UserProfileBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50191E63C8FE00F4BB8D /* Snap415UserProfileBase.m */; };
+		A4AA503E1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA501B1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m */; };
+		A4AA503F1E63C8FE00F4BB8D /* SqootDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA501D1E63C8FE00F4BB8D /* SqootDeal.m */; };
+		A4AA50401E63C8FE00F4BB8D /* SqootDealCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA501F1E63C8FE00F4BB8D /* SqootDealCategory.m */; };
+		A4AA50411E63C8FE00F4BB8D /* SqootDealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50211E63C8FE00F4BB8D /* SqootDealObject.m */; };
+		A4AA50421E63C8FE00F4BB8D /* SqootDealsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50231E63C8FE00F4BB8D /* SqootDealsObject.m */; };
+		A4AA50431E63C8FE00F4BB8D /* SqootMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50251E63C8FE00F4BB8D /* SqootMerchant.m */; };
+		A4AA50441E63C8FE00F4BB8D /* SqootQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50271E63C8FE00F4BB8D /* SqootQuery.m */; };
+		A4AA50451E63C8FE00F4BB8D /* SqootQueryLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50291E63C8FE00F4BB8D /* SqootQueryLocation.m */; };
+		A4AA50461E63C8FE00F4BB8D /* WebSiteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA502B1E63C8FE00F4BB8D /* WebSiteObject.m */; };
+		A4AA50471E63C8FE00F4BB8D /* Snap415API.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA502D1E63C8FE00F4BB8D /* Snap415API.m */; };
+		A4AA50481E63C8FE00F4BB8D /* Snap415SimpleProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA502F1E63C8FE00F4BB8D /* Snap415SimpleProfile.m */; };
+		A4AA50491E63C8FE00F4BB8D /* Snap415Token.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50311E63C8FE00F4BB8D /* Snap415Token.m */; };
+		A4AA504A1E63C8FE00F4BB8D /* Snap415UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */; };
+		A4AA504E1E63CBAD00F4BB8D /* Snap415Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */; };
 		CB7657380EB8C5F469F21FBC /* Pods_DeepDetectChatBots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F9805FCE72E35F0E34B5D1 /* Pods_DeepDetectChatBots.framework */; };
 		E9E4B58B8A3B64734327C3B1 /* libPods-AIChatBots.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */; };
 /* End PBXBuildFile section */
@@ -313,6 +337,54 @@
 		A4A622A11E3D748F0014881F /* ad-blocking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ad-blocking.png"; path = "robots/ad-blocking.png"; sourceTree = "<group>"; };
 		A4A622A21E3D748F0014881F /* mreviews.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mreviews.png; path = robots/mreviews.png; sourceTree = "<group>"; };
 		A4A622A31E3D748F0014881F /* sentiment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sentiment.png; path = robots/sentiment.png; sourceTree = "<group>"; };
+		A4AA50061E63C8FE00F4BB8D /* ChildrenCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenCategory.h; sourceTree = "<group>"; };
+		A4AA50071E63C8FE00F4BB8D /* ChildrenCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenCategory.m; sourceTree = "<group>"; };
+		A4AA50081E63C8FE00F4BB8D /* ChildrenKeywords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenKeywords.h; sourceTree = "<group>"; };
+		A4AA50091E63C8FE00F4BB8D /* ChildrenKeywords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenKeywords.m; sourceTree = "<group>"; };
+		A4AA500A1E63C8FE00F4BB8D /* EITCCreditObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EITCCreditObject.h; sourceTree = "<group>"; };
+		A4AA500B1E63C8FE00F4BB8D /* EITCCreditObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EITCCreditObject.m; sourceTree = "<group>"; };
+		A4AA500C1E63C8FE00F4BB8D /* LabelGroupObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelGroupObject.h; sourceTree = "<group>"; };
+		A4AA500D1E63C8FE00F4BB8D /* LabelGroupObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelGroupObject.m; sourceTree = "<group>"; };
+		A4AA500E1E63C8FE00F4BB8D /* LabelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelObject.h; sourceTree = "<group>"; };
+		A4AA500F1E63C8FE00F4BB8D /* LabelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelObject.m; sourceTree = "<group>"; };
+		A4AA50101E63C8FE00F4BB8D /* LabelValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelValueObject.h; sourceTree = "<group>"; };
+		A4AA50111E63C8FE00F4BB8D /* LabelValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelValueObject.m; sourceTree = "<group>"; };
+		A4AA50121E63C8FE00F4BB8D /* Snap415Deal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415Deal.h; sourceTree = "<group>"; };
+		A4AA50131E63C8FE00F4BB8D /* Snap415Deal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415Deal.m; sourceTree = "<group>"; };
+		A4AA50141E63C8FE00F4BB8D /* Snap415RwUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415RwUserProfile.h; sourceTree = "<group>"; };
+		A4AA50151E63C8FE00F4BB8D /* Snap415RwUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415RwUserProfile.m; sourceTree = "<group>"; };
+		A4AA50161E63C8FE00F4BB8D /* Snap415TaxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415TaxEvent.h; sourceTree = "<group>"; };
+		A4AA50171E63C8FE00F4BB8D /* Snap415TaxEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415TaxEvent.m; sourceTree = "<group>"; };
+		A4AA50181E63C8FE00F4BB8D /* Snap415UserProfileBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415UserProfileBase.h; sourceTree = "<group>"; };
+		A4AA50191E63C8FE00F4BB8D /* Snap415UserProfileBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415UserProfileBase.m; sourceTree = "<group>"; };
+		A4AA501A1E63C8FE00F4BB8D /* Snap415UserTaxEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415UserTaxEvents.h; sourceTree = "<group>"; };
+		A4AA501B1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415UserTaxEvents.m; sourceTree = "<group>"; };
+		A4AA501C1E63C8FE00F4BB8D /* SqootDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootDeal.h; sourceTree = "<group>"; };
+		A4AA501D1E63C8FE00F4BB8D /* SqootDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootDeal.m; sourceTree = "<group>"; };
+		A4AA501E1E63C8FE00F4BB8D /* SqootDealCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootDealCategory.h; sourceTree = "<group>"; };
+		A4AA501F1E63C8FE00F4BB8D /* SqootDealCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootDealCategory.m; sourceTree = "<group>"; };
+		A4AA50201E63C8FE00F4BB8D /* SqootDealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootDealObject.h; sourceTree = "<group>"; };
+		A4AA50211E63C8FE00F4BB8D /* SqootDealObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootDealObject.m; sourceTree = "<group>"; };
+		A4AA50221E63C8FE00F4BB8D /* SqootDealsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootDealsObject.h; sourceTree = "<group>"; };
+		A4AA50231E63C8FE00F4BB8D /* SqootDealsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootDealsObject.m; sourceTree = "<group>"; };
+		A4AA50241E63C8FE00F4BB8D /* SqootMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootMerchant.h; sourceTree = "<group>"; };
+		A4AA50251E63C8FE00F4BB8D /* SqootMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootMerchant.m; sourceTree = "<group>"; };
+		A4AA50261E63C8FE00F4BB8D /* SqootQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootQuery.h; sourceTree = "<group>"; };
+		A4AA50271E63C8FE00F4BB8D /* SqootQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootQuery.m; sourceTree = "<group>"; };
+		A4AA50281E63C8FE00F4BB8D /* SqootQueryLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootQueryLocation.h; sourceTree = "<group>"; };
+		A4AA50291E63C8FE00F4BB8D /* SqootQueryLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootQueryLocation.m; sourceTree = "<group>"; };
+		A4AA502A1E63C8FE00F4BB8D /* WebSiteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSiteObject.h; sourceTree = "<group>"; };
+		A4AA502B1E63C8FE00F4BB8D /* WebSiteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSiteObject.m; sourceTree = "<group>"; };
+		A4AA502C1E63C8FE00F4BB8D /* Snap415API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415API.h; sourceTree = "<group>"; };
+		A4AA502D1E63C8FE00F4BB8D /* Snap415API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415API.m; sourceTree = "<group>"; };
+		A4AA502E1E63C8FE00F4BB8D /* Snap415SimpleProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415SimpleProfile.h; sourceTree = "<group>"; };
+		A4AA502F1E63C8FE00F4BB8D /* Snap415SimpleProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415SimpleProfile.m; sourceTree = "<group>"; };
+		A4AA50301E63C8FE00F4BB8D /* Snap415Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415Token.h; sourceTree = "<group>"; };
+		A4AA50311E63C8FE00F4BB8D /* Snap415Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415Token.m; sourceTree = "<group>"; };
+		A4AA50321E63C8FE00F4BB8D /* Snap415UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415UserProfile.h; sourceTree = "<group>"; };
+		A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415UserProfile.m; sourceTree = "<group>"; };
+		A4AA504C1E63CBAD00F4BB8D /* Snap415Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415Model.h; sourceTree = "<group>"; };
+		A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415Model.m; sourceTree = "<group>"; };
 		E9C850EDD9FB6C9CB50B45BD /* Pods-AIChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.release.xcconfig"; sourceTree = "<group>"; };
 		F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIChatBots.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -359,13 +431,13 @@
 		A409A07A1E10E1C80083A3CA = {
 			isa = PBXGroup;
 			children = (
+				A409A0851E10E1C80083A3CA /* AIChatBots */,
 				A42F6B791E4053D50096351C /* ChatAsyncPhoto.h */,
 				A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */,
 				A42F6B731E3F408A0096351C /* JSImagePickerViewController.h */,
 				A42F6B741E3F408A0096351C /* JSImagePickerViewController.m */,
 				A42F6B701E3EDCC10096351C /* UIImageUtils.h */,
 				A42F6B711E3EDCC10096351C /* UIImageUtils.m */,
-				A409A0851E10E1C80083A3CA /* AIChatBots */,
 				A409A0A21E10E1C80083A3CA /* AIChatBotsTests */,
 				A409A0AD1E10E1C90083A3CA /* AIChatBotsUITests */,
 				A409A0841E10E1C80083A3CA /* Products */,
@@ -387,6 +459,7 @@
 		A409A0851E10E1C80083A3CA /* AIChatBots */ = {
 			isa = PBXGroup;
 			children = (
+				A4AA50041E63C8FE00F4BB8D /* snap415 */,
 				65023EC61E20C391007A3A3A /* VC_Segue_AppInfo.h */,
 				65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */,
 				A41288C41E13E14A002CFAAC /* Default-Portrait@2x.png */,
@@ -671,6 +744,77 @@
 			name = models;
 			sourceTree = "<group>";
 		};
+		A4AA50041E63C8FE00F4BB8D /* snap415 */ = {
+			isa = PBXGroup;
+			children = (
+				A4AA504B1E63CBAD00F4BB8D /* models */,
+				A4AA50051E63C8FE00F4BB8D /* dto */,
+				A4AA502C1E63C8FE00F4BB8D /* Snap415API.h */,
+				A4AA502D1E63C8FE00F4BB8D /* Snap415API.m */,
+				A4AA502E1E63C8FE00F4BB8D /* Snap415SimpleProfile.h */,
+				A4AA502F1E63C8FE00F4BB8D /* Snap415SimpleProfile.m */,
+				A4AA50301E63C8FE00F4BB8D /* Snap415Token.h */,
+				A4AA50311E63C8FE00F4BB8D /* Snap415Token.m */,
+				A4AA50321E63C8FE00F4BB8D /* Snap415UserProfile.h */,
+				A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */,
+			);
+			path = snap415;
+			sourceTree = "<group>";
+		};
+		A4AA50051E63C8FE00F4BB8D /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				A4AA50061E63C8FE00F4BB8D /* ChildrenCategory.h */,
+				A4AA50071E63C8FE00F4BB8D /* ChildrenCategory.m */,
+				A4AA50081E63C8FE00F4BB8D /* ChildrenKeywords.h */,
+				A4AA50091E63C8FE00F4BB8D /* ChildrenKeywords.m */,
+				A4AA500A1E63C8FE00F4BB8D /* EITCCreditObject.h */,
+				A4AA500B1E63C8FE00F4BB8D /* EITCCreditObject.m */,
+				A4AA500C1E63C8FE00F4BB8D /* LabelGroupObject.h */,
+				A4AA500D1E63C8FE00F4BB8D /* LabelGroupObject.m */,
+				A4AA500E1E63C8FE00F4BB8D /* LabelObject.h */,
+				A4AA500F1E63C8FE00F4BB8D /* LabelObject.m */,
+				A4AA50101E63C8FE00F4BB8D /* LabelValueObject.h */,
+				A4AA50111E63C8FE00F4BB8D /* LabelValueObject.m */,
+				A4AA50121E63C8FE00F4BB8D /* Snap415Deal.h */,
+				A4AA50131E63C8FE00F4BB8D /* Snap415Deal.m */,
+				A4AA50141E63C8FE00F4BB8D /* Snap415RwUserProfile.h */,
+				A4AA50151E63C8FE00F4BB8D /* Snap415RwUserProfile.m */,
+				A4AA50161E63C8FE00F4BB8D /* Snap415TaxEvent.h */,
+				A4AA50171E63C8FE00F4BB8D /* Snap415TaxEvent.m */,
+				A4AA50181E63C8FE00F4BB8D /* Snap415UserProfileBase.h */,
+				A4AA50191E63C8FE00F4BB8D /* Snap415UserProfileBase.m */,
+				A4AA501A1E63C8FE00F4BB8D /* Snap415UserTaxEvents.h */,
+				A4AA501B1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m */,
+				A4AA501C1E63C8FE00F4BB8D /* SqootDeal.h */,
+				A4AA501D1E63C8FE00F4BB8D /* SqootDeal.m */,
+				A4AA501E1E63C8FE00F4BB8D /* SqootDealCategory.h */,
+				A4AA501F1E63C8FE00F4BB8D /* SqootDealCategory.m */,
+				A4AA50201E63C8FE00F4BB8D /* SqootDealObject.h */,
+				A4AA50211E63C8FE00F4BB8D /* SqootDealObject.m */,
+				A4AA50221E63C8FE00F4BB8D /* SqootDealsObject.h */,
+				A4AA50231E63C8FE00F4BB8D /* SqootDealsObject.m */,
+				A4AA50241E63C8FE00F4BB8D /* SqootMerchant.h */,
+				A4AA50251E63C8FE00F4BB8D /* SqootMerchant.m */,
+				A4AA50261E63C8FE00F4BB8D /* SqootQuery.h */,
+				A4AA50271E63C8FE00F4BB8D /* SqootQuery.m */,
+				A4AA50281E63C8FE00F4BB8D /* SqootQueryLocation.h */,
+				A4AA50291E63C8FE00F4BB8D /* SqootQueryLocation.m */,
+				A4AA502A1E63C8FE00F4BB8D /* WebSiteObject.h */,
+				A4AA502B1E63C8FE00F4BB8D /* WebSiteObject.m */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
+		A4AA504B1E63CBAD00F4BB8D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				A4AA504C1E63CBAD00F4BB8D /* Snap415Model.h */,
+				A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		AC7BAD511C658464F307BA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,12 +1039,17 @@
 			files = (
 				A4A3161B1E1263CC009EDA74 /* UIImage+JSQMessages.m in Sources */,
 				65023EC81E20C391007A3A3A /* VC_Segue_AppInfo.m in Sources */,
+				A4AA503A1E63C8FE00F4BB8D /* Snap415Deal.m in Sources */,
 				A4A316241E1263CC009EDA74 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				A4A316321E1263CC009EDA74 /* JSQMessagesCellTextView.m in Sources */,
 				A4A316291E1263CC009EDA74 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				A4A3161E1E1263CC009EDA74 /* JSQMessagesViewController.m in Sources */,
 				A4A3163A1E1263CC009EDA74 /* JSQMessagesInputToolbar.m in Sources */,
+				A4AA50411E63C8FE00F4BB8D /* SqootDealObject.m in Sources */,
+				A4AA50401E63C8FE00F4BB8D /* SqootDealCategory.m in Sources */,
 				A42F6B751E3F408A0096351C /* JSImagePickerViewController.m in Sources */,
+				A4AA50341E63C8FE00F4BB8D /* ChildrenCategory.m in Sources */,
+				A4AA503D1E63C8FE00F4BB8D /* Snap415UserProfileBase.m in Sources */,
 				A4A316281E1263CC009EDA74 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				A4A316391E1263CC009EDA74 /* JSQMessagesComposerTextView.m in Sources */,
 				A42F6B6F1E3DFC2E0096351C /* APIDeepDetectResponseBodyPredictionClass.m in Sources */,
@@ -911,21 +1060,28 @@
 				A409A0881E10E1C80083A3CA /* main.m in Sources */,
 				A4A316341E1263CC009EDA74 /* JSQMessagesCollectionViewCell.m in Sources */,
 				A4A316301E1263CC009EDA74 /* JSQPhotoMediaItem.m in Sources */,
+				A4AA50441E63C8FE00F4BB8D /* SqootQuery.m in Sources */,
 				A42F6B721E3EDCC10096351C /* UIImageUtils.m in Sources */,
 				A4A316491E12ADCA009EDA74 /* StringUtil.m in Sources */,
 				A4A316411E1263CC009EDA74 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				A4A316311E1263CC009EDA74 /* JSQVideoMediaItem.m in Sources */,
 				A42F6B631E3DF9D50096351C /* APIDeepDetectResponseStatus.m in Sources */,
 				A4A316371E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
+				A4AA503F1E63C8FE00F4BB8D /* SqootDeal.m in Sources */,
 				A4A3161D1E1263CC009EDA74 /* JSQMessagesKeyboardController.m in Sources */,
 				A409A19C1E1153800083A3CA /* AllChatBotsModel.m in Sources */,
 				A4A3162B1E1263CC009EDA74 /* JSQLocationMediaItem.m in Sources */,
+				A4AA50491E63C8FE00F4BB8D /* Snap415Token.m in Sources */,
 				A4A3161C1E1263CC009EDA74 /* UIView+JSQMessages.m in Sources */,
 				A4A316251E1263CC009EDA74 /* JSQAudioMediaViewAttributes.m in Sources */,
 				A409A1A31E1153800083A3CA /* MasterViewController.m in Sources */,
+				A4AA50351E63C8FE00F4BB8D /* ChildrenKeywords.m in Sources */,
 				A4A314D91E120480009EDA74 /* DataModel.m in Sources */,
 				A4A3163B1E1263CC009EDA74 /* JSQMessagesLabel.m in Sources */,
+				A4AA50481E63C8FE00F4BB8D /* Snap415SimpleProfile.m in Sources */,
 				A42F6B571E3DD5400096351C /* APIDeepDetectParametersInput.m in Sources */,
+				A4AA50391E63C8FE00F4BB8D /* LabelValueObject.m in Sources */,
+				A4AA50421E63C8FE00F4BB8D /* SqootDealsObject.m in Sources */,
 				A4A3162D1E1263CC009EDA74 /* JSQMessage.m in Sources */,
 				A4A3163F1E1263CC009EDA74 /* JSQMessagesToolbarContentView.m in Sources */,
 				A409A19D1E1153800083A3CA /* AppDelegate.m in Sources */,
@@ -935,17 +1091,22 @@
 				A4A316181E1263CC009EDA74 /* NSString+JSQMessages.m in Sources */,
 				A42F6B691E3DF9F70096351C /* APIDeepDetectResponseBody.m in Sources */,
 				A42F6B601E3DF9AC0096351C /* APIDeepDetectResponseModel.m in Sources */,
+				A4AA50371E63C8FE00F4BB8D /* LabelGroupObject.m in Sources */,
 				A42F6B6C1E3DFBE60096351C /* APIDeepDetectResponseBodyPrediction.m in Sources */,
 				A4A315181E124E84009EDA74 /* DemoModelData.m in Sources */,
 				A4A316161E1263CC009EDA74 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
+				A4AA50461E63C8FE00F4BB8D /* WebSiteObject.m in Sources */,
 				A4A316271E1263CC009EDA74 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
+				A4AA50451E63C8FE00F4BB8D /* SqootQueryLocation.m in Sources */,
 				A4A3163E1E1263CC009EDA74 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				A4A316331E1263CC009EDA74 /* JSQMessagesCollectionView.m in Sources */,
 				A4A316231E1263CC009EDA74 /* JSQMessagesTimestampFormatter.m in Sources */,
 				A4A316211E1263CC009EDA74 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				A4A3151B1E124EA9009EDA74 /* NSUserDefaults+DemoSettings.m in Sources */,
 				A41288C11E13BA43002CFAAC /* VC_Segue_ChatBotInfo.m in Sources */,
+				A4AA504E1E63CBAD00F4BB8D /* Snap415Model.m in Sources */,
 				A4A3164C1E12AE65009EDA74 /* Constants.m in Sources */,
+				A4AA50471E63C8FE00F4BB8D /* Snap415API.m in Sources */,
 				A42F6B5A1E3DD5620096351C /* APIDeepDetectParametersOutput.m in Sources */,
 				A4A3163C1E1263CC009EDA74 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				A409A1A11E1153800083A3CA /* DetailViewController.m in Sources */,
@@ -953,11 +1114,18 @@
 				A4A3151E1E125E8A009EDA74 /* DemoMessagesViewController.m in Sources */,
 				A42F6B661E3DF9E40096351C /* APIDeepDetectResponseHead.m in Sources */,
 				A42F6B541E3DD50A0096351C /* APIDeepDetectParameters.m in Sources */,
+				A4AA50381E63C8FE00F4BB8D /* LabelObject.m in Sources */,
+				A4AA504A1E63C8FE00F4BB8D /* Snap415UserProfile.m in Sources */,
+				A4AA50361E63C8FE00F4BB8D /* EITCCreditObject.m in Sources */,
+				A4AA503E1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m in Sources */,
+				A4AA503C1E63C8FE00F4BB8D /* Snap415TaxEvent.m in Sources */,
 				A4A3162F1E1263CC009EDA74 /* JSQMessagesBubbleImage.m in Sources */,
 				A4A316191E1263CC009EDA74 /* UIColor+JSQMessages.m in Sources */,
 				A4A3162A1E1263CC009EDA74 /* JSQAudioMediaItem.m in Sources */,
 				A42F6B511E3DD4620096351C /* APIDeepDetectModel.m in Sources */,
 				A4A316201E1263CC009EDA74 /* JSQMessagesAvatarImageFactory.m in Sources */,
+				A4AA50431E63C8FE00F4BB8D /* SqootMerchant.m in Sources */,
+				A4AA503B1E63C8FE00F4BB8D /* Snap415RwUserProfile.m in Sources */,
 				A42F6B7B1E4053D50096351C /* ChatAsyncPhoto.m in Sources */,
 				A4A316171E1263CC009EDA74 /* NSBundle+JSQMessages.m in Sources */,
 			);

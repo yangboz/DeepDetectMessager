@@ -49,4 +49,7 @@
 
 - (void)sendUrlMessage:(NSString *)url;
 - (void)alertInvalidMessage;
+
+@property (strong,nonatomic) NSArray *sqootDealObjectsResult;
+
 @end
