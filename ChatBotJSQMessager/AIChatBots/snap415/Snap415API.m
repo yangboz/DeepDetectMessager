@@ -11,9 +11,9 @@
 #import <RestKit/RestKit.h>
 
 //@see: http://stackoverflow.com/questions/5643514/how-to-define-an-nsstring-for-global-use
-//#define DEV @"dev_aliyun"
+#define DEV @"dev_aliyun"
 #ifdef DEV
-#define kAPIEndpointHost @"http://52.33.35.75:8083/api/v1/"
+#define kAPIEndpointHost @"http://118.190.96.120:8083/api/v1/"
 #else//LOCAL
 #define kAPIEndpointHost @"http://localhost:8083/api/v1/"
 #endif
@@ -208,7 +208,7 @@ kAPI_user_me parameters:nil success:^(RKObjectRequestOperation *operation, RKMap
     }];
 }
 //GET only.
--(void)getDeals
+-(void)getDealsBy:(NSString *)keywords;
 {
     RKObjectMapping* articleMapping = [RKObjectMapping mappingForClass:[SqootDealsObject class]];
     [articleMapping addAttributeMappingsFromDictionary:@{
@@ -217,8 +217,11 @@ kAPI_user_me parameters:nil success:^(RKObjectRequestOperation *operation, RKMap
                                                          }];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",kAPIEndpointHost,kAPI_deals,kAPI_deals_catetory]];
+    //NSURL with escape string.
+    NSString *UrlStr = [NSString stringWithFormat:@"%@%@%@",kAPIEndpointHost,kAPI_deals,keywords];
+    NSString *encodedUrlStr = [UrlStr stringByAddingPercentEscapesUsingEncoding:
+                               NSUTF8StringEncoding];
+    NSURL *URL = [NSURL URLWithString:encodedUrlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -234,6 +237,7 @@ kAPI_user_me parameters:nil success:^(RKObjectRequestOperation *operation, RKMap
     }];
     //load begin
     [objectRequestOperation start];
+//     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];
 }
 //GET only.
 -(void)getOverviews

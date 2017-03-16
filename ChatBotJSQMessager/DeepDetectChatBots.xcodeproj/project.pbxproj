@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		425E8E40ABDCD4819309113F /* libPods-DeepDetectChatBotsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */; };
 		65023EC81E20C391007A3A3A /* VC_Segue_AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */; };
+		7744EBA13F48FD9A31A373F4 /* libPods-DeepDetectChatBots.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */; };
 		A409A0881E10E1C80083A3CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A0871E10E1C80083A3CA /* main.m */; };
 		A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A0921E10E1C80083A3CA /* Main.storyboard */; };
 		A409A0991E10E1C80083A3CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A0971E10E1C80083A3CA /* LaunchScreen.storyboard */; };
@@ -51,6 +53,10 @@
 		A493CE1E1E3C6DB10097C113 /* trees.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE141E3C6DB10097C113 /* trees.png */; };
 		A493CE201E3C78240097C113 /* furnitures.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE1F1E3C78240097C113 /* furnitures.png */; };
 		A493CE221E3C941A0097C113 /* imagenet.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE211E3C94190097C113 /* imagenet.png */; };
+		A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49ADB0D1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib */; };
+		A49ADB181E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m in Sources */ = {isa = PBXBuildFile; fileRef = A49ADB171E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m */; };
+		A49ADB1B1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m in Sources */ = {isa = PBXBuildFile; fileRef = A49ADB1A1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m */; };
+		A49ADB1D1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49ADB1C1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib */; };
 		A4A314D91E120480009EDA74 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A314D81E120480009EDA74 /* DataModel.m */; };
 		A4A314DB1E1206D4009EDA74 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A314DA1E1206D4009EDA74 /* iAd.framework */; };
 		A4A315181E124E84009EDA74 /* DemoModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A315171E124E84009EDA74 /* DemoModelData.m */; };
@@ -131,8 +137,8 @@
 		A4AA50491E63C8FE00F4BB8D /* Snap415Token.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50311E63C8FE00F4BB8D /* Snap415Token.m */; };
 		A4AA504A1E63C8FE00F4BB8D /* Snap415UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */; };
 		A4AA504E1E63CBAD00F4BB8D /* Snap415Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */; };
-		CB7657380EB8C5F469F21FBC /* Pods_DeepDetectChatBots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F9805FCE72E35F0E34B5D1 /* Pods_DeepDetectChatBots.framework */; };
 		E9E4B58B8A3B64734327C3B1 /* libPods-AIChatBots.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */; };
+		F9EC734E79DEA9E0ADC0E5DE /* libPods-DeepDetectChatBotsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,11 +160,16 @@
 
 /* Begin PBXFileReference section */
 		0381F5150481A001FE635D36 /* Pods-DeepDetectChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots.release.xcconfig"; sourceTree = "<group>"; };
+		126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBotsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBotsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39845D5767A78AEDF779FC6B /* Pods-DeepDetectChatBotsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6E1A207F8F22B66498B1C6 /* Pods-AIChatBots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.debug.xcconfig"; sourceTree = "<group>"; };
+		4F58C0CD86839C422EFAB717 /* Pods-DeepDetectChatBotsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBots.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65023EC61E20C391007A3A3A /* VC_Segue_AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Segue_AppInfo.h; sourceTree = "<group>"; };
 		65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Segue_AppInfo.m; sourceTree = "<group>"; };
 		6D60C21A943F54E54A020EE2 /* Pods-DeepDetectChatBots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots.debug.xcconfig"; sourceTree = "<group>"; };
-		71F9805FCE72E35F0E34B5D1 /* Pods_DeepDetectChatBots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepDetectChatBots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A19A73FE8BF8FE6603FCF1D7 /* Pods-DeepDetectChatBotsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A409A0831E10E1C80083A3CA /* DeepDetectChatBots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepDetectChatBots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A409A0871E10E1C80083A3CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A409A0931E10E1C80083A3CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,6 +238,12 @@
 		A493CE141E3C6DB10097C113 /* trees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trees.png; path = robots/trees.png; sourceTree = "<group>"; };
 		A493CE1F1E3C78240097C113 /* furnitures.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = furnitures.png; path = robots/furnitures.png; sourceTree = "<group>"; };
 		A493CE211E3C94190097C113 /* imagenet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imagenet.png; path = robots/imagenet.png; sourceTree = "<group>"; };
+		A49ADB0D1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SqootJSQMessagesCollectionViewCellIncoming.xib; sourceTree = "<group>"; };
+		A49ADB161E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootJSQMessagesCollectionViewCellIncoming.h; sourceTree = "<group>"; };
+		A49ADB171E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootJSQMessagesCollectionViewCellIncoming.m; sourceTree = "<group>"; };
+		A49ADB191E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootJSQMessagesCollectionViewCellOutgoing.h; sourceTree = "<group>"; };
+		A49ADB1A1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootJSQMessagesCollectionViewCellOutgoing.m; sourceTree = "<group>"; };
+		A49ADB1C1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SqootJSQMessagesCollectionViewCellOutgoing.xib; sourceTree = "<group>"; };
 		A4A314D71E120480009EDA74 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		A4A314D81E120480009EDA74 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		A4A314DA1E1206D4009EDA74 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -385,6 +402,7 @@
 		A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415UserProfile.m; sourceTree = "<group>"; };
 		A4AA504C1E63CBAD00F4BB8D /* Snap415Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415Model.h; sourceTree = "<group>"; };
 		A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415Model.m; sourceTree = "<group>"; };
+		A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E9C850EDD9FB6C9CB50B45BD /* Pods-AIChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.release.xcconfig"; sourceTree = "<group>"; };
 		F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIChatBots.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -396,7 +414,7 @@
 			files = (
 				A4A314DB1E1206D4009EDA74 /* iAd.framework in Frameworks */,
 				E9E4B58B8A3B64734327C3B1 /* libPods-AIChatBots.a in Frameworks */,
-				CB7657380EB8C5F469F21FBC /* Pods_DeepDetectChatBots.framework in Frameworks */,
+				7744EBA13F48FD9A31A373F4 /* libPods-DeepDetectChatBots.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +422,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9EC734E79DEA9E0ADC0E5DE /* libPods-DeepDetectChatBotsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425E8E40ABDCD4819309113F /* libPods-DeepDetectChatBotsUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +444,10 @@
 				E9C850EDD9FB6C9CB50B45BD /* Pods-AIChatBots.release.xcconfig */,
 				6D60C21A943F54E54A020EE2 /* Pods-DeepDetectChatBots.debug.xcconfig */,
 				0381F5150481A001FE635D36 /* Pods-DeepDetectChatBots.release.xcconfig */,
+				4F58C0CD86839C422EFAB717 /* Pods-DeepDetectChatBotsTests.debug.xcconfig */,
+				A19A73FE8BF8FE6603FCF1D7 /* Pods-DeepDetectChatBotsTests.release.xcconfig */,
+				39845D5767A78AEDF779FC6B /* Pods-DeepDetectChatBotsUITests.debug.xcconfig */,
+				A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -490,6 +514,10 @@
 				A409A0921E10E1C80083A3CA /* Main.storyboard */,
 				A409A0971E10E1C80083A3CA /* LaunchScreen.storyboard */,
 				A409A0861E10E1C80083A3CA /* Supporting Files */,
+				A49ADB161E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.h */,
+				A49ADB171E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m */,
+				A49ADB191E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.h */,
+				A49ADB1A1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m */,
 			);
 			path = AIChatBots;
 			sourceTree = "<group>";
@@ -684,9 +712,11 @@
 				A4A315FE1E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.h */,
 				A4A315FF1E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.m */,
 				A4A316001E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib */,
+				A49ADB0D1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib */,
 				A4A316011E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.h */,
 				A4A316021E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.m */,
 				A4A316031E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.xib */,
+				A49ADB1C1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib */,
 				A4A316041E1263CC009EDA74 /* JSQMessagesComposerTextView.h */,
 				A4A316051E1263CC009EDA74 /* JSQMessagesComposerTextView.m */,
 				A4A316061E1263CC009EDA74 /* JSQMessagesInputToolbar.h */,
@@ -820,7 +850,9 @@
 			children = (
 				A4A314DA1E1206D4009EDA74 /* iAd.framework */,
 				F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */,
-				71F9805FCE72E35F0E34B5D1 /* Pods_DeepDetectChatBots.framework */,
+				5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */,
+				2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */,
+				126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -852,9 +884,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A409A0B61E10E1C90083A3CA /* Build configuration list for PBXNativeTarget "DeepDetectChatBotsTests" */;
 			buildPhases = (
+				F725C8DE3DB30FCCC0062673 /* [CP] Check Pods Manifest.lock */,
 				A409A09B1E10E1C80083A3CA /* Sources */,
 				A409A09C1E10E1C80083A3CA /* Frameworks */,
 				A409A09D1E10E1C80083A3CA /* Resources */,
+				0E2E019AF35087FBE84F7C15 /* [CP] Embed Pods Frameworks */,
+				586A8F0A62B621D2C9211076 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -870,9 +905,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A409A0B91E10E1C90083A3CA /* Build configuration list for PBXNativeTarget "DeepDetectChatBotsUITests" */;
 			buildPhases = (
+				94E6D38A4819CC4844257B86 /* [CP] Check Pods Manifest.lock */,
 				A409A0A61E10E1C90083A3CA /* Sources */,
 				A409A0A71E10E1C90083A3CA /* Frameworks */,
 				A409A0A81E10E1C90083A3CA /* Resources */,
+				A6B560660AF5F7D2537097BA /* [CP] Embed Pods Frameworks */,
+				569B9C38C3A8A2B98E498F67 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -949,6 +987,7 @@
 				A409A1A21E1153800083A3CA /* Info.plist in Resources */,
 				A4A3161F1E1263CC009EDA74 /* JSQMessagesViewController.xib in Resources */,
 				A493CE1A1E3C6DB10097C113 /* footwear.png in Resources */,
+				A49ADB1D1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A493CE161E3C6DB10097C113 /* bags.png in Resources */,
 				A493CE191E3C6DB10097C113 /* fabric.png in Resources */,
 				A409A19F1E1153800083A3CA /* LaunchScreen.storyboard in Resources */,
@@ -961,6 +1000,7 @@
 				A493CE221E3C941A0097C113 /* imagenet.png in Resources */,
 				A493CE181E3C6DB10097C113 /* clothing.png in Resources */,
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
+				A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316361E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316381E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A41288C51E13E14A002CFAAC /* Default-Portrait@2x.png in Resources */,
@@ -1000,6 +1040,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		0E2E019AF35087FBE84F7C15 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		347C4F02F24D7690919D35D7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1013,6 +1068,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		569B9C38C3A8A2B98E498F67 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		586A8F0A62B621D2C9211076 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94E6D38A4819CC4844257B86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A6B560660AF5F7D2537097BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E90EF92ED8B0AD1C98171A34 /* [CP] Copy Pods Resources */ = {
@@ -1030,6 +1145,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F725C8DE3DB30FCCC0062673 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1044,6 +1174,7 @@
 				A4A316321E1263CC009EDA74 /* JSQMessagesCellTextView.m in Sources */,
 				A4A316291E1263CC009EDA74 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				A4A3161E1E1263CC009EDA74 /* JSQMessagesViewController.m in Sources */,
+				A49ADB1B1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				A4A3163A1E1263CC009EDA74 /* JSQMessagesInputToolbar.m in Sources */,
 				A4AA50411E63C8FE00F4BB8D /* SqootDealObject.m in Sources */,
 				A4AA50401E63C8FE00F4BB8D /* SqootDealCategory.m in Sources */,
@@ -1072,6 +1203,7 @@
 				A409A19C1E1153800083A3CA /* AllChatBotsModel.m in Sources */,
 				A4A3162B1E1263CC009EDA74 /* JSQLocationMediaItem.m in Sources */,
 				A4AA50491E63C8FE00F4BB8D /* Snap415Token.m in Sources */,
+				A49ADB181E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m in Sources */,
 				A4A3161C1E1263CC009EDA74 /* UIView+JSQMessages.m in Sources */,
 				A4A316251E1263CC009EDA74 /* JSQAudioMediaViewAttributes.m in Sources */,
 				A409A1A31E1153800083A3CA /* MasterViewController.m in Sources */,
@@ -1368,6 +1500,7 @@
 		};
 		A409A0B71E10E1C90083A3CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F58C0CD86839C422EFAB717 /* Pods-DeepDetectChatBotsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AIChatBotsTests/Info.plist;
@@ -1380,6 +1513,7 @@
 		};
 		A409A0B81E10E1C90083A3CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A19A73FE8BF8FE6603FCF1D7 /* Pods-DeepDetectChatBotsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AIChatBotsTests/Info.plist;
@@ -1392,6 +1526,7 @@
 		};
 		A409A0BA1E10E1C90083A3CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39845D5767A78AEDF779FC6B /* Pods-DeepDetectChatBotsUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AIChatBotsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1403,6 +1538,7 @@
 		};
 		A409A0BB1E10E1C90083A3CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AIChatBotsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

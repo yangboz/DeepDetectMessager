@@ -41,6 +41,8 @@
 #import "Constants.h"
 #import "Snap415API.h"
 
+#import "SqootJSQMessagesCollectionViewCellIncoming.h"
+
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -87,33 +89,51 @@ NSArray *dataSource;
     [request setRequestMethod:@"POST"];
     [request setDelegate:self];
     [request startAsynchronous];
-    //
+    //show loading.
+    [self showLoading];
+}
+
+-(void)showLoading{
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.userInteractionEnabled = NO;
 }
 
--(void)getSqootDeals{
+-(void)getSqootDealsBy:(NSString *)keywords{
+    [self showLoading];
+    //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //Delegate to Snap415API.
 //        [[Snap415API sharedInstance] getOverviews];
 //        [[Snap415API sharedInstance] getTaxEvents];
-        [[Snap415API sharedInstance] getDeals];
+        [[Snap415API sharedInstance]  getDealsBy:keywords];
     });
+//    [[Snap415API sharedInstance] getDeals];
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
 }
 
 -(void)loadSqootDealsHandler:(NSNotification *) notification{
-    //Loading end
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
     //    NSLog(@"loadOverviewsHandler:%@",notification.userInfo);
     SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
     self.sqootDealObjectsResult = [sqootDealsObject deals];
-    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
+//    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
+    //append to messages.
+    for(SqootDeal *sqootDeal in self.sqootDealObjectsResult){
+        NSLog(@"SqootDeal:%@",sqootDeal.description);
+        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
+    }
 }
 
+-(JSQMessage *)getJSQMessage:(NSString *)message{
+    //        JSQMessage *newMessage = nil;
+    //        id<JSQMessageMediaData> newMediaData = nil;
+    //        id newMediaAttachmentCopy = nil;
+    JSQMessage *newMessage = [JSQMessage messageWithSenderId:self.detailItem.Id.stringValue
+                                     displayName:self.detailItem.Name
+                                            text:message];
+    return newMessage;
+}
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
@@ -136,9 +156,7 @@ NSArray *dataSource;
     //go to receive message
     if(error==nil){
         if([responseVO status].code==200){
-            [self receiveMessageFromAPI:responseVO];
-            //
-            [self getSqootDeals];
+            [self receiveMessageFromDeepDetectAPI:responseVO];
         }else{
             [self alertInvalidMessage];
         }
@@ -184,7 +202,7 @@ NSArray *dataSource;
     return [unEscapedString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
--(void)receiveMessageFromAPI:(APIDeepDetectResponseModel *)response
+-(void)receiveMessageFromDeepDetectAPI:(APIDeepDetectResponseModel *)response
 {
     
     /**
@@ -214,12 +232,8 @@ NSArray *dataSource;
 //        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
 //        [userIds removeObject:self.senderId];
 //        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
-        
-        JSQMessage *newMessage = nil;
-        id<JSQMessageMediaData> newMediaData = nil;
-        id newMediaAttachmentCopy = nil;
 
-    NSString *bodyMsg = [response.body.predictions description];
+//    NSString *bodyMsg = [response.body.predictions description];
     NSArray *predictions= response.body.predictions;
     APIDeepDetectResponseBodyPrediction *prediction = [[APIDeepDetectResponseBodyPrediction alloc ] initWithDictionary:[predictions objectAtIndex:0] error:nil];
     NSArray *classes = prediction.classes;
@@ -230,63 +244,62 @@ NSArray *dataSource;
     CGFloat prob = (CGFloat)[[predClass objectForKey:@"prob"] floatValue]*100;
         //Always text message with emoji
     NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,category]stringByReplacingEmojiCheatCodesWithUnicode];
-            newMessage = [JSQMessage messageWithSenderId:self.detailItem.Id.stringValue
-                                             displayName:self.detailItem.Name
-                                                    text:emotionalMessage];
-
-        /**
-         *  Upon receiving a message, you should:
-         *
-         *  1. Play sound (optional)
-         *  2. Add new id<JSQMessageData> object to your data source
-         *  3. Call `finishReceivingMessage`
-         */
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-        
-        [self.demoData.messages addObject:newMessage];
-        [self finishReceivingMessageAnimated:YES];
-        
-        
-//        if (newMessage.isMediaMessage) {
-//            /**
-//             *  Simulate "downloading" media
-//             */
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                /**
-//                 *  Media is "finished downloading", re-display visible cells
-//                 *
-//                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
-//                 *
-//                 *  Reload the specific item, or simply call `reloadData`
-//                 */
-//                
-//                if ([newMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
-//                    ((JSQPhotoMediaItem *)newMediaData).image = newMediaAttachmentCopy;
-//                    [self.collectionView reloadData];
-//                }
-//                else if ([newMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
-//                    [((JSQLocationMediaItem *)newMediaData)setLocation:newMediaAttachmentCopy withCompletionHandler:^{
-//                        [self.collectionView reloadData];
-//                    }];
-//                }
-//                else if ([newMediaData isKindOfClass:[JSQVideoMediaItem class]]) {
-//                    ((JSQVideoMediaItem *)newMediaData).fileURL = newMediaAttachmentCopy;
-//                    ((JSQVideoMediaItem *)newMediaData).isReadyToPlay = YES;
-//                    [self.collectionView reloadData];
-//                }
-//                else if ([newMediaData isKindOfClass:[JSQAudioMediaItem class]]) {
-//                    ((JSQAudioMediaItem *)newMediaData).audioData = newMediaAttachmentCopy;
-//                    [self.collectionView reloadData];
-//                }
-//                else {
-//                    NSLog(@"%s error: unrecognized media item", __PRETTY_FUNCTION__);
-//                }
-//                
-//            });
-//        }
+//
+        [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
+        //then append Sqoot information query by keywords/category.
+        [self getSqootDealsBy:category];
 }
-
+-(void)addDemoMessage:(JSQMessage *)jsqMessage{
+    /**
+     *  Upon receiving a message, you should:
+     *
+     *  1. Play sound (optional)
+     *  2. Add new id<JSQMessageData> object to your data source
+     *  3. Call `finishReceivingMessage`
+     */
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+    
+    [self.demoData.messages addObject:jsqMessage];
+    [self finishReceivingMessageAnimated:YES];
+    //        if (newMessage.isMediaMessage) {
+    //            /**
+    //             *  Simulate "downloading" media
+    //             */
+    //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //                /**
+    //                 *  Media is "finished downloading", re-display visible cells
+    //                 *
+    //                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
+    //                 *
+    //                 *  Reload the specific item, or simply call `reloadData`
+    //                 */
+    //
+    //                if ([newMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
+    //                    ((JSQPhotoMediaItem *)newMediaData).image = newMediaAttachmentCopy;
+    //                    [self.collectionView reloadData];
+    //                }
+    //                else if ([newMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
+    //                    [((JSQLocationMediaItem *)newMediaData)setLocation:newMediaAttachmentCopy withCompletionHandler:^{
+    //                        [self.collectionView reloadData];
+    //                    }];
+    //                }
+    //                else if ([newMediaData isKindOfClass:[JSQVideoMediaItem class]]) {
+    //                    ((JSQVideoMediaItem *)newMediaData).fileURL = newMediaAttachmentCopy;
+    //                    ((JSQVideoMediaItem *)newMediaData).isReadyToPlay = YES;
+    //                    [self.collectionView reloadData];
+    //                }
+    //                else if ([newMediaData isKindOfClass:[JSQAudioMediaItem class]]) {
+    //                    ((JSQAudioMediaItem *)newMediaData).audioData = newMediaAttachmentCopy;
+    //                    [self.collectionView reloadData];
+    //                }
+    //                else {
+    //                    NSLog(@"%s error: unrecognized media item", __PRETTY_FUNCTION__);
+    //                }
+    //                
+    //            });
+    //        }
+}
 
 #pragma mark - View lifecycle
 
@@ -365,7 +378,13 @@ NSArray *dataSource;
     titleLabel.attributedText = attributedTitle;
     [titleLabel sizeToFit];
     self.navigationItem.titleView = titleLabel;
-    /**
+    //Custom cell.
+    self.incomingCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
+    self.incomingMediaCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
+    
+    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingCellIdentifier];
+    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingMediaCellIdentifier];
+/**
      *  You can set custom avatar sizes
      */
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeMake(40, 40);
@@ -734,7 +753,7 @@ NSArray *dataSource;
      *  Override point for customizing cells
      */
     JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    
+
     /**
      *  Configure almost *anything* on the cell
      *
@@ -754,9 +773,11 @@ NSArray *dataSource;
     if (!msg.isMediaMessage) {
         
         if ([msg.senderId isEqualToString:self.senderId]) {
+//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.outgoingCellIdentifier  forIndexPath:indexPath];
             cell.textView.textColor = [UIColor blackColor];
         }
         else {
+//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.incomingCellIdentifier forIndexPath:indexPath];
             cell.textView.textColor = [UIColor whiteColor];
         }
         
@@ -765,7 +786,6 @@ NSArray *dataSource;
     }
 
 //    cell.accessoryButton.hidden = ![self shouldShowAccessoryButtonForMessage:msg];
-    
     return cell;
 }
 

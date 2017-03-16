@@ -55,7 +55,7 @@ DEPENDENCIES:
   - NSData+Base64
   - NSString+Emoji
   - Reachability (~> 3.2)
-  - RestKit (~> 0.26)
+  - RestKit (= 0.27.0)
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
@@ -74,6 +74,6 @@ SPEC CHECKSUMS:
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
 
-PODFILE CHECKSUM: 328e8da8bf235484cd5992c23ad808593bc68493
+PODFILE CHECKSUM: 68bb4f0178ece9acc6c64caf7a0455f307fbdf53
 
 COCOAPODS: 1.2.0

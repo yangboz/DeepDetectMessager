@@ -322,7 +322,8 @@ static NSString *RKStringDescribingURLResponseWithData(NSURLResponse *response, 
         __weak __typeof(self)weakSelf = self;
         self.stateMachine = [[RKOperationStateMachine alloc] initWithOperation:self dispatchQueue:[[self class] dispatchQueue]];
         [self.stateMachine setExecutionBlock:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:RKObjectRequestOperationDidStartNotification object:weakSelf];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:RKObjectRequestOperationDidStartNotification object:weakSelf];
+            [[NSNotificationCenter defaultCenter] postNotificationName:RKObjectRequestOperationDidStartNotification object:self];
             RKIncrementNetworkActivityIndicator();
             if (weakSelf.isCancelled) {
                 [weakSelf.stateMachine finish];

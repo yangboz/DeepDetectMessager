@@ -24,6 +24,7 @@
 #import "RKLog.h"
 #import "RKPathMatcher.h"
 #import "RKHTTPUtilities.h"
+#import "RKObjectManager.h"
 
 #if __has_include("CoreData.h")
 #define RKCoreDataIncluded
@@ -241,7 +242,8 @@ static NSUInteger RKPaginatorDefaultPerPage = 25;
     if (self.operationQueue) {
         [self.operationQueue addOperation:self.objectRequestOperation];
     } else {
-        [self.objectRequestOperation start];
+//        [self.objectRequestOperation start];
+        [[RKObjectManager sharedManager] enqueueObjectRequestOperation:self.objectRequestOperation];
     }
 }
 

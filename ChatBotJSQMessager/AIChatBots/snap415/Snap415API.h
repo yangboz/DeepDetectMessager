@@ -59,7 +59,7 @@
 -(void)postUserMe;
 -(void)updateUserProfile;
 -(void)getTaxEvents;
--(void)getDeals;
+-(void)getDealsBy:(NSString *)keywords;
 -(void)getOverviews;
 //Account settings
 -(void)getIncomeCategories;
