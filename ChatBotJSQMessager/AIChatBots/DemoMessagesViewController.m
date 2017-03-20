@@ -42,6 +42,11 @@
 #import "Snap415API.h"
 
 #import "SqootJSQMessagesCollectionViewCellIncoming.h"
+//#import "EAIntroView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+AFNetworking.h"
+#import "SqootPageViewController.h"
+#import "MZTimerLabel.h"
 
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
@@ -53,6 +58,7 @@
 MBProgressHUD *hud;
 UIPickerView *picker;
 NSArray *dataSource;
+NSString* catKeywords;//for Sqoot API search
 
 #pragma mark - Split view
 
@@ -98,7 +104,12 @@ NSArray *dataSource;
     hud.userInteractionEnabled = NO;
 }
 
--(void)getSqootDealsBy:(NSString *)keywords{
+-(void)hideLoading{
+    [hud hideAnimated:YES];
+    hud.userInteractionEnabled = YES;
+}
+
+-(void)getSqootDeals{
     [self showLoading];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
@@ -106,11 +117,14 @@ NSArray *dataSource;
         //Delegate to Snap415API.
 //        [[Snap415API sharedInstance] getOverviews];
 //        [[Snap415API sharedInstance] getTaxEvents];
-        [[Snap415API sharedInstance]  getDealsBy:keywords];
+        [[Snap415API sharedInstance]  getDealsBy:catKeywords];
     });
 //    [[Snap415API sharedInstance] getDeals];
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
+}
+- (IBAction)searchInformation:(id)sender{
+    [self getSqootDeals];
 }
 
 -(void)loadSqootDealsHandler:(NSNotification *) notification{
@@ -118,13 +132,33 @@ NSArray *dataSource;
     SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
     self.sqootDealObjectsResult = [sqootDealsObject deals];
 //    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
-    //append to messages.
-    for(SqootDeal *sqootDeal in self.sqootDealObjectsResult){
-        NSLog(@"SqootDeal:%@",sqootDeal.description);
-        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
-    }
+    //
+    DataModel *dataModel = [DataModel sharedInstance];
+    NSMutableArray *selectedSqootDeals = [[NSMutableArray alloc] init];
+    for(NSDictionary *sqootDealObjDict in self.sqootDealObjectsResult){
+        NSDictionary *sqootDealDict = [sqootDealObjDict objectForKey:@"deal"];
+        NSLog(@"SqootDealDict:%@",sqootDealDict.description);
+        //FIXME:NSDictionary to SqootDeal.
+//        SqootDeal *sqootDeal = [SqootDeal getSqootDealFromDictionary:sqootDealDict];
+//        NSLog(@"SqootDeal:%@",sqootDeal.description);
+//        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
+        //EAIntroPages testing
+        SqootDeal *sqootDeal = [[SqootDeal alloc] init];
+        // object assemble.
+        sqootDeal.short_title =[sqootDealDict objectForKey: @"short_title"];
+//        sqootPage.titlePositionY = self.view.bounds.size.height/2 - 10;
+        sqootDeal.description = [sqootDealDict objectForKey: @"description"];
+        sqootDeal.image_url = [sqootDealDict objectForKey: @"image_url"];
+        sqootDeal.fine_print = [sqootDealDict objectForKey: @"fine_print"];
+        [selectedSqootDeals addObject:sqootDeal];
 }
-
+    //
+    [dataModel setSelectedSqootDeals:selectedSqootDeals];
+//
+    [self hideLoading];
+    //resign pickerview
+    [self.inputToolbar.inputView resignFirstResponder];
+}
 -(JSQMessage *)getJSQMessage:(NSString *)message{
     //        JSQMessage *newMessage = nil;
     //        id<JSQMessageMediaData> newMediaData = nil;
@@ -152,7 +186,7 @@ NSArray *dataSource;
         [self alertInvalidMessage];
     }
     //
-    [hud hideAnimated:YES];
+    [self hideLoading];
     //go to receive message
     if(error==nil){
         if([responseVO status].code==200){
@@ -240,14 +274,14 @@ NSArray *dataSource;
     NSLog(@"predition classes:%@",[classes description]);
     NSDictionary *predClass = (NSDictionary *)[classes objectAtIndex:0];
     NSLog(@"predition classes[0]:%@",[predClass description]);
-    NSString *category = [predClass objectForKey:@"cat"];
+    catKeywords = [predClass objectForKey:@"cat"];
     CGFloat prob = (CGFloat)[[predClass objectForKey:@"prob"] floatValue]*100;
         //Always text message with emoji
-    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,category]stringByReplacingEmojiCheatCodesWithUnicode];
+    NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,catKeywords]stringByReplacingEmojiCheatCodesWithUnicode];
 //
         [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
         //then append Sqoot information query by keywords/category.
-        [self getSqootDealsBy:category];
+        [self getSqootDeals];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{
     /**
@@ -379,16 +413,16 @@ NSArray *dataSource;
     [titleLabel sizeToFit];
     self.navigationItem.titleView = titleLabel;
     //Custom cell.
-    self.incomingCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
-    self.incomingMediaCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
-    
-    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingCellIdentifier];
-    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingMediaCellIdentifier];
+//    self.incomingCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
+//    self.incomingMediaCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
+//    
+//    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingCellIdentifier];
+//    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingMediaCellIdentifier];
 /**
      *  You can set custom avatar sizes
      */
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeMake(40, 40);
-    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeMake(40, 40);
 //    if (![NSUserDefaults incomingAvatarSetting]) {
 //        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
 //    }
@@ -942,9 +976,7 @@ NSArray *dataSource;
     //    NSData *imageData = [NSData dataWithContentsOfFile:imageUrl];
     [mobileUploader upload:imageData options:@{}];
     //@see https://github.com/jdg/MBProgressHUD
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    self.imageView.image = image;
-    
+    [self showLoading];
 }
 
 #pragma mark CLUploader delegate
@@ -954,8 +986,8 @@ NSArray *dataSource;
     //Save url to local data model.
     NSString *Url = [result objectForKey:@"url"];
     [self sendUrlMessage:Url];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
     //
+    [self hideLoading];
     
 }
 #pragma mark Cloudinary delegation
@@ -992,6 +1024,4 @@ NSArray *dataSource;
     [self.inputToolbar.contentView.textView setText:exampleUrl];
     [self.inputToolbar toggleSendButtonEnabled];
 }
-
-
 @end

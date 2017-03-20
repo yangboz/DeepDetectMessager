@@ -15,7 +15,7 @@
 static DataModel *sharedInstance = nil;
 static AllChatBotsModel *allChatBots=nil;
 static ChatBotVoModel *selectedChatBot = nil;
-
+static NSArray *selectedSqootDeals = nil;
 
 
 //In your class factory method for the class (named something like “sharedInstance” or “sharedManager”), it generates an instance of the class but only if the static instance is nil.
@@ -25,6 +25,7 @@ static ChatBotVoModel *selectedChatBot = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DataModel alloc] init];
+        selectedSqootDeals = [[NSArray alloc] init];
         // Do any other initialisation stuff here
     });
     return sharedInstance;
@@ -47,5 +48,13 @@ static ChatBotVoModel *selectedChatBot = nil;
 {
     selectedChatBot = value;
 }
-
+//
+-(NSArray *)getSelectedSqootDeals
+{
+    return selectedSqootDeals;
+}
+-(void)setSelectedSqootDeals:(NSArray *)value
+{
+    selectedSqootDeals = value;
+}
 @end

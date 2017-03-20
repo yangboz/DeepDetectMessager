@@ -35,7 +35,8 @@
 
 
 
-@interface DemoMessagesViewController : JSQMessagesViewController <UISplitViewControllerDelegate,UIActionSheetDelegate, JSQMessagesComposerTextViewPasteDelegate>
+@interface DemoMessagesViewController : JSQMessagesViewController <UISplitViewControllerDelegate,UIActionSheetDelegate,JSQMessagesComposerTextViewPasteDelegate,UIPageViewControllerDataSource>
+- (IBAction)searchInformation:(id)sender;
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
@@ -51,5 +52,4 @@
 - (void)alertInvalidMessage;
 
 @property (strong,nonatomic) NSArray *sqootDealObjectsResult;
-
 @end

@@ -8,17 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		425E8E40ABDCD4819309113F /* libPods-DeepDetectChatBotsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */; };
+		43E68CEA8A3FD1033FEEE9DB /* libPods-AIChatBotsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5325734262AFF705B827953E /* libPods-AIChatBotsTests.a */; };
 		65023EC81E20C391007A3A3A /* VC_Segue_AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */; };
 		7744EBA13F48FD9A31A373F4 /* libPods-DeepDetectChatBots.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */; };
 		A409A0881E10E1C80083A3CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A0871E10E1C80083A3CA /* main.m */; };
 		A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A0921E10E1C80083A3CA /* Main.storyboard */; };
-		A409A0991E10E1C80083A3CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A0971E10E1C80083A3CA /* LaunchScreen.storyboard */; };
 		A409A0A41E10E1C80083A3CA /* AIChatBotsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A0A31E10E1C80083A3CA /* AIChatBotsTests.m */; };
 		A409A0AF1E10E1C90083A3CA /* AIChatBotsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A0AE1E10E1C90083A3CA /* AIChatBotsUITests.m */; };
 		A409A19C1E1153800083A3CA /* AllChatBotsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A18E1E1153800083A3CA /* AllChatBotsModel.m */; };
 		A409A19D1E1153800083A3CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A1901E1153800083A3CA /* AppDelegate.m */; };
 		A409A19E1E1153800083A3CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A409A1911E1153800083A3CA /* Assets.xcassets */; };
-		A409A19F1E1153800083A3CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A1931E1153800083A3CA /* LaunchScreen.storyboard */; };
 		A409A1A01E1153800083A3CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A409A1951E1153800083A3CA /* Main.storyboard */; };
 		A409A1A11E1153800083A3CA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A1981E1153800083A3CA /* DetailViewController.m */; };
 		A409A1A21E1153800083A3CA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A409A1991E1153800083A3CA /* Info.plist */; };
@@ -42,6 +41,13 @@
 		A42F6B751E3F408A0096351C /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B741E3F408A0096351C /* JSImagePickerViewController.m */; };
 		A42F6B7B1E4053D50096351C /* ChatAsyncPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */; };
 		A43794221E497BA300EC44AD /* icon24.png in Resources */ = {isa = PBXBuildFile; fileRef = A43794211E497BA200EC44AD /* icon24.png */; };
+		A455B04F1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */; };
+		A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */; };
+		A455B0561E7F7EE8002F6F23 /* SqootPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0541E7F7EE8002F6F23 /* SqootPageViewController.m */; };
+		A455B0571E7F7EE8002F6F23 /* SqootPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A455B0551E7F7EE8002F6F23 /* SqootPageViewController.xib */; };
+		A455B05D1E7F818A002F6F23 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A455B05C1E7F818A002F6F23 /* icon.png */; };
+		A455B0611E7F8598002F6F23 /* Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A455B0601E7F8598002F6F23 /* Screen.storyboard */; };
+		A466770B1E7FA2D7003680B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */; };
 		A493CE151E3C6DB10097C113 /* age.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0B1E3C6DB10097C113 /* age.png */; };
 		A493CE161E3C6DB10097C113 /* bags.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0C1E3C6DB10097C113 /* bags.png */; };
 		A493CE171E3C6DB10097C113 /* buildings.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0D1E3C6DB10097C113 /* buildings.png */; };
@@ -137,7 +143,7 @@
 		A4AA50491E63C8FE00F4BB8D /* Snap415Token.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50311E63C8FE00F4BB8D /* Snap415Token.m */; };
 		A4AA504A1E63C8FE00F4BB8D /* Snap415UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA50331E63C8FE00F4BB8D /* Snap415UserProfile.m */; };
 		A4AA504E1E63CBAD00F4BB8D /* Snap415Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */; };
-		E9E4B58B8A3B64734327C3B1 /* libPods-AIChatBots.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */; };
+		F69D754C9204640B2F847C8B /* libPods-AIChatBotsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C1E44805633B64C3360D1E /* libPods-AIChatBotsUITests.a */; };
 		F9EC734E79DEA9E0ADC0E5DE /* libPods-DeepDetectChatBotsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -160,20 +166,24 @@
 
 /* Begin PBXFileReference section */
 		0381F5150481A001FE635D36 /* Pods-DeepDetectChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots.release.xcconfig"; sourceTree = "<group>"; };
+		0BD8623327DB1A2161D60EBC /* Pods-AIChatBotsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBotsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBotsTests/Pods-AIChatBotsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBotsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBotsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39845D5767A78AEDF779FC6B /* Pods-DeepDetectChatBotsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6E1A207F8F22B66498B1C6 /* Pods-AIChatBots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.debug.xcconfig"; sourceTree = "<group>"; };
+		4D2F192B6E42D2EA83FD5620 /* Pods-AIChatBotsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBotsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBotsUITests/Pods-AIChatBotsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4F58C0CD86839C422EFAB717 /* Pods-DeepDetectChatBotsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5325734262AFF705B827953E /* libPods-AIChatBotsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIChatBotsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeepDetectChatBots.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65023EC61E20C391007A3A3A /* VC_Segue_AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Segue_AppInfo.h; sourceTree = "<group>"; };
 		65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Segue_AppInfo.m; sourceTree = "<group>"; };
 		6D60C21A943F54E54A020EE2 /* Pods-DeepDetectChatBots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBots/Pods-DeepDetectChatBots.debug.xcconfig"; sourceTree = "<group>"; };
+		79C1E44805633B64C3360D1E /* libPods-AIChatBotsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIChatBotsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9359BF45C95F9553107D8F46 /* Pods-AIChatBotsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBotsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBotsTests/Pods-AIChatBotsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A19A73FE8BF8FE6603FCF1D7 /* Pods-DeepDetectChatBotsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsTests/Pods-DeepDetectChatBotsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A409A0831E10E1C80083A3CA /* DeepDetectChatBots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepDetectChatBots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A409A0871E10E1C80083A3CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A409A0931E10E1C80083A3CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A409A0981E10E1C80083A3CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A409A09F1E10E1C80083A3CA /* DeepDetectChatBotsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepDetectChatBotsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A409A0A31E10E1C80083A3CA /* AIChatBotsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIChatBotsTests.m; sourceTree = "<group>"; };
 		A409A0A51E10E1C80083A3CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,6 +237,16 @@
 		A42F6B791E4053D50096351C /* ChatAsyncPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAsyncPhoto.h; sourceTree = "<group>"; };
 		A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAsyncPhoto.m; sourceTree = "<group>"; };
 		A43794211E497BA200EC44AD /* icon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon24.png; path = Resources/icon24.png; sourceTree = SOURCE_ROOT; };
+		A455B04D1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Seque_SqootInfo.h; sourceTree = "<group>"; };
+		A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Seque_SqootInfo.m; sourceTree = "<group>"; };
+		A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CatColors.m"; sourceTree = "<group>"; };
+		A455B0511E7F6FA1002F6F23 /* UIColor+CatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CatColors.h"; sourceTree = "<group>"; };
+		A455B0531E7F7EE8002F6F23 /* SqootPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqootPageViewController.h; sourceTree = "<group>"; };
+		A455B0541E7F7EE8002F6F23 /* SqootPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqootPageViewController.m; sourceTree = "<group>"; };
+		A455B0551E7F7EE8002F6F23 /* SqootPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SqootPageViewController.xib; sourceTree = "<group>"; };
+		A455B05C1E7F818A002F6F23 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		A455B0601E7F8598002F6F23 /* Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Screen.storyboard; sourceTree = "<group>"; };
+		A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A493CE0B1E3C6DB10097C113 /* age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = age.png; path = robots/age.png; sourceTree = "<group>"; };
 		A493CE0C1E3C6DB10097C113 /* bags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bags.png; path = robots/bags.png; sourceTree = "<group>"; };
 		A493CE0D1E3C6DB10097C113 /* buildings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buildings.png; path = robots/buildings.png; sourceTree = "<group>"; };
@@ -403,6 +423,7 @@
 		A4AA504C1E63CBAD00F4BB8D /* Snap415Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap415Model.h; sourceTree = "<group>"; };
 		A4AA504D1E63CBAD00F4BB8D /* Snap415Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snap415Model.m; sourceTree = "<group>"; };
 		A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D5531BFC78126D1CA99A3820 /* Pods-AIChatBotsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBotsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBotsUITests/Pods-AIChatBotsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9C850EDD9FB6C9CB50B45BD /* Pods-AIChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.release.xcconfig"; sourceTree = "<group>"; };
 		F71192C8D008CF28C5F234B0 /* libPods-AIChatBots.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIChatBots.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -413,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A314DB1E1206D4009EDA74 /* iAd.framework in Frameworks */,
-				E9E4B58B8A3B64734327C3B1 /* libPods-AIChatBots.a in Frameworks */,
 				7744EBA13F48FD9A31A373F4 /* libPods-DeepDetectChatBots.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9EC734E79DEA9E0ADC0E5DE /* libPods-DeepDetectChatBotsTests.a in Frameworks */,
+				43E68CEA8A3FD1033FEEE9DB /* libPods-AIChatBotsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				425E8E40ABDCD4819309113F /* libPods-DeepDetectChatBotsUITests.a in Frameworks */,
+				F69D754C9204640B2F847C8B /* libPods-AIChatBotsUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +470,10 @@
 				A19A73FE8BF8FE6603FCF1D7 /* Pods-DeepDetectChatBotsTests.release.xcconfig */,
 				39845D5767A78AEDF779FC6B /* Pods-DeepDetectChatBotsUITests.debug.xcconfig */,
 				A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */,
+				0BD8623327DB1A2161D60EBC /* Pods-AIChatBotsTests.debug.xcconfig */,
+				9359BF45C95F9553107D8F46 /* Pods-AIChatBotsTests.release.xcconfig */,
+				D5531BFC78126D1CA99A3820 /* Pods-AIChatBotsUITests.debug.xcconfig */,
+				4D2F192B6E42D2EA83FD5620 /* Pods-AIChatBotsUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -483,6 +509,15 @@
 		A409A0851E10E1C80083A3CA /* AIChatBots */ = {
 			isa = PBXGroup;
 			children = (
+				A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */,
+				A455B0601E7F8598002F6F23 /* Screen.storyboard */,
+				A455B05C1E7F818A002F6F23 /* icon.png */,
+				A455B0581E7F7FF0002F6F23 /* sqoot */,
+				A455B0531E7F7EE8002F6F23 /* SqootPageViewController.h */,
+				A455B0541E7F7EE8002F6F23 /* SqootPageViewController.m */,
+				A455B0551E7F7EE8002F6F23 /* SqootPageViewController.xib */,
+				A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */,
+				A455B0511E7F6FA1002F6F23 /* UIColor+CatColors.h */,
 				A4AA50041E63C8FE00F4BB8D /* snap415 */,
 				65023EC61E20C391007A3A3A /* VC_Segue_AppInfo.h */,
 				65023EC71E20C391007A3A3A /* VC_Segue_AppInfo.m */,
@@ -495,8 +530,6 @@
 				A4A316471E12ADCA009EDA74 /* StringUtil.h */,
 				A4A316481E12ADCA009EDA74 /* StringUtil.m */,
 				A4A315B01E1263CC009EDA74 /* JSQMessagesViewController */,
-				A4A3151C1E125E89009EDA74 /* DemoMessagesViewController.h */,
-				A4A3151D1E125E89009EDA74 /* DemoMessagesViewController.m */,
 				A4A315191E124EA9009EDA74 /* NSUserDefaults+DemoSettings.h */,
 				A4A3151A1E124EA9009EDA74 /* NSUserDefaults+DemoSettings.m */,
 				A4A315161E124E84009EDA74 /* DemoModelData.h */,
@@ -512,12 +545,15 @@
 				A409A19A1E1153800083A3CA /* MasterViewController.h */,
 				A409A19B1E1153800083A3CA /* MasterViewController.m */,
 				A409A0921E10E1C80083A3CA /* Main.storyboard */,
-				A409A0971E10E1C80083A3CA /* LaunchScreen.storyboard */,
 				A409A0861E10E1C80083A3CA /* Supporting Files */,
 				A49ADB161E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.h */,
 				A49ADB171E77C7560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.m */,
 				A49ADB191E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.h */,
 				A49ADB1A1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m */,
+				A4A3151C1E125E89009EDA74 /* DemoMessagesViewController.h */,
+				A4A3151D1E125E89009EDA74 /* DemoMessagesViewController.m */,
+				A455B04D1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.h */,
+				A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */,
 			);
 			path = AIChatBots;
 			sourceTree = "<group>";
@@ -555,6 +591,14 @@
 				A409A1951E1153800083A3CA /* Main.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		A455B0581E7F7FF0002F6F23 /* sqoot */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = sqoot;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A4A314DD1E120B28009EDA74 /* robots */ = {
@@ -853,6 +897,8 @@
 				5E94503E751EF93E04547B49 /* libPods-DeepDetectChatBots.a */,
 				2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */,
 				126C621302C1EA92F983DECF /* libPods-DeepDetectChatBotsUITests.a */,
+				5325734262AFF705B827953E /* libPods-AIChatBotsTests.a */,
+				79C1E44805633B64C3360D1E /* libPods-AIChatBotsUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -975,28 +1021,30 @@
 			files = (
 				A493CE1D1E3C6DB10097C113 /* sports.png in Resources */,
 				A493CE1E1E3C6DB10097C113 /* trees.png in Resources */,
-				A409A0991E10E1C80083A3CA /* LaunchScreen.storyboard in Resources */,
 				A493CE171E3C6DB10097C113 /* buildings.png in Resources */,
 				A43794221E497BA300EC44AD /* icon24.png in Resources */,
 				A4A622A61E3D748F0014881F /* sentiment.png in Resources */,
 				A409A1A01E1153800083A3CA /* Main.storyboard in Resources */,
 				A4A622A51E3D748F0014881F /* mreviews.png in Resources */,
+				A455B0611E7F8598002F6F23 /* Screen.storyboard in Resources */,
 				A493CE1C1E3C6DB10097C113 /* gender.png in Resources */,
 				A409A1A51E1156D40083A3CA /* chatbots.json in Resources */,
 				A4A3163D1E1263CC009EDA74 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				A409A1A21E1153800083A3CA /* Info.plist in Resources */,
+				A455B05D1E7F818A002F6F23 /* icon.png in Resources */,
 				A4A3161F1E1263CC009EDA74 /* JSQMessagesViewController.xib in Resources */,
 				A493CE1A1E3C6DB10097C113 /* footwear.png in Resources */,
 				A49ADB1D1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A493CE161E3C6DB10097C113 /* bags.png in Resources */,
 				A493CE191E3C6DB10097C113 /* fabric.png in Resources */,
-				A409A19F1E1153800083A3CA /* LaunchScreen.storyboard in Resources */,
+				A466770B1E7FA2D7003680B6 /* LaunchScreen.storyboard in Resources */,
 				A493CE151E3C6DB10097C113 /* age.png in Resources */,
 				A4A622A41E3D748F0014881F /* ad-blocking.png in Resources */,
 				A4A316151E1263CC009EDA74 /* JSQMessagesAssets.bundle in Resources */,
 				A409A19E1E1153800083A3CA /* Assets.xcassets in Resources */,
 				A4A316421E1263CC009EDA74 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				A493CE201E3C78240097C113 /* furnitures.png in Resources */,
+				A455B0571E7F7EE8002F6F23 /* SqootPageViewController.xib in Resources */,
 				A493CE221E3C941A0097C113 /* imagenet.png in Resources */,
 				A493CE181E3C6DB10097C113 /* clothing.png in Resources */,
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
@@ -1173,6 +1221,7 @@
 				A4A316241E1263CC009EDA74 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				A4A316321E1263CC009EDA74 /* JSQMessagesCellTextView.m in Sources */,
 				A4A316291E1263CC009EDA74 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
+				A455B0561E7F7EE8002F6F23 /* SqootPageViewController.m in Sources */,
 				A4A3161E1E1263CC009EDA74 /* JSQMessagesViewController.m in Sources */,
 				A49ADB1B1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				A4A3163A1E1263CC009EDA74 /* JSQMessagesInputToolbar.m in Sources */,
@@ -1194,10 +1243,12 @@
 				A4AA50441E63C8FE00F4BB8D /* SqootQuery.m in Sources */,
 				A42F6B721E3EDCC10096351C /* UIImageUtils.m in Sources */,
 				A4A316491E12ADCA009EDA74 /* StringUtil.m in Sources */,
+				A455B04F1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m in Sources */,
 				A4A316411E1263CC009EDA74 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				A4A316311E1263CC009EDA74 /* JSQVideoMediaItem.m in Sources */,
 				A42F6B631E3DF9D50096351C /* APIDeepDetectResponseStatus.m in Sources */,
 				A4A316371E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
+				A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */,
 				A4AA503F1E63C8FE00F4BB8D /* SqootDeal.m in Sources */,
 				A4A3161D1E1263CC009EDA74 /* JSQMessagesKeyboardController.m in Sources */,
 				A409A19C1E1153800083A3CA /* AllChatBotsModel.m in Sources */,
@@ -1301,14 +1352,6 @@
 				A409A0931E10E1C80083A3CA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A409A0971E10E1C80083A3CA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A409A0981E10E1C80083A3CA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		A409A1931E1153800083A3CA /* LaunchScreen.storyboard */ = {
@@ -1423,7 +1466,6 @@
 			baseConfigurationReference = 6D60C21A943F54E54A020EE2 /* Pods-DeepDetectChatBots.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 63X9SGW3ZX;
 				INFOPLIST_FILE = AIChatBots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1463,7 +1505,6 @@
 			baseConfigurationReference = 0381F5150481A001FE635D36 /* Pods-DeepDetectChatBots.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 63X9SGW3ZX;
 				INFOPLIST_FILE = AIChatBots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

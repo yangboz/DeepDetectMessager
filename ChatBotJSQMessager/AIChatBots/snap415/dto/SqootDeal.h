@@ -36,4 +36,7 @@
 
 @property (nonatomic, strong) SqootMerchant *merchant;//
 
+-(NSDictionary *)keyMapping;
++(SqootDeal *)getSqootDealFromDictionary:(NSDictionary *)dictionary;
+
 @end

@@ -12,6 +12,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AllChatBotsModel.h"
+#import "SqootDeal.h"
+
 @interface DataModel : NSObject
 {
     
@@ -25,6 +27,8 @@
 -(ChatBotVoModel *)getSelectedChatBot;
 -(void)setSelectedChatBot:(ChatBotVoModel *)value;
 
+-(NSArray *)getSelectedSqootDeals;
+-(void)setSelectedSqootDeals:(NSArray *)value;
 @end
 
 

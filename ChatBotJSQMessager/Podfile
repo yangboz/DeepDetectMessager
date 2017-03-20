@@ -17,6 +17,10 @@ pod 'NSString+Emoji'
 pod 'SDWebImage', '~>3.8'
 pod 'Cloudinary'
 pod 'RestKit', '0.27.0'
+#pod 'EAIntroView', '~> 2.10.0'
+pod 'AFNetworking', '~> 3.0'
+pod 'MZTimerLabel'
+pod 'SSStackedPageView', '~> 0.0'
 
   target 'DeepDetectChatBotsTests' do
     inherit! :search_paths
