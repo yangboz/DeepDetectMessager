@@ -21,7 +21,7 @@
                  "Interests": "Person’s age",
                  "Rating": "H",
                  "Example": "http://118.190.3.169/images/President_Barack_Obama.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "gender.png",
@@ -44,30 +44,7 @@
                  "Interests": "Person’s gender",
                  "Rating": "H",
                  "Example": "http://118.190.3.169/images/President_Barack_Obama.jpg"
-                 ,"Media":2
-                 },
-                 {
-                 "Image": "clothing.png",
-                 "Id": 3,
-                 "Service": "clothing",
-                 "Name": "Clothing classification",
-                 "numberOfClasses": 304,
-                 "Development": 29715,
-                 "AI": "•••••••••",
-                 "Bio": "Estimates person’s Clothing categories",
-                 "Entity": "Mythical",
-                 "Personality": "Helper",
-                 "Temperament": "Friendly",
-                 "Basis": "Original",
-                 "From": "DeepDetect",
-                 "Country": "China",
-                 "Gender": "M",
-                 "Created": "January 28, 2017",
-                 "Updated": "Cold",
-                 "Interests": "Person’s Clothing categories",
-                 "Rating": "H",
-                 "Example": "http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "bags.png",
@@ -116,6 +93,29 @@
                  ,"Media":2
                  },
                  {
+                 "Image": "clothing.png",
+                 "Id": 3,
+                 "Service": "clothing",
+                 "Name": "Clothing classification",
+                 "numberOfClasses": 304,
+                 "Development": 29715,
+                 "AI": "•••••••••",
+                 "Bio": "Estimates person’s Clothing categories",
+                 "Entity": "Mythical",
+                 "Personality": "Helper",
+                 "Temperament": "Friendly",
+                 "Basis": "Original",
+                 "From": "DeepDetect",
+                 "Country": "China",
+                 "Gender": "M",
+                 "Created": "January 28, 2017",
+                 "Updated": "Cold",
+                 "Interests": "Person’s Clothing categories",
+                 "Rating": "H",
+                 "Example": "http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg"
+                 ,"Media":2
+                 },
+                 {
                  "Image": "sports.png",
                  "Id": 6,
                  "Service": "sports",
@@ -136,7 +136,7 @@
                  "Interests": "Person’s Sports categories",
                  "Rating": "H",
                  "Example": "http://118.190.3.169/images/Jordan_by_Lipofsky_16577.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "buildings.png",
@@ -159,7 +159,7 @@
                  "Interests": "Buildings categories",
                  "Rating": "A",
                  "Example": "http://118.190.3.169/images/maxresdefault.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "fabric.png",
@@ -182,7 +182,7 @@
                  "Interests": "Fabric categories",
                  "Rating": "A",
                  "Example": "http://118.190.3.169/images/maxresdefault.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "furnitures.png",
@@ -205,7 +205,7 @@
                  "Interests": "Furnitures categories",
                  "Rating": "A",
                  "Example": "http://118.190.3.169/images/furnitures-friends.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "trees.png",
@@ -228,7 +228,7 @@
                  "Interests": "Trees categories",
                  "Rating": "N",
                  "Example": "http://118.190.3.169/images/trees-palm.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "imagenet.png",
@@ -251,7 +251,7 @@
                  "Interests": "ImageNet's categories",
                  "Rating": "E",
                  "Example": "http://118.190.3.169/images/ambulance.jpg"
-                 ,"Media":2
+                 ,"Media":32
                  },
                  {
                  "Image": "sentiment.png",
@@ -274,7 +274,7 @@
                  "Interests": "over 10 languages",
                  "Rating": "E",
                  "Example": "Chilling in the West Indies"
-                 ,"Media":1
+                 ,"Media":32
                  },
                  {
                  "Image": "mreviews.png",

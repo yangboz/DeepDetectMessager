@@ -7,16 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SqootDeal.h"
 
 @interface SqootPageViewController : UIViewController
 
 @property  NSUInteger pageIndex;
+@property SqootDeal *sqootDeal;
 
-@property (weak, nonatomic) IBOutlet UILabel *shortTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shortTitle;
+@property (weak, nonatomic) IBOutlet UILabel *discountLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *expireLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *urlImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imageUrl;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 
 @end

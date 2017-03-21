@@ -138,18 +138,19 @@ NSString* catKeywords;//for Sqoot API search
     for(NSDictionary *sqootDealObjDict in self.sqootDealObjectsResult){
         NSDictionary *sqootDealDict = [sqootDealObjDict objectForKey:@"deal"];
         NSLog(@"SqootDealDict:%@",sqootDealDict.description);
-        //FIXME:NSDictionary to SqootDeal.
-//        SqootDeal *sqootDeal = [SqootDeal getSqootDealFromDictionary:sqootDealDict];
-//        NSLog(@"SqootDeal:%@",sqootDeal.description);
-//        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
+        //        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
         //EAIntroPages testing
         SqootDeal *sqootDeal = [[SqootDeal alloc] init];
         // object assemble.
-        sqootDeal.short_title =[sqootDealDict objectForKey: @"short_title"];
-//        sqootPage.titlePositionY = self.view.bounds.size.height/2 - 10;
-        sqootDeal.description = [sqootDealDict objectForKey: @"description"];
-        sqootDeal.image_url = [sqootDealDict objectForKey: @"image_url"];
-        sqootDeal.fine_print = [sqootDealDict objectForKey: @"fine_print"];
+//        sqootDeal.short_title =[sqootDealDict objectForKey: @"short_title"];
+////        sqootPage.titlePositionY = self.view.bounds.size.height/2 - 10;
+//        sqootDeal.description = [sqootDealDict objectForKey: @"description"];
+//        sqootDeal.image_url = [sqootDealDict objectForKey: @"image_url"];
+//        sqootDeal.fine_print = [sqootDealDict objectForKey: @"fine_print"];
+        //FIXME:NSDictionary to SqootDeal.
+        sqootDeal = [SqootDeal getSqootDealFromDictionary:sqootDealDict];
+        NSLog(@"SqootDeal:%@",sqootDeal.description);
+//
         [selectedSqootDeals addObject:sqootDeal];
 }
     //

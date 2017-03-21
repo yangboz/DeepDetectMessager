@@ -7,6 +7,7 @@
 //
 
 #import "VC_Seque_SqootInfo.h"
+#import "MZTimerLabel.h"
 
 @interface VC_Seque_SqootInfo ()
 
@@ -32,10 +33,12 @@
     for (int i=0;i< [selectedSqootDeals count];i++) {
         SqootDeal *curSqootDeal = [selectedSqootDeals objectAtIndex:i];
         NSLog(@"cur sqoot deal:%@",[curSqootDeal description]);
-//        SqootPageViewController *sqootPsgeViewController = [[SqootPageViewController alloc] initWithNibName:@"SqootPageViewController" bundle:NULL];
-        UIView *thisView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 100.f)];
-//        sqootPsgeViewController.shortTitleLabel.text = curSqootDeal.short_title;
-        [self.views addObject:thisView];
+        SqootPageViewController *sqootPageViewController = [[SqootPageViewController alloc] initWithNibName:@"SqootPageViewController" bundle:NULL];
+//        UIView *thisView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 100.f)];
+        sqootPageViewController.sqootDeal = curSqootDeal;
+//         sqootPsgeViewController.imageUrl = curSqootDeal.image_url;
+//        [self.views addObject:thisView];
+        [self.views addObject:sqootPageViewController.view];
     }
 
 }
