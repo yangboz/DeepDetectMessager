@@ -105,13 +105,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"footwear\",\
 1.create buildings service(Error while proceeding with prediction forward pass, not enough memory?)
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/buildings" -d '{"mllib":"caffe", "description":"buildings classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":185 } }, "model":{"repository":"/root/models/buildings"} }'
+curl -X PUT "http://118.190.96.120:8090/services/buildings" -d '{"mllib":"caffe", "description":"buildings classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":185 } }, "model":{"repository":"/root/models/buildings"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"buildings\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Temple-of-Heaven.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"buildings\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Temple-of-Heaven.jpg\"]}"
 `
 
 ##Fabric Classification Service
