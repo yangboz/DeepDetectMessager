@@ -54,21 +54,6 @@ docker rm -fv 1ca885426d1a
 curl -X DELETE "http://localhost:8080/services/imageserv?clear=full"
 `
 
-##Clothing Classification Service
-
-
-1.create clothing service (Error while proceeding with prediction forward pass, not enough memory?)
-
-`
-curl -X PUT "http://118.190.3.169:8080/services/clothing" -d '{"mllib":"caffe", "description":"clothes classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/root/models/clothing"} }'
-`
-
-2.test service
-
-`
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
-`
-
 ##Bags Classification Service
 
 
@@ -97,6 +82,21 @@ curl -X PUT "http://118.190.3.169:8080/services/footwear" -d '{"mllib":"caffe", 
 
 `
 curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"footwear\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/men-footwear.jpg\"]}"
+`
+
+##Clothing Classification Service
+
+
+1.create clothing service (Error while proceeding with prediction forward pass, not enough memory?)
+
+`
+curl -X PUT "http://118.190.96.120:8090/services/clothing" -d '{"mllib":"caffe", "description":"clothes classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":304 } }, "model":{"repository":"/root/models/clothing"} }'
+`
+
+2.test service
+
+`
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
 ##Buildings Classification Service
