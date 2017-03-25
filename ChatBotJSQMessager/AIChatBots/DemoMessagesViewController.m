@@ -40,6 +40,7 @@
 #import "DataModel.h"
 #import "Constants.h"
 #import "Snap415API.h"
+#import "COVIASv1API.h"
 
 #import "SqootJSQMessagesCollectionViewCellIncoming.h"
 //#import "EAIntroView.h"
@@ -86,7 +87,7 @@ NSString* catKeywords;//for Sqoot API search
     NSString *msgJsonStr = [self getMessageJsonString:content];
     NSLog(@"msgJsonStr:%@",msgJsonStr);
     //
-    NSString *url = [NSString stringWithFormat:@"%@",API_DOMAIN];
+    NSString *url = [NSString stringWithFormat:@"%@",API_DOMAIN_DD];
     NSURL *nsUrl = [NSURL URLWithString:url];
 //    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
@@ -123,10 +124,20 @@ NSString* catKeywords;//for Sqoot API search
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
 }
-- (IBAction)searchInformation:(id)sender{
-    [self getSqootDeals];
-}
 
+-(void)esearchSimiliary{
+    [self showLoading];
+    //
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        //Delegate to Snap415API.
+        //        [[Snap415API sharedInstance] getOverviews];
+        //        [[Snap415API sharedInstance] getTaxEvents];
+        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_" byIndex:@"my_index" byItem:@"my_image_item"];
+    });
+    //NotificationCenter handler
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
+}
 -(void)loadSqootDealsHandler:(NSNotification *) notification{
     //    NSLog(@"loadOverviewsHandler:%@",notification.userInfo);
     SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
@@ -282,7 +293,9 @@ NSString* catKeywords;//for Sqoot API search
 //
         [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
         //then append Sqoot information query by keywords/category.
-        [self getSqootDeals];
+    //FIXME:sequence loading;
+//        [self getSqootDeals];
+    [self esearchSimiliary];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{
     /**

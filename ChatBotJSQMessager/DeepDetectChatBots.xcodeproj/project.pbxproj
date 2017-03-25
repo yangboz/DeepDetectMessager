@@ -48,12 +48,18 @@
 		A455B05D1E7F818A002F6F23 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A455B05C1E7F818A002F6F23 /* icon.png */; };
 		A455B0611E7F8598002F6F23 /* Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A455B0601E7F8598002F6F23 /* Screen.storyboard */; };
 		A466770B1E7FA2D7003680B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */; };
+		A4674D0D1E84E38800FA67DC /* COVIASv1API.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D0C1E84E38600FA67DC /* COVIASv1API.m */; };
+		A4674D321E84F01900FA67DC /* SearchExistedQueryELImageVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D311E84F01900FA67DC /* SearchExistedQueryELImageVO.m */; };
+		A4674D351E84F4DC00FA67DC /* SearchExistedQueryVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D341E84F4DC00FA67DC /* SearchExistedQueryVO.m */; };
+		A4674D381E84F5C100FA67DC /* SearchExistedVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D371E84F5C100FA67DC /* SearchExistedVO.m */; };
+		A4674D3B1E84FAAC00FA67DC /* COVIASv1Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D3A1E84FAAC00FA67DC /* COVIASv1Model.m */; };
+		A4674D3D1E864B7F00FA67DC /* footwears.png in Resources */ = {isa = PBXBuildFile; fileRef = A4674D3C1E864B7F00FA67DC /* footwears.png */; };
+		A4674D401E8695DC00FA67DC /* SearchResponseVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D3F1E8695DC00FA67DC /* SearchResponseVO.m */; };
 		A493CE151E3C6DB10097C113 /* age.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0B1E3C6DB10097C113 /* age.png */; };
 		A493CE161E3C6DB10097C113 /* bags.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0C1E3C6DB10097C113 /* bags.png */; };
 		A493CE171E3C6DB10097C113 /* buildings.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0D1E3C6DB10097C113 /* buildings.png */; };
 		A493CE181E3C6DB10097C113 /* clothing.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0E1E3C6DB10097C113 /* clothing.png */; };
 		A493CE191E3C6DB10097C113 /* fabric.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0F1E3C6DB10097C113 /* fabric.png */; };
-		A493CE1A1E3C6DB10097C113 /* footwear.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE101E3C6DB10097C113 /* footwear.png */; };
 		A493CE1C1E3C6DB10097C113 /* gender.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE121E3C6DB10097C113 /* gender.png */; };
 		A493CE1D1E3C6DB10097C113 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE131E3C6DB10097C113 /* sports.png */; };
 		A493CE1E1E3C6DB10097C113 /* trees.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE141E3C6DB10097C113 /* trees.png */; };
@@ -247,12 +253,24 @@
 		A455B05C1E7F818A002F6F23 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		A455B0601E7F8598002F6F23 /* Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Screen.storyboard; sourceTree = "<group>"; };
 		A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4674D0B1E84E38600FA67DC /* COVIASv1API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COVIASv1API.h; sourceTree = "<group>"; };
+		A4674D0C1E84E38600FA67DC /* COVIASv1API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COVIASv1API.m; sourceTree = "<group>"; };
+		A4674D301E84F01900FA67DC /* SearchExistedQueryELImageVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchExistedQueryELImageVO.h; sourceTree = "<group>"; };
+		A4674D311E84F01900FA67DC /* SearchExistedQueryELImageVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchExistedQueryELImageVO.m; sourceTree = "<group>"; };
+		A4674D331E84F4DC00FA67DC /* SearchExistedQueryVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchExistedQueryVO.h; sourceTree = "<group>"; };
+		A4674D341E84F4DC00FA67DC /* SearchExistedQueryVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchExistedQueryVO.m; sourceTree = "<group>"; };
+		A4674D361E84F5C100FA67DC /* SearchExistedVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchExistedVO.h; sourceTree = "<group>"; };
+		A4674D371E84F5C100FA67DC /* SearchExistedVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchExistedVO.m; sourceTree = "<group>"; };
+		A4674D391E84FAAC00FA67DC /* COVIASv1Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COVIASv1Model.h; sourceTree = "<group>"; };
+		A4674D3A1E84FAAC00FA67DC /* COVIASv1Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COVIASv1Model.m; sourceTree = "<group>"; };
+		A4674D3C1E864B7F00FA67DC /* footwears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = footwears.png; path = robots/footwears.png; sourceTree = "<group>"; };
+		A4674D3E1E8695DC00FA67DC /* SearchResponseVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResponseVO.h; sourceTree = "<group>"; };
+		A4674D3F1E8695DC00FA67DC /* SearchResponseVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseVO.m; sourceTree = "<group>"; };
 		A493CE0B1E3C6DB10097C113 /* age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = age.png; path = robots/age.png; sourceTree = "<group>"; };
 		A493CE0C1E3C6DB10097C113 /* bags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bags.png; path = robots/bags.png; sourceTree = "<group>"; };
 		A493CE0D1E3C6DB10097C113 /* buildings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buildings.png; path = robots/buildings.png; sourceTree = "<group>"; };
 		A493CE0E1E3C6DB10097C113 /* clothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clothing.png; path = robots/clothing.png; sourceTree = "<group>"; };
 		A493CE0F1E3C6DB10097C113 /* fabric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fabric.png; path = robots/fabric.png; sourceTree = "<group>"; };
-		A493CE101E3C6DB10097C113 /* footwear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = footwear.png; path = robots/footwear.png; sourceTree = "<group>"; };
 		A493CE121E3C6DB10097C113 /* gender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gender.png; path = robots/gender.png; sourceTree = "<group>"; };
 		A493CE131E3C6DB10097C113 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sports.png; path = robots/sports.png; sourceTree = "<group>"; };
 		A493CE141E3C6DB10097C113 /* trees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trees.png; path = robots/trees.png; sourceTree = "<group>"; };
@@ -509,6 +527,7 @@
 		A409A0851E10E1C80083A3CA /* AIChatBots */ = {
 			isa = PBXGroup;
 			children = (
+				A4674D0A1E84E2ED00FA67DC /* covias */,
 				A466770A1E7FA2D7003680B6 /* LaunchScreen.storyboard */,
 				A455B0601E7F8598002F6F23 /* Screen.storyboard */,
 				A455B05C1E7F818A002F6F23 /* icon.png */,
@@ -601,9 +620,29 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		A4674D0A1E84E2ED00FA67DC /* covias */ = {
+			isa = PBXGroup;
+			children = (
+				A4674D0B1E84E38600FA67DC /* COVIASv1API.h */,
+				A4674D0C1E84E38600FA67DC /* COVIASv1API.m */,
+				A4674D301E84F01900FA67DC /* SearchExistedQueryELImageVO.h */,
+				A4674D311E84F01900FA67DC /* SearchExistedQueryELImageVO.m */,
+				A4674D331E84F4DC00FA67DC /* SearchExistedQueryVO.h */,
+				A4674D341E84F4DC00FA67DC /* SearchExistedQueryVO.m */,
+				A4674D361E84F5C100FA67DC /* SearchExistedVO.h */,
+				A4674D371E84F5C100FA67DC /* SearchExistedVO.m */,
+				A4674D391E84FAAC00FA67DC /* COVIASv1Model.h */,
+				A4674D3A1E84FAAC00FA67DC /* COVIASv1Model.m */,
+				A4674D3E1E8695DC00FA67DC /* SearchResponseVO.h */,
+				A4674D3F1E8695DC00FA67DC /* SearchResponseVO.m */,
+			);
+			name = covias;
+			sourceTree = "<group>";
+		};
 		A4A314DD1E120B28009EDA74 /* robots */ = {
 			isa = PBXGroup;
 			children = (
+				A4674D3C1E864B7F00FA67DC /* footwears.png */,
 				A43794211E497BA200EC44AD /* icon24.png */,
 				A4A622A11E3D748F0014881F /* ad-blocking.png */,
 				A4A622A21E3D748F0014881F /* mreviews.png */,
@@ -615,7 +654,6 @@
 				A493CE0D1E3C6DB10097C113 /* buildings.png */,
 				A493CE0E1E3C6DB10097C113 /* clothing.png */,
 				A493CE0F1E3C6DB10097C113 /* fabric.png */,
-				A493CE101E3C6DB10097C113 /* footwear.png */,
 				A493CE121E3C6DB10097C113 /* gender.png */,
 				A493CE131E3C6DB10097C113 /* sports.png */,
 				A493CE141E3C6DB10097C113 /* trees.png */,
@@ -1033,7 +1071,6 @@
 				A409A1A21E1153800083A3CA /* Info.plist in Resources */,
 				A455B05D1E7F818A002F6F23 /* icon.png in Resources */,
 				A4A3161F1E1263CC009EDA74 /* JSQMessagesViewController.xib in Resources */,
-				A493CE1A1E3C6DB10097C113 /* footwear.png in Resources */,
 				A49ADB1D1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A493CE161E3C6DB10097C113 /* bags.png in Resources */,
 				A493CE191E3C6DB10097C113 /* fabric.png in Resources */,
@@ -1050,6 +1087,7 @@
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
 				A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316361E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
+				A4674D3D1E864B7F00FA67DC /* footwears.png in Resources */,
 				A4A316381E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A41288C51E13E14A002CFAAC /* Default-Portrait@2x.png in Resources */,
 				A4A316401E1263CC009EDA74 /* JSQMessagesToolbarContentView.xib in Resources */,
@@ -1273,9 +1311,11 @@
 				A4A316351E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				A4A316181E1263CC009EDA74 /* NSString+JSQMessages.m in Sources */,
 				A42F6B691E3DF9F70096351C /* APIDeepDetectResponseBody.m in Sources */,
+				A4674D381E84F5C100FA67DC /* SearchExistedVO.m in Sources */,
 				A42F6B601E3DF9AC0096351C /* APIDeepDetectResponseModel.m in Sources */,
 				A4AA50371E63C8FE00F4BB8D /* LabelGroupObject.m in Sources */,
 				A42F6B6C1E3DFBE60096351C /* APIDeepDetectResponseBodyPrediction.m in Sources */,
+				A4674D3B1E84FAAC00FA67DC /* COVIASv1Model.m in Sources */,
 				A4A315181E124E84009EDA74 /* DemoModelData.m in Sources */,
 				A4A316161E1263CC009EDA74 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				A4AA50461E63C8FE00F4BB8D /* WebSiteObject.m in Sources */,
@@ -1292,6 +1332,8 @@
 				A4AA50471E63C8FE00F4BB8D /* Snap415API.m in Sources */,
 				A42F6B5A1E3DD5620096351C /* APIDeepDetectParametersOutput.m in Sources */,
 				A4A3163C1E1263CC009EDA74 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
+				A4674D321E84F01900FA67DC /* SearchExistedQueryELImageVO.m in Sources */,
+				A4674D351E84F4DC00FA67DC /* SearchExistedQueryVO.m in Sources */,
 				A409A1A11E1153800083A3CA /* DetailViewController.m in Sources */,
 				A4A3162C1E1263CC009EDA74 /* JSQMediaItem.m in Sources */,
 				A4A3151E1E125E8A009EDA74 /* DemoMessagesViewController.m in Sources */,
@@ -1300,9 +1342,11 @@
 				A4AA50381E63C8FE00F4BB8D /* LabelObject.m in Sources */,
 				A4AA504A1E63C8FE00F4BB8D /* Snap415UserProfile.m in Sources */,
 				A4AA50361E63C8FE00F4BB8D /* EITCCreditObject.m in Sources */,
+				A4674D401E8695DC00FA67DC /* SearchResponseVO.m in Sources */,
 				A4AA503E1E63C8FE00F4BB8D /* Snap415UserTaxEvents.m in Sources */,
 				A4AA503C1E63C8FE00F4BB8D /* Snap415TaxEvent.m in Sources */,
 				A4A3162F1E1263CC009EDA74 /* JSQMessagesBubbleImage.m in Sources */,
+				A4674D0D1E84E38800FA67DC /* COVIASv1API.m in Sources */,
 				A4A316191E1263CC009EDA74 /* UIColor+JSQMessages.m in Sources */,
 				A4A3162A1E1263CC009EDA74 /* JSQAudioMediaItem.m in Sources */,
 				A42F6B511E3DD4620096351C /* APIDeepDetectModel.m in Sources */,

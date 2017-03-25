@@ -112,7 +112,7 @@
     // Configure the cell.
     NSDictionary *dictionary = [_listOfRatings objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:RATINGS];
-    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
+//    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
     int rowIndex = indexPath.row;
     //FIXME:    if(indexPath.row<0 || indexPath.row>3) rowIndex = 0;
     ChatBotVoModel *object = [array objectAtIndex:rowIndex];

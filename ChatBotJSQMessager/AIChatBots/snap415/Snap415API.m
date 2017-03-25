@@ -249,7 +249,7 @@ kAPI_user_me parameters:nil success:^(RKObjectRequestOperation *operation, RKMap
                                                          @"header": @"header"
                                                          }];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:@"/:index/:item/:id" keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIEndpointHost,kAPI_overviews]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
