@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SearchResponseImageHitsVO.h"
 
 @interface SearchResponseVO : NSObject
 @property(nonatomic) NSNumber* took;
 @property(nonatomic) BOOL timeout;
 @property(nonatomic) NSObject* _shards;
-@property(nonatomic) NSObject* hits;
+@property(nonatomic) NSDictionary* hits;
+-(NSDictionary *)keyMapping;
++(SearchResponseVO *)getModelFromDictionary:(NSDictionary *)dictionary;
 @end

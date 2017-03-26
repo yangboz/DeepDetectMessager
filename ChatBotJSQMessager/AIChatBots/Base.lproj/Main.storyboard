@@ -56,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Osx-Dz-sQE" id="xHq-zv-Db1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -117,6 +117,7 @@
         <scene sceneID="AFp-Ji-ePg">
             <objects>
                 <viewController id="tKu-Pn-6oY" customClass="DemoMessagesViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Phs-Dc-Quc">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" style="plain" id="BKd-l5-1Oq">
@@ -128,14 +129,24 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem style="plain" systemItem="search" id="HPl-cS-6bO">
+                            <barButtonItem enabled="NO" style="plain" systemItem="search" id="HPl-cS-6bO">
                                 <connections>
                                     <action selector="searchInformation:" destination="tKu-Pn-6oY" id="nMR-my-2Lb"/>
                                     <segue destination="tWJ-jy-jnl" kind="modal" id="7Xi-uk-z3h"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem enabled="NO" style="plain" systemItem="search" id="txp-i8-j16">
+                                <connections>
+                                    <segue destination="hdC-g1-erV" kind="modal" id="Qe4-hg-KJv"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnSimilarity" destination="txp-i8-j16" id="an5-GI-glO"/>
+                        <outlet property="btnSqootDeals" destination="HPl-cS-6bO" id="gEa-Mf-cok"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVc-Ak-6k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,13 +238,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="735"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <string key="text">About The Personality Forge 
+                            <mutableString key="text">About The Deep Detect ChatBots(ddChatBots)
 
-Welcome to the Personality Forge, one of the most advanced artificial intelligence platforms in the world. Here people create and work on AI Personalities called chat bots who, once created, have an independent existence, chatting with both real people and other chat bots. While you're away, they're having conversations, making friends, and making memories that you can look in on.
+Welcome to the ddChatBots, one of the most advanced artificial intelligence platforms in the world. Here people create and work on AI Personalities called chat bots who, once created, have an independent existence, chatting with both real people and other chat bots. They're having conversations, making friends, and making memories that you can look in on.
 
-The Personality Forge's AI Engine integrates memories, emotions, knowledge of hundreds of thousands of words, sentence structure, unmatched pattern-matching capabilities, and a scripting language called AIScript. It's the heart and mind of all the bots here, and it's easy enough to work with that you need no programming experience to get started. Read more about the AI Engine's features.
+The ddChatBots' AI Engine integrates memories, emotions, knowledge of hundreds of thousands of pictures, video, sound,text, even multimedia capabilities. It's the heart and mind of all the bots here, and it's easy enough to work with that you need no programming experience to get started. Read more about the AI Engine's features.
 
-You can chat with bots, post messages on different topics in the forums, and become a part of the first-ever AI &amp; Human online community. For information on how to post messages, chat, and other general information, keep reading. You can find information on how to create AI Personalities in The Book of AI.
+You can chat with bots, post messages using different multimedia in the kind of robots, and become a part of the first-ever AI &amp; Human online entity. For information on how to post messages, chat, and other general information, keep reading on website. You can find more information on it.
 
 Getting Started:
 You may want to start by chatting with some of our chat bots. You can find them by doing a search for any kind of personality, by selecting from the most advanced, checking the contest winners at our Hall of Fame, or by browsing the other chat bot lists under "Chat With Bots". 
@@ -244,7 +255,7 @@ You can talk about the chat bots, AI, and the site in the forums. Then, when you
 
 Interacting With Users
 
-Forums: 
+Website: http://dd.smartkit.info 
 You can find out more about the Personality Forge forums here.
 
 Chat Messages: 
@@ -255,7 +266,7 @@ If another user is online at the same time as you, you can send then a realtime 
 Logging Out
 
 Logging Out &amp; Session Timeouts: 
-There are several advantages to logging out when you are done. Simply closing the window or quitting your browser will not log you out, as such an action can not be detected by the system. In such cases, and cases in which you leave the window open while you are doing something else, there is a 40-minute timeout. If there is no activity (such as posting or changing pages) for 40 minutes, you will get a message and then if you dont respond, you will be logged out. Logging out marks you as gone and so people wont be trying to send you messages when you are not there.</string>
+There are several advantages to logging out when you are done. Simply closing the window or quitting your browser will not log you out, as such an action can not be detected by the system. In such cases, and cases in which you leave the window open while you are doing something else, there is a 40-minute timeout. If there is no activity (such as posting or changing pages) for 40 minutes, you will get a message and then if you dont respond, you will be logged out. Logging out marks you as gone and so people wont be trying to send you messages when you are not there.</mutableString>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -316,7 +327,6 @@ There are several advantages to logging out when you are done. Simply closing th
         <!--Sqoot-->
         <scene sceneID="7SI-jI-jso">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bEl-5Z-JTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="qqV-8W-G3O" customClass="VC_Seque_SqootInfo" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BSn-yo-9Hy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -347,8 +357,9 @@ There are several advantages to logging out when you are done. Simply closing th
                         <outlet property="stackView" destination="Qw6-FO-oev" id="rPd-Bt-mhT"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bEl-5Z-JTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2992.8000000000002" y="125.4872563718141"/>
+            <point key="canvasLocation" x="2887" y="20"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9ki-S6-cCx">
@@ -365,7 +376,97 @@ There are several advantages to logging out when you are done. Simply closing th
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gea-zd-ihL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287" y="119"/>
+            <point key="canvasLocation" x="2182" y="21"/>
+        </scene>
+        <!--Seque Similarity-->
+        <scene sceneID="wJl-UJ-QWG">
+            <objects>
+                <collectionViewController id="8JW-JE-cW6" customClass="CVC_Seque_Similarity" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tmT-lU-bCk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mhb-uq-fnF">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7dR-TK-Ciu">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4CI-Ug-sEl">
+                                <rect key="frame" x="65" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XkM-mR-jMO">
+                                <rect key="frame" x="130" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="8JW-JE-cW6" id="hcy-Bk-inO"/>
+                            <outlet property="delegate" destination="8JW-JE-cW6" id="yVC-Wl-SSZ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="zEs-t9-a7R">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="kAG-zC-JXa">
+                            <connections>
+                                <action selector="dissmiss:" destination="8JW-JE-cW6" id="NXC-9I-V6b"/>
+                            </connections>
+                        </barButtonItem>
+                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="fgu-2l-Ty8">
+                            <rect key="frame" x="64" y="7" width="303" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </slider>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="15T-Sk-MdD" id="gVI-cd-n18"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUH-EQ-ngf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="15T-Sk-MdD">
+                    <connections>
+                        <outlet property="delegate" destination="8JW-JE-cW6" id="LKu-xb-XSK"/>
+                        <outlet property="searchContentsController" destination="8JW-JE-cW6" id="gqf-Gf-INv"/>
+                        <outlet property="searchResultsDataSource" destination="8JW-JE-cW6" id="Of8-kH-Vsn"/>
+                        <outlet property="searchResultsDelegate" destination="8JW-JE-cW6" id="SpE-NS-RAr"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2886" y="688"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0VI-Gk-ePi">
+            <objects>
+                <navigationController id="hdC-g1-erV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LK8-KG-D7i"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zx-e6-iJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8JW-JE-cW6" kind="relationship" relationship="rootViewController" id="PyH-kP-Un1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fmw-Ns-Dok" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2182" y="688"/>
         </scene>
     </scenes>
 </document>

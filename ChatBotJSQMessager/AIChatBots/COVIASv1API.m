@@ -9,20 +9,6 @@
 #import "COVIASv1API.h"
 #import <RestKit/RestKit.h>
 
-//@see: http://stackoverflow.com/questions/5643514/how-to-define-an-nsstring-for-global-use
-//#define DEV @"dev_aliyun"
-#ifdef DEV
-#define kAPIEndpointHost @"http://118.190.3.169:8084"
-#else//LOCAL
-#define kAPIEndpointHost @"http://localhost:8084/api/image/es/"
-#endif
-#define kAPI_esearch_img (@"search")
-#define kAPI_esearch_id (@"searchExisted")
-
-//Notification Center post names;
-#define kNCpN_search_by_img @"esearchByImage"
-#define kNCpN_search_by_id @"searchById"
-
 @implementation COVIASv1API
 
 - (id)init
@@ -82,7 +68,7 @@
          NSDictionary *dictObj = [NSDictionary dictionaryWithObject:mappingResult.array[0] forKey:@"results"];
          [[NSNotificationCenter defaultCenter] postNotificationName:kNCpN_search_by_img object:dictObj];
          //Save to model
-         [COVIASv1Model sharedInstance].data = (NSObject*)[dictObj objectForKey:kNCpN_search_by_img];
+         [COVIASv1Model sharedInstance].imageHitsVo = (NSObject*)[dictObj objectForKey:kNCpN_search_by_img];
         
      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
          RKLogError(@"Operation failed with error: %@", error);
@@ -117,13 +103,16 @@
     [manager postObject: vo path:
      aPath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
          //        NSLog(@"SUCCESS: %@", mappingResult.array);
-         SearchResponseVO *respVo = (SearchResponseVO *)mappingResult.array;
-         RKLogInfo(@"searchById response: %@", respVo.description);
-         //        NSLog(@"RKMappingResult: %@", mappingResult.description);
-         NSDictionary *dictObj = [NSDictionary dictionaryWithObject:mappingResult.array[0] forKey:kNCpN_search_by_id];
+         SearchResponseVO *searchRespVo = (SearchResponseVO *)[mappingResult.array objectAtIndex:0];
+//         SearchResponseVO *searchRespVo = [SearchResponseVO getModelFromDictionary:respDict];
+         RKLogInfo(@"searchById searchRespVo: %@", searchRespVo.description);
+         SearchResponseImageHitsVO *imageHitsVo =[SearchResponseImageHitsVO getModelFromDictionary: searchRespVo.hits];
+         NSLog(@"SearchResponseImageHitsVO: %@", imageHitsVo.description);
+         //Notification center
+         NSDictionary *dictObj = [NSDictionary dictionaryWithObject:imageHitsVo forKey:kNCpN_search_by_id];
          [[NSNotificationCenter defaultCenter] postNotificationName:kNCpN_search_by_id object:dictObj];
          //Save to model
-         [COVIASv1Model sharedInstance].data = (NSObject*)[dictObj objectForKey:kNCpN_search_by_id];
+         [COVIASv1Model sharedInstance].imageHitsVo = imageHitsVo;
              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
          RKLogError(@"Operation failed with error: %@", error);
      }];

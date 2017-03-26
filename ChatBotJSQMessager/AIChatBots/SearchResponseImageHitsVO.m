@@ -1,27 +1,26 @@
 //
-//  SearchResponseVO.m
+//  SearchResponseImageHitsVO.m
 //  DeepDetectChatBots
 //
-//  Created by yangboz on 25/03/2017.
+//  Created by yangboz on 26/03/2017.
 //  Copyright © 2017 ___SMARTKIT.INFO___. All rights reserved.
 //
 
-#import "SearchResponseVO.h"
+#import "SearchResponseImageHitsVO.h"
 
-@implementation SearchResponseVO
-@synthesize took,timeout,_shards,hits;
+@implementation SearchResponseImageHitsVO
+@synthesize hits,maxScore,totalHits;
 -(NSDictionary *)keyMapping {
     
     return [[NSDictionary alloc] initWithObjectsAndKeys:
-            @"took", @"took",
-            @"timeout", @"timeout",
-            @"_shards", @"_shards",
             @"hits", @"hits",
+            @"maxScore", @"maxScore",
+            @"totalHits", @"totalHits",
             nil];
 }
-+(SearchResponseVO *)getModelFromDictionary:(NSDictionary *)dictionary {
++(SearchResponseImageHitsVO *)getModelFromDictionary:(NSDictionary *)dictionary {
     
-    SearchResponseVO *obj = [[SearchResponseVO alloc] init];
+    SearchResponseImageHitsVO *obj = [[SearchResponseImageHitsVO alloc] init];
     NSDictionary *mapping = [obj keyMapping];
     
     for (NSString *attribute in [mapping allKeys]){

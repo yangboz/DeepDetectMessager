@@ -9,7 +9,7 @@
 #import "COVIASv1Model.h"
 
 @implementation COVIASv1Model
-@synthesize data;
+@synthesize imageHitsVo;
 - (id)init
 {
     self = [super init];

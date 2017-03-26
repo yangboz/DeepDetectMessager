@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SearchResponseImageHitsVO.h"
 
 @interface COVIASv1Model : NSObject
 +(COVIASv1Model *)sharedInstance;
 
-@property (strong, nonatomic) NSObject *data;
+@property (strong, nonatomic) SearchResponseImageHitsVO *imageHitsVo;
 @end

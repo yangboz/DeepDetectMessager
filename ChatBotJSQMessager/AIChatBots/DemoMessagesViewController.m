@@ -137,7 +137,9 @@ NSString* catKeywords;//for Sqoot API search
     });
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSimiliaryHandler:) name:kNCpN_search_by_id object:nil];
 }
+#pragma mark Notification handlers
 -(void)loadSqootDealsHandler:(NSNotification *) notification{
     //    NSLog(@"loadOverviewsHandler:%@",notification.userInfo);
     SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
@@ -152,13 +154,6 @@ NSString* catKeywords;//for Sqoot API search
         //        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
         //EAIntroPages testing
         SqootDeal *sqootDeal = [[SqootDeal alloc] init];
-        // object assemble.
-//        sqootDeal.short_title =[sqootDealDict objectForKey: @"short_title"];
-////        sqootPage.titlePositionY = self.view.bounds.size.height/2 - 10;
-//        sqootDeal.description = [sqootDealDict objectForKey: @"description"];
-//        sqootDeal.image_url = [sqootDealDict objectForKey: @"image_url"];
-//        sqootDeal.fine_print = [sqootDealDict objectForKey: @"fine_print"];
-        //FIXME:NSDictionary to SqootDeal.
         sqootDeal = [SqootDeal getSqootDealFromDictionary:sqootDealDict];
         NSLog(@"SqootDeal:%@",sqootDeal.description);
 //
@@ -168,8 +163,16 @@ NSString* catKeywords;//for Sqoot API search
     [dataModel setSelectedSqootDeals:selectedSqootDeals];
 //
     [self hideLoading];
+    //enable button
+    _btnSqootDeals.enabled = YES;
     //resign pickerview
     [self.inputToolbar.inputView resignFirstResponder];
+}
+-(void)loadSimiliaryHandler:(NSNotification *) notification{
+    //
+    [self hideLoading];
+    //enable button.
+    _btnSimilarity.enabled = YES;
 }
 -(JSQMessage *)getJSQMessage:(NSString *)message{
     //        JSQMessage *newMessage = nil;
@@ -294,7 +297,7 @@ NSString* catKeywords;//for Sqoot API search
         [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
         //then append Sqoot information query by keywords/category.
     //FIXME:sequence loading;
-//        [self getSqootDeals];
+    [self getSqootDeals];
     [self esearchSimiliary];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{

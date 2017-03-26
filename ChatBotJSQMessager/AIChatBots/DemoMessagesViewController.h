@@ -41,7 +41,9 @@
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
 @property (strong, nonatomic) ChatBotVoModel *detailItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSqootDeals;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSimilarity;
 @property (strong, nonatomic) DemoModelData *demoData;
 
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
