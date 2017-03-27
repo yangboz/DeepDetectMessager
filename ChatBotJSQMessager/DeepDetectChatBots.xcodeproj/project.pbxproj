@@ -152,7 +152,7 @@
 		A4AAAC811E8750A70040891E /* CVC_Seque_Similarity.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AAAC801E8750A70040891E /* CVC_Seque_Similarity.m */; };
 		A4AAAC841E8753A20040891E /* SearchResponseImageHitsVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AAAC831E8753A20040891E /* SearchResponseImageHitsVO.m */; };
 		A4AAAC871E87585B0040891E /* SearchResponseImageHitVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AAAC861E87585B0040891E /* SearchResponseImageHitVO.m */; };
-		A4AAAC8B1E875BC60040891E /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AAAC8A1E875BC60040891E /* NibCell.xib */; };
+		A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AAAC8A1E875BC60040891E /* CVCSequeSimilarityCell.xib */; };
 		F69D754C9204640B2F847C8B /* libPods-AIChatBotsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C1E44805633B64C3360D1E /* libPods-AIChatBotsUITests.a */; };
 		F9EC734E79DEA9E0ADC0E5DE /* libPods-DeepDetectChatBotsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2953CB5D60D68ED461C19629 /* libPods-DeepDetectChatBotsTests.a */; };
 /* End PBXBuildFile section */
@@ -450,7 +450,7 @@
 		A4AAAC831E8753A20040891E /* SearchResponseImageHitsVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseImageHitsVO.m; sourceTree = "<group>"; };
 		A4AAAC851E87585B0040891E /* SearchResponseImageHitVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResponseImageHitVO.h; sourceTree = "<group>"; };
 		A4AAAC861E87585B0040891E /* SearchResponseImageHitVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseImageHitVO.m; sourceTree = "<group>"; };
-		A4AAAC8A1E875BC60040891E /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
+		A4AAAC8A1E875BC60040891E /* CVCSequeSimilarityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCSequeSimilarityCell.xib; sourceTree = "<group>"; };
 		A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D5531BFC78126D1CA99A3820 /* Pods-AIChatBotsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBotsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBotsUITests/Pods-AIChatBotsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9C850EDD9FB6C9CB50B45BD /* Pods-AIChatBots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIChatBots.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIChatBots/Pods-AIChatBots.release.xcconfig"; sourceTree = "<group>"; };
@@ -583,7 +583,7 @@
 				A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */,
 				A4AAAC7F1E8750A70040891E /* CVC_Seque_Similarity.h */,
 				A4AAAC801E8750A70040891E /* CVC_Seque_Similarity.m */,
-				A4AAAC8A1E875BC60040891E /* NibCell.xib */,
+				A4AAAC8A1E875BC60040891E /* CVCSequeSimilarityCell.xib */,
 			);
 			path = AIChatBots;
 			sourceTree = "<group>";
@@ -1103,7 +1103,7 @@
 				A493CE221E3C941A0097C113 /* imagenet.png in Resources */,
 				A493CE181E3C6DB10097C113 /* clothing.png in Resources */,
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
-				A4AAAC8B1E875BC60040891E /* NibCell.xib in Resources */,
+				A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */,
 				A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316361E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4674D3D1E864B7F00FA67DC /* footwears.png in Resources */,

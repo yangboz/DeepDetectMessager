@@ -13,7 +13,7 @@
 @property(nonatomic,strong) NSString* type;
 @property(nonatomic,strong) NSString* id;
 @property(nonatomic) NSNumber* score;
-@property(nonatomic,strong) NSObject* source;
+@property(nonatomic,strong) NSDictionary* source;
 -(NSDictionary *)keyMapping;
 +(SearchResponseImageHitVO *)getModelFromDictionary:(NSDictionary *)dictionary;
 @end

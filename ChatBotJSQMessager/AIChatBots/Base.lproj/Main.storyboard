@@ -433,6 +433,9 @@ There are several advantages to logging out when you are done. Simply closing th
                         <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="fgu-2l-Ty8">
                             <rect key="frame" x="64" y="7" width="303" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="sliderValueChanged:" destination="8JW-JE-cW6" eventType="valueChanged" id="MMi-QR-Py7"/>
+                            </connections>
                         </slider>
                     </navigationItem>
                     <connections>

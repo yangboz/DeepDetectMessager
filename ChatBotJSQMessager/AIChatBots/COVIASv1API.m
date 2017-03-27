@@ -36,7 +36,7 @@
     return _sharedInstance;
 }
 //Search similiary image by image base64 string
--(void)searchWithImage:(UIImage*)image byIndex:(NSString *)index byItem:(NSString *)item
+-(void)searchWithImage:(UIImage*)image
 {
     //
     RKObjectMapping *responseMapping = [RKObjectMapping mappingForClass:[NSObject class]];
@@ -76,7 +76,7 @@
 
 }
 //Search similiary image by existed id;
--(void)searchWithId:(NSString*)esId byIndex:(NSString *)index byItem:(NSString *)item
+-(void)searchWithId:(NSString*)esId
 {
     RKObjectMapping *responseMapping = [RKObjectMapping mappingForClass:[SearchResponseVO class]];
     [responseMapping addAttributeMappingsFromArray:@[@"took",@"timeout",@"_shards",@"hits"]];
@@ -95,10 +95,10 @@
     [manager addResponseDescriptor:articleDescriptor];
     
     SearchExistedVO *vo = [SearchExistedVO new];
-    vo.index = index;
-    vo.item = item;
+    vo.index = kAPI_default_index;
+    vo.item = kAPI_default_item;
     vo.esId = esId;
-    NSString *aPath = [NSString stringWithFormat:@"%@/%@/%@/%@",kAPI_esearch_id,index,item,esId];
+    NSString *aPath = [NSString stringWithFormat:@"%@/%@/%@/%@",kAPI_esearch_id,vo.index,vo.item,esId];
     [manager setRequestSerializationMIMEType:RKMIMETypeJSON];
     [manager postObject: vo path:
      aPath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

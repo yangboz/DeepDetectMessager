@@ -24,7 +24,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Register cell classes
 //    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:@"CVCSequeSimilarityCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
     
     // Do any additional setup after loading the view.
@@ -36,6 +36,14 @@ static NSString * const reuseIdentifier = @"Cell";
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     [self.collectionView setCollectionViewLayout:flowLayout];
+    //
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor grayColor];
+    [refreshControl addTarget:self action:@selector(refershControlAction:) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+    self.collectionView.alwaysBounceVertical = YES;
+    [self.collectionView setBounces:YES];
+    [self.collectionView setAlwaysBounceVertical:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,13 +89,37 @@ static NSString * const reuseIdentifier = @"Cell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
+    UITextView *descTextV = (UITextView *)[cell viewWithTag:102];
+    UIWebView *aUIWebView = (UIWebView *)[cell viewWithTag:103];
     
     [titleLabel setText:cellDataVo.id];
+    NSDictionary *sourceDict = (NSDictionary *)cellDataVo.source;
+    NSString *my_img = [sourceDict objectForKey:@"my_img"];
+    NSString *base64String = [@"data:image/gif;base64," stringByAppendingString:my_img];
+        //FIXME:@see:http://stackoverflow.com/questions/1366837/how-to-display-a-base64-image-within-a-uiimageview
+//    NSURL *url = [NSURL URLWithString:base64String];
+//    NSData *imageData = [NSData dataWithContentsOfURL:url];
+//    imageView.image = [UIImage imageWithData:imageData];
     
+    aUIWebView.scalesPageToFit = YES;
+    aUIWebView.opaque = NO;
+    aUIWebView.backgroundColor = [UIColor clearColor];
+    NSString *htmlString = [NSString stringWithFormat:@"%@%@%@",@"<html><body style=‘width:64px;height:64px' background-color: transparent""><img src='",base64String,@"' /></body></html>"""];
+    [aUIWebView loadHTMLString:htmlString baseURL:nil];
+    
+    descTextV.layer.borderWidth = 1.0f;
+    descTextV.layer.borderColor = [[UIColor grayColor] CGColor];
+    descTextV.layer.cornerRadius = 4.0f;
+    descTextV.text = [cellDataVo.score stringValue];
     
     return cell;
 }
 
+- (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:data];
+}
 #pragma mark <UICollectionViewDelegate>
 
 /*
@@ -118,7 +150,34 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+#pragma mark IBActions
 - (IBAction)dissmiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)sliderValueChanged:(UISlider *)sender {
+    NSLog(@"slider value = %f", sender.value);
+    //
+    float realSvalue = sender.value * MAX_Similarity;
+    NSPredicate *sPredicate =
+    [NSPredicate predicateWithFormat:@"SELF.score >=%d",realSvalue];
+    NSArray *filtered = [[self.dataArray objectAtIndex:0] filteredArrayUsingPredicate:sPredicate];
+    NSLog(@"filtered:%@",filtered);
+    self.dataArray = [[NSArray alloc] initWithObjects:filtered, nil];
+    //
+    [self.collectionView reloadData];
+}
+- (IBAction)refershControlAction:(id)sender {
+//    NSLog(@"refershControlAction: = %@", sender);
+    [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
+    //NotificationCenter handler
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSImagesHandler:) name:kNCpN_search_by_id object:nil];
+}
+
+#pragma mark Notification handlers
+-(void)loadSImagesHandler:(NSNotification *) notification{
+    SearchResponseImageHitsVO *imageHitsVo = [COVIASv1Model sharedInstance].imageHitsVo;
+    self.dataArray = [[NSArray alloc] initWithObjects:imageHitsVo.hits, nil];
+    [self.collectionView reloadData];
+}
+
 @end

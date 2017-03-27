@@ -25,8 +25,13 @@
 #define kNCpN_search_by_img @"esearchByImage"
 #define kNCpN_search_by_id @"esearchById"
 
+//Default value.
+#define kAPI_default_index @"my_index"
+#define kAPI_default_item @"my_image_item"
+
 @interface COVIASv1API : NSObject
 +(COVIASv1API *)sharedInstance;
--(void)searchWithImage:(UIImage*)image byIndex:(NSString *)index byItem:(NSString *)item;
--(void)searchWithId:(NSString*)esId byIndex:(NSString *)index byItem:(NSString *)item;
+//Default index:my_index,item:my_image_item
+-(void)searchWithImage:(UIImage*)image;
+-(void)searchWithId:(NSString*)esId;
 @end

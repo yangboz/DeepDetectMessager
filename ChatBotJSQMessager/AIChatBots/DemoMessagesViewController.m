@@ -110,8 +110,8 @@ NSString* catKeywords;//for Sqoot API search
     hud.userInteractionEnabled = YES;
 }
 
--(void)getSqootDeals{
-    [self showLoading];
+-(void)loadSqootDeals{
+//    [self showLoading];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -126,14 +126,14 @@ NSString* catKeywords;//for Sqoot API search
 }
 
 -(void)esearchSimiliary{
-    [self showLoading];
+//    [self showLoading];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //Delegate to Snap415API.
         //        [[Snap415API sharedInstance] getOverviews];
         //        [[Snap415API sharedInstance] getTaxEvents];
-        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_" byIndex:@"my_index" byItem:@"my_image_item"];
+        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
     });
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
@@ -162,7 +162,7 @@ NSString* catKeywords;//for Sqoot API search
     //
     [dataModel setSelectedSqootDeals:selectedSqootDeals];
 //
-    [self hideLoading];
+//    [self hideLoading];
     //enable button
     _btnSqootDeals.enabled = YES;
     //resign pickerview
@@ -170,7 +170,7 @@ NSString* catKeywords;//for Sqoot API search
 }
 -(void)loadSimiliaryHandler:(NSNotification *) notification{
     //
-    [self hideLoading];
+//    [self hideLoading];
     //enable button.
     _btnSimilarity.enabled = YES;
 }
@@ -297,7 +297,7 @@ NSString* catKeywords;//for Sqoot API search
         [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
         //then append Sqoot information query by keywords/category.
     //FIXME:sequence loading;
-    [self getSqootDeals];
+    [self loadSqootDeals];
     [self esearchSimiliary];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{
