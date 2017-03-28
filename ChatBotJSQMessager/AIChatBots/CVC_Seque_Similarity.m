@@ -155,20 +155,26 @@ static NSString * const reuseIdentifier = @"Cell";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)sliderValueChanged:(UISlider *)sender {
-    NSLog(@"slider value = %f", sender.value);
     //
-    float realSvalue = sender.value * MAX_Similarity;
-    NSPredicate *sPredicate =
-    [NSPredicate predicateWithFormat:@"SELF.score >=%d",realSvalue];
-    NSArray *filtered = [[self.dataArray objectAtIndex:0] filteredArrayUsingPredicate:sPredicate];
-    NSLog(@"filtered:%@",filtered);
+    float filterSvalue = sender.value / MAX_Similarity;
+    NSLog(@"slider value = %f,filterSvalue:%f", sender.value,filterSvalue);
+//FIXME:using predicate to filter
+    NSMutableArray *filtered = [NSMutableArray new];
+    SearchResponseImageHitsVO *imageHitsVo = [COVIASv1Model sharedInstance].imageHitsVo;
+    for(NSDictionary *hitVoDict in imageHitsVo.hits){
+//        SearchResponseImageHitVO *hitVo = [SearchResponseImageHitVO getModelFromDictionary:hitVoDict];
+        if([[hitVoDict objectForKey:@"score"] floatValue]>=filterSvalue){
+            [filtered addObject:hitVoDict];
+        }
+    }
+    NSLog(@"filtered results:%@",filtered);
     self.dataArray = [[NSArray alloc] initWithObjects:filtered, nil];
     //
     [self.collectionView reloadData];
 }
 - (IBAction)refershControlAction:(id)sender {
 //    NSLog(@"refershControlAction: = %@", sender);
-    [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
+    [[COVIASv1API sharedInstance] searchWithUrl:[COVIASv1API sharedInstance].refreshUrl];
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSImagesHandler:) name:kNCpN_search_by_id object:nil];
 }

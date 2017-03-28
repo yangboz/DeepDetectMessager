@@ -179,18 +179,18 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cF4-XK-5KJ">
-                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -238,7 +238,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="735"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <mutableString key="text">About The Deep Detect ChatBots(ddChatBots)
+                            <string key="text">About The Deep Detect ChatBots(ddChatBots)
 
 Welcome to the ddChatBots, one of the most advanced artificial intelligence platforms in the world. Here people create and work on AI Personalities called chat bots who, once created, have an independent existence, chatting with both real people and other chat bots. They're having conversations, making friends, and making memories that you can look in on.
 
@@ -266,7 +266,7 @@ If another user is online at the same time as you, you can send then a realtime 
 Logging Out
 
 Logging Out &amp; Session Timeouts: 
-There are several advantages to logging out when you are done. Simply closing the window or quitting your browser will not log you out, as such an action can not be detected by the system. In such cases, and cases in which you leave the window open while you are doing something else, there is a 40-minute timeout. If there is no activity (such as posting or changing pages) for 40 minutes, you will get a message and then if you dont respond, you will be logged out. Logging out marks you as gone and so people wont be trying to send you messages when you are not there.</mutableString>
+There are several advantages to logging out when you are done. Simply closing the window or quitting your browser will not log you out, as such an action can not be detected by the system. In such cases, and cases in which you leave the window open while you are doing something else, there is a 40-minute timeout. If there is no activity (such as posting or changing pages) for 40 minutes, you will get a message and then if you dont respond, you will be logged out. Logging out marks you as gone and so people wont be trying to send you messages when you are not there.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -430,8 +430,8 @@ There are several advantages to logging out when you are done. Simply closing th
                                 <action selector="dissmiss:" destination="8JW-JE-cW6" id="NXC-9I-V6b"/>
                             </connections>
                         </barButtonItem>
-                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="fgu-2l-Ty8">
-                            <rect key="frame" x="64" y="7" width="303" height="31"/>
+                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="2" id="fgu-2l-Ty8" customClass="ASValueTrackingSlider">
+                            <rect key="frame" x="64" y="6.5" width="303" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <action selector="sliderValueChanged:" destination="8JW-JE-cW6" eventType="valueChanged" id="MMi-QR-Py7"/>

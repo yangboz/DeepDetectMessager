@@ -9,5 +9,5 @@
 #import "SearchExistedVO.h"
 
 @implementation SearchExistedVO
-@synthesize from,size,query,index,item,esId;
+@synthesize from,size,query,index,item,esId,url;
 @end

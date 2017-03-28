@@ -27,6 +27,7 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - ASValueTrackingSlider (0.12.1)
   - Cloudinary (1.0.15)
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
@@ -66,6 +67,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - ASIHTTPRequest
+  - ASValueTrackingSlider
   - Cloudinary
   - JSONModel
   - JSQSystemSoundPlayer
@@ -81,6 +83,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
@@ -97,6 +100,6 @@ SPEC CHECKSUMS:
   SSStackedPageView: a71826270ebc3ef40f6fb5ec5e5510fdca0ff943
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
 
-PODFILE CHECKSUM: d5e6f48fd8d97c7b7fc16743544ce0a96d4ac12c
+PODFILE CHECKSUM: 6621f513d8826ec509a08229d24d0c6de843369f
 
 COCOAPODS: 1.2.0

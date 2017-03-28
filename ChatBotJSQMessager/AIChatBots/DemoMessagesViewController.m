@@ -60,6 +60,8 @@ MBProgressHUD *hud;
 UIPickerView *picker;
 NSArray *dataSource;
 NSString* catKeywords;//for Sqoot API search
+UIImage* curSelectedImage;
+NSString* curSelectedImageUrl;
 
 #pragma mark - Split view
 
@@ -79,7 +81,7 @@ NSString* catKeywords;//for Sqoot API search
 }
 
 
-#pragma mark - API request
+#pragma mark - API requests
 
 #pragma mark - Responding to API request
 -(void)sendMessageToAPI:(NSString *)content
@@ -97,21 +99,23 @@ NSString* catKeywords;//for Sqoot API search
     [request setDelegate:self];
     [request startAsynchronous];
     //show loading.
-    [self showLoading];
+    [self showLoading:@"ddAPI"];
 }
 
--(void)showLoading{
+-(void)showLoading:(NSString *)text{
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.userInteractionEnabled = NO;
+    hud.label.text = text;
 }
 
 -(void)hideLoading{
-    [hud hideAnimated:YES];
+//    [hud hideAnimated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     hud.userInteractionEnabled = YES;
 }
 
 -(void)loadSqootDeals{
-//    [self showLoading];
+    [self showLoading:@"sqootAPI"];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -126,17 +130,18 @@ NSString* catKeywords;//for Sqoot API search
 }
 
 -(void)esearchSimiliary{
-//    [self showLoading];
+    [self showLoading:@"covaisAPI"];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //Delegate to Snap415API.
         //        [[Snap415API sharedInstance] getOverviews];
         //        [[Snap415API sharedInstance] getTaxEvents];
-        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
+//        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
+        //    [[COVIASv1API sharedInstance] searchWithImage:curSelectedImage];
+        [[COVIASv1API sharedInstance] searchWithUrl:curSelectedImageUrl];
     });
     //NotificationCenter handler
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSimiliaryHandler:) name:kNCpN_search_by_id object:nil];
 }
 #pragma mark Notification handlers
@@ -150,7 +155,7 @@ NSString* catKeywords;//for Sqoot API search
     NSMutableArray *selectedSqootDeals = [[NSMutableArray alloc] init];
     for(NSDictionary *sqootDealObjDict in self.sqootDealObjectsResult){
         NSDictionary *sqootDealDict = [sqootDealObjDict objectForKey:@"deal"];
-        NSLog(@"SqootDealDict:%@",sqootDealDict.description);
+//        NSLog(@"SqootDealDict:%@",sqootDealDict.description);
         //        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
         //EAIntroPages testing
         SqootDeal *sqootDeal = [[SqootDeal alloc] init];
@@ -162,7 +167,7 @@ NSString* catKeywords;//for Sqoot API search
     //
     [dataModel setSelectedSqootDeals:selectedSqootDeals];
 //
-//    [self hideLoading];
+    [self hideLoading];
     //enable button
     _btnSqootDeals.enabled = YES;
     //resign pickerview
@@ -170,7 +175,7 @@ NSString* catKeywords;//for Sqoot API search
 }
 -(void)loadSimiliaryHandler:(NSNotification *) notification{
     //
-//    [self hideLoading];
+    [self hideLoading];
     //enable button.
     _btnSimilarity.enabled = YES;
 }
@@ -221,7 +226,7 @@ NSString* catKeywords;//for Sqoot API search
     NSLog(@"API request error:%@",error);
     [self alertInvalidMessage];
     //
-    [hud hideAnimated:YES];
+    [self hideLoading];
 }
 
 -(NSString *)getMessageJsonString:(NSString *)urlStr
@@ -241,6 +246,8 @@ NSString* catKeywords;//for Sqoot API search
     [parameters setMllib:mllib];
     apiDeepDetectModel.parameters = parameters;
     apiDeepDetectModel.data = @[urlStr];
+    //store the url value.
+    curSelectedImageUrl = urlStr;
     //Json writer
     NSLog(@"apiDeepDetectModel json:%@",apiDeepDetectModel.toJSONString);
     return apiDeepDetectModel.toJSONString;
@@ -988,12 +995,13 @@ NSString* catKeywords;//for Sqoot API search
     //Cloudinary Safe mobile uploading,@see: https://github.com/cloudinary/cloudinary_ios
     CLCloudinary *cloudinary = [[CLCloudinary alloc] initWithUrl: API_CLOUDINARY];
     CLUploader* mobileUploader = [[CLUploader alloc] init:cloudinary delegate:self];
-    NSData *imageData = UIImageJPEGRepresentation([images objectAtIndex:0], 1.0); // 1.0 is JPG quality
+    curSelectedImage = [images objectAtIndex:0];
+    NSData *imageData = UIImageJPEGRepresentation(curSelectedImage, 1.0); // 1.0 is JPG quality
 //
     //    NSData *imageData = [NSData dataWithContentsOfFile:imageUrl];
     [mobileUploader upload:imageData options:@{}];
     //@see https://github.com/jdg/MBProgressHUD
-    [self showLoading];
+    [self showLoading:@"cloudinaryAPI"];
 }
 
 #pragma mark CLUploader delegate
@@ -1001,8 +1009,8 @@ NSString* catKeywords;//for Sqoot API search
     NSString* publicId = [result valueForKey:@"public_id"];
     NSLog(@"Upload success. Public ID=%@, Full result=%@", publicId, result);
     //Save url to local data model.
-    NSString *Url = [result objectForKey:@"url"];
-    [self sendUrlMessage:Url];
+    curSelectedImageUrl = [result objectForKey:@"url"];
+    [self sendUrlMessage:curSelectedImageUrl];
     //
     [self hideLoading];
     

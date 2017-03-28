@@ -17,4 +17,5 @@
 @property (nonatomic, strong) NSString *index;
 @property (nonatomic, strong) NSString *item;
 @property (nonatomic, strong) NSString *esId;
+@property (nonatomic, strong) NSString *url;
 @end

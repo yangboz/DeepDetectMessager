@@ -19,10 +19,12 @@
 #define kAPIEndpointHost @"http://localhost:8084/api/image/es/"
 #endif
 #define kAPI_esearch_img (@"search")
+#define kAPI_esearch_img_url (@"searchUrl")
 #define kAPI_esearch_id (@"searchExisted")
 
 //Notification Center post names;
-#define kNCpN_search_by_img @"esearchByImage"
+#define kNCpN_search_by_img_file @"esearchByImageFile"
+#define kNCpN_search_by_img_url @"esearchByImageUrl"
 #define kNCpN_search_by_id @"esearchById"
 
 //Default value.
@@ -33,5 +35,7 @@
 +(COVIASv1API *)sharedInstance;
 //Default index:my_index,item:my_image_item
 -(void)searchWithImage:(UIImage*)image;
+@property (strong, nonatomic) NSString *refreshUrl;
+-(void)searchWithUrl:(NSString*)url;
 -(void)searchWithId:(NSString*)esId;
 @end

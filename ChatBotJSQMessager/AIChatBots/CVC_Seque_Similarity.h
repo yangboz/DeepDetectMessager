@@ -10,6 +10,7 @@
 #import "COVIASv1Model.h"
 #import "COVIASv1API.h"
 #import "Constants.h"
+#import "SearchResponseImageHitVO.h"
 
 @interface CVC_Seque_Similarity : UICollectionViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) NSArray *dataArray;
