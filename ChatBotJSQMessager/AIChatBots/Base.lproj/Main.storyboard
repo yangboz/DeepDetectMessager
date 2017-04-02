@@ -131,7 +131,6 @@
                             </barButtonItem>
                             <barButtonItem enabled="NO" style="plain" systemItem="search" id="HPl-cS-6bO">
                                 <connections>
-                                    <action selector="searchInformation:" destination="tKu-Pn-6oY" id="nMR-my-2Lb"/>
                                     <segue destination="tWJ-jy-jnl" kind="modal" id="7Xi-uk-z3h"/>
                                 </connections>
                             </barButtonItem>
@@ -144,8 +143,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="btnSimilarity" destination="txp-i8-j16" id="an5-GI-glO"/>
-                        <outlet property="btnSqootDeals" destination="HPl-cS-6bO" id="gEa-Mf-cok"/>
+                        <outlet property="btnSimilarity" destination="txp-i8-j16" id="feM-iP-Fex"/>
+                        <outlet property="btnSqootDeals" destination="HPl-cS-6bO" id="hHq-n4-2V2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVc-Ak-6k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,18 +178,18 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cF4-XK-5KJ">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -430,8 +429,8 @@ There are several advantages to logging out when you are done. Simply closing th
                                 <action selector="dissmiss:" destination="8JW-JE-cW6" id="NXC-9I-V6b"/>
                             </connections>
                         </barButtonItem>
-                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="2" id="fgu-2l-Ty8" customClass="ASValueTrackingSlider">
-                            <rect key="frame" x="64" y="6.5" width="303" height="31"/>
+                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2" continuous="NO" id="fgu-2l-Ty8" customClass="ASValueTrackingSlider">
+                            <rect key="frame" x="64" y="7" width="303" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <action selector="sliderValueChanged:" destination="8JW-JE-cW6" eventType="valueChanged" id="MMi-QR-Py7"/>

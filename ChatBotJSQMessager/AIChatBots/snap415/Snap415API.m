@@ -234,6 +234,7 @@ kAPI_user_me parameters:nil success:^(RKObjectRequestOperation *operation, RKMap
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         RKLogError(@"Operation failed with error: %@", error);
+        
     }];
     //load begin
     [objectRequestOperation start];

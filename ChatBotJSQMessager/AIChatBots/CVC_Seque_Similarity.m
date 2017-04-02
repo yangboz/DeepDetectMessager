@@ -32,8 +32,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.dataArray = [[NSArray alloc] initWithObjects:imageHitsVo.hits, nil];
     //Layout example, @see: http://demo-itec.uni-klu.ac.at/liredemo/
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(200, 200)];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setItemSize:CGSizeMake(150, 150)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
     [self.collectionView setCollectionViewLayout:flowLayout];
     //
@@ -111,7 +111,9 @@ static NSString * const reuseIdentifier = @"Cell";
     descTextV.layer.borderWidth = 1.0f;
     descTextV.layer.borderColor = [[UIColor grayColor] CGColor];
     descTextV.layer.cornerRadius = 4.0f;
-    descTextV.text = [cellDataVo.score stringValue];
+    
+    NSString *formattedPercentText = [NSString stringWithFormat:@"%.1f%%", [cellDataVo.score floatValue] * 100];
+    descTextV.text = formattedPercentText;
     
     return cell;
 }

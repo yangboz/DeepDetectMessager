@@ -130,7 +130,7 @@ NSString* curSelectedImageUrl;
 }
 
 -(void)esearchSimiliary{
-    [self showLoading:@"covaisAPI"];
+    [self showLoading:@"coviasAPI"];
     //
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -142,7 +142,7 @@ NSString* curSelectedImageUrl;
         [[COVIASv1API sharedInstance] searchWithUrl:curSelectedImageUrl];
     });
     //NotificationCenter handler
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSimiliaryHandler:) name:kNCpN_search_by_id object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSimiliaryHandler:) name:kNCpN_search_by_img_url object:nil];
 }
 #pragma mark Notification handlers
 -(void)loadSqootDealsHandler:(NSNotification *) notification{
@@ -304,8 +304,8 @@ NSString* curSelectedImageUrl;
         [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
         //then append Sqoot information query by keywords/category.
     //FIXME:sequence loading;
-    [self loadSqootDeals];
     [self esearchSimiliary];
+    [self loadSqootDeals];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{
     /**

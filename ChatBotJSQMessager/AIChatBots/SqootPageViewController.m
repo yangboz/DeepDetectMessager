@@ -48,6 +48,7 @@
     //Merchant
 //    merchantLabel.text = _sqootDeal.merchant.name;
     
+    
 }
 
 - (void)didReceiveMemoryWarning {

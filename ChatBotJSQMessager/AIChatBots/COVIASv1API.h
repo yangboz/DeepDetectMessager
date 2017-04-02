@@ -12,9 +12,9 @@
 #import "SearchResponseVO.h"    
 #import "COVIASv1Model.h"
 //@see: http://stackoverflow.com/questions/5643514/how-to-define-an-nsstring-for-global-use
-//#define DEV @"dev_aliyun"
+#define DEV @"dev_aliyun"
 #ifdef DEV
-#define kAPIEndpointHost @"http://118.190.3.169:8084"
+#define kAPIEndpointHost @"http://118.190.3.169:8084/api/image/es/"
 #else//LOCAL
 #define kAPIEndpointHost @"http://localhost:8084/api/image/es/"
 #endif

@@ -177,7 +177,7 @@
          NSLog(@"SearchResponseImageHitsVO: %@", imageHitsVo.description);
          //Notification center
          NSDictionary *dictObj = [NSDictionary dictionaryWithObject:imageHitsVo forKey:kNCpN_search_by_id];
-         [[NSNotificationCenter defaultCenter] postNotificationName:kNCpN_search_by_id object:dictObj];
+         [[NSNotificationCenter defaultCenter] postNotificationName:kNCpN_search_by_img_url object:dictObj];
          //Save to model
          [COVIASv1Model sharedInstance].imageHitsVo = imageHitsVo;
              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
