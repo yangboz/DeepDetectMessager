@@ -8,12 +8,13 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "btSimplePopUP.h"
 
 
 #define RATINGS @"Ratings"
 
-@interface MasterViewController ()
-
+@interface MasterViewController ()<btSimplePopUpDelegate>
+@property(nonatomic, retain) btSimplePopUP *popUp, *popUpWithDelegate;
 @end
 
 @implementation MasterViewController
@@ -22,15 +23,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
+    //    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    //    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    //Test code
+    //chatbots data code
     _groupedChatbots = [self getGroupedChatBots];
     NSLog(@"_groupedChatbots:%@",_groupedChatbots);
-
+    //popup menu
+    //@see: https://github.com/balram3429/btSimplePopUp
+    _popUpWithDelegate = [[btSimplePopUP alloc]initWithItemImage:@[
+                                                                   [UIImage imageNamed:@"Facebook.png"],
+                                                                   [UIImage imageNamed:@"Linkedin.png"],
+                                                                   [UIImage imageNamed:@"Twitter.png"],
+                                                                   [UIImage imageNamed:@"Instagram.png"],
+                                                                   [UIImage imageNamed:@"Tumblr.png"],
+                                                                   [UIImage imageNamed:@"Dribbble.png"],
+                                                                   [UIImage imageNamed:@"Google+.png"],
+                                                                   [UIImage imageNamed:@"Snapchat.png"],
+                                                                   [UIImage imageNamed:@"Stumbleupon.png"],
+                                                                   [UIImage imageNamed:@"Pinterest.png"],
+                                                                   [UIImage imageNamed:@"Reddit.png"],
+                                                                   [UIImage imageNamed:@"Vine.png"],
+                                                                   [UIImage imageNamed:@"Yelp.png"],
+                                                                   [UIImage imageNamed:@"Youtube.png"]
+                                                                   ]
+                                                       andTitles:    @[
+                                                                       @"Facebook", @"LinkedIn",@"Twitter", @"Instagram", @"Tumblr", @"Dribbble",
+                                                                       @"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",
+                                                                       @"Reddit",@"Vine", @"Yelp", @"Youtube"
+                                                                       ]
+                          
+                                                  andActionArray:nil addToViewController:self];
+    _popUpWithDelegate.delegate = self;
+    
+    [self.view addSubview:_popUpWithDelegate];
+    [_popUpWithDelegate setPopUpStyle:BTPopUpStyleDefault];
+    [_popUpWithDelegate setPopUpBorderStyle:BTPopUpBorderStyleDefaultNone];
+    //    [popUp setPopUpBackgroundColor:[UIColor colorWithRed:0.1 green:0.2 blue:0.6 alpha:0.7]];
+    //    [_popUp show:BTPopUPAnimateNone];
+    [_popUpWithDelegate show:BTPopUPAnimateNone];
+    
 }
 
 
@@ -61,7 +95,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSDate *object = self.chatbots[indexPath.row];
+        //        NSDate *object = self.chatbots[indexPath.row];
         
         //Update current selecte chat bot
         NSDictionary *dictionary = [_listOfRatings objectAtIndex:indexPath.section];
@@ -98,11 +132,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//     if (cell == nil) {
-//         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-//     }
+    //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //     if (cell == nil) {
+    //         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+    //     }
     //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     //    NSLog(@"Current _chatbots:%@",_chatbots);
     //    NSLog(@"Current chatbots:%@",[self getChatBots]);
@@ -112,7 +146,7 @@
     // Configure the cell.
     NSDictionary *dictionary = [_listOfRatings objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:RATINGS];
-//    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
+    //    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
     int rowIndex = indexPath.row;
     //FIXME:    if(indexPath.row<0 || indexPath.row>3) rowIndex = 0;
     ChatBotVoModel *object = [array objectAtIndex:rowIndex];
@@ -130,7 +164,7 @@
         cell.userInteractionEnabled = NO;
     }
     return cell;
-
+    
 }
 
 
@@ -204,7 +238,7 @@
     NSDictionary *humanRatingDict = [NSDictionary dictionaryWithObject:humanRating forKey:RATINGS];
     NSDictionary *natureRatingDict = [NSDictionary dictionaryWithObject:natureRating forKey:RATINGS];
     NSDictionary *artifactsRatingDict = [NSDictionary dictionaryWithObject:artifactsRating forKey:RATINGS];
-     NSDictionary *othersRatingDict = [NSDictionary dictionaryWithObject:othersRating forKey:RATINGS];
+    NSDictionary *othersRatingDict = [NSDictionary dictionaryWithObject:othersRating forKey:RATINGS];
     //
     [_listOfRatings addObject:othersRatingDict];
     [_listOfRatings addObject:humanRatingDict];
@@ -223,5 +257,17 @@
     ChatBotVoModel *selected = [array objectAtIndex:indexPath.row];
     //
     [[DataModel sharedInstance] setSelectedChatBot:selected];
+}
+
+#pragma mark popup
+-(void)showAlert{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:@" iAM from Block" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+    [alert show];
+}
+#pragma -mark delegate btSimplePopUp
+
+-(void)btSimplePopUP:(btSimplePopUP *)popUp didSelectItemAtIndex:(NSInteger)index{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+    [alert show];
 }
 @end
