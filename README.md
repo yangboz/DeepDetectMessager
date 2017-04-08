@@ -232,8 +232,15 @@ curl -X PUT "http://118.190.3.169:8080/services/objectdetect" -d '{"mllib":"caff
 curl -X POST "http://118.190.3.169:8080/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
 `
 
+# COVIAS Server
 
-#References
+## Elastic Image Search
+
+`
+nohup /usr/share/elasticsearch/bin/elasticsearch -Des.insecure.allow.root=true > es.out 2>&1&
+`
+
+# References
 
 DeepDetect(LGPL): https://deepdetect.com/
 
