@@ -22,6 +22,9 @@ pod 'AFNetworking', '~> 3.0'
 pod 'MZTimerLabel'
 pod 'SSStackedPageView', '~> 0.0'
 pod 'ASValueTrackingSlider'
+#pod 'AuthKit'
+#pod 'AuthKit/Facebook'
+#pod 'AuthKit/Twitter'
 
   target 'DeepDetectChatBotsTests' do
     inherit! :search_paths

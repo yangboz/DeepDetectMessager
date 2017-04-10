@@ -47,7 +47,7 @@
                                                                    [UIImage imageNamed:@"Reddit.png"],
                                                                    [UIImage imageNamed:@"Vine.png"],
                                                                    [UIImage imageNamed:@"Yelp.png"],
-                                                                   [UIImage imageNamed:@"Youtube.png"]
+//                                                                   [UIImage imageNamed:@"Youtube.png"]
                                                                    ]
                                                        andTitles:    @[
                                                                        @"Facebook", @"LinkedIn",@"Twitter", @"Instagram", @"Tumblr", @"Dribbble",
@@ -267,7 +267,7 @@
 #pragma -mark delegate btSimplePopUp
 
 -(void)btSimplePopUP:(btSimplePopUP *)popUp didSelectItemAtIndex:(NSInteger)index{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+//    [alert show];
 }
 @end
