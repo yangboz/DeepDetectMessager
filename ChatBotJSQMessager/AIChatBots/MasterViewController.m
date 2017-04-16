@@ -9,16 +9,35 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "btSimplePopUP.h"
-
+//
+#import "LinkedInHelper.h"
+#import "SocialUserInfo.h"
+//
+#import "WxApi.h"
+#import "AFHTTPRequestOperationManager.h"
 
 #define RATINGS @"Ratings"
+#define GROUP_TITLES  [NSArray arrayWithObjects: @"Human", @"Nature",@"Artifacts",@"Everyone",@"###",nil]
+
+#define SOCIAL_TITLES  [NSArray arrayWithObjects: @"Facebook", @"LinkedIn",@"Wechat",@"Twitter",@"Instagram", @"Tumblr", @"Dribbble",@"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",@"Reddit",@"Vine", @"Yelp",@"Youtube",nil]
+#define LINKEDIN_CLIENT_ID @"8101j3ul97nzwl"
+#define LINKEDIN_CLIENT_SECRET @"9inLYd9rUUm6MTlJ"
+#define LINKEDIN_CLIENT_STATE @"ddChatBotsLiState"
+#define LINKEDIN_DIRECT_URL @"http://118.190.96.120/website/dd/"
+// access_token openid refresh_token unionid
+#define WX_ACCESS_TOKEN @"access_token"
+#define WX_OPEN_ID @"openid"
+#define WX_REFRESH_TOKEN @"refresh_token"
+#define WX_UNION_ID @"unionid"
+#define WX_BASE_URL @"https://api.weixin.qq.com/sns"
+
 
 @interface MasterViewController ()<btSimplePopUpDelegate>
 @property(nonatomic, retain) btSimplePopUP *popUp, *popUpWithDelegate;
 @end
 
 @implementation MasterViewController
-
+//LIALinkedInHttpClient *SLClient_li;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,11 +50,14 @@
     //chatbots data code
     _groupedChatbots = [self getGroupedChatBots];
     NSLog(@"_groupedChatbots:%@",_groupedChatbots);
+    //SLClients
+//    SLClient_li = [self getSLClient_li];
     //popup menu
     //@see: https://github.com/balram3429/btSimplePopUp
     _popUpWithDelegate = [[btSimplePopUP alloc]initWithItemImage:@[
                                                                    [UIImage imageNamed:@"Facebook.png"],
                                                                    [UIImage imageNamed:@"Linkedin.png"],
+                                                                   [UIImage imageNamed:@"Wechat.png"],
                                                                    [UIImage imageNamed:@"Twitter.png"],
                                                                    [UIImage imageNamed:@"Instagram.png"],
                                                                    [UIImage imageNamed:@"Tumblr.png"],
@@ -46,14 +68,10 @@
                                                                    [UIImage imageNamed:@"Pinterest.png"],
                                                                    [UIImage imageNamed:@"Reddit.png"],
                                                                    [UIImage imageNamed:@"Vine.png"],
-                                                                   [UIImage imageNamed:@"Yelp.png"],
-//                                                                   [UIImage imageNamed:@"Youtube.png"]
+                                                                   [UIImage imageNamed:@"Yelp.png"]
+//                                                                   ,[UIImage imageNamed:@"Youtube.png"]
                                                                    ]
-                                                       andTitles:    @[
-                                                                       @"Facebook", @"LinkedIn",@"Twitter", @"Instagram", @"Tumblr", @"Dribbble",
-                                                                       @"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",
-                                                                       @"Reddit",@"Vine", @"Yelp", @"Youtube"
-                                                                       ]
+                                                       andTitles:    SOCIAL_TITLES
                           
                                                   andActionArray:nil addToViewController:self];
     _popUpWithDelegate.delegate = self;
@@ -174,24 +192,7 @@
 }
 
 - (NSString *) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section {
-    
-    if (section == 1)
-    {
-        return @"Human";
-    }
-    if (section == 2)
-    {
-        return @"Nature";
-    }
-    if (section == 3)
-    {
-        return @"Artifacts";
-    }
-    if (section == 0)
-    {
-        return @"Everyone";
-    }
-    return @"###";
+    return [GROUP_TITLES objectAtIndex:section];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -267,7 +268,143 @@
 #pragma -mark delegate btSimplePopUp
 
 -(void)btSimplePopUP:(btSimplePopUP *)popUp didSelectItemAtIndex:(NSInteger)index{
-//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
-//    [alert show];
+    //    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+    //    [alert show];
+    if(1==index)//LinkedIN
+    {
+        [self socialLinkedInAuthorize];
+    }
+    if(2==index)//WeChat
+    {
+        [self socialWeChatAuthorize];
+    }
+}
+#pragma Social_linkedIn
+-(void)socialLinkedInAuthorize{
+    LinkedInHelper *linkedIn = [LinkedInHelper sharedInstance];
+    
+    // TODO:Logout
+    [linkedIn logout];
+    // If user has already connected via linkedin in and access token is still valid then
+    // No need to fetch authorizationCode and then accessToken again!
+    
+    if (linkedIn.isValidToken) {
+        
+        linkedIn.customSubPermissions = [NSString stringWithFormat:@"%@,%@", first_name, last_name];
+        
+        // So Fetch member info by elderyly access token
+        [linkedIn autoFetchUserInfoWithSuccess:^(NSDictionary *userInfo) {
+            // Whole User Info
+            
+//            NSString * desc = [NSString stringWithFormat:@"first name : %@\n last name : %@", userInfo[@"firstName"], userInfo[@"lastName"] ];
+//            [self showAlert:desc];
+            
+            NSLog(@"user Info : %@", userInfo);
+        } failUserInfo:^(NSError *error) {
+            NSLog(@"error : %@", error.userInfo.description);
+        }];
+    } else {
+        
+        linkedIn.cancelButtonText = @"Close"; // Or any other language But Default is Close
+        
+        NSArray *permissions = @[@(BasicProfile),
+                                 @(EmailAddress),
+                                 @(Share)
+                                 ,@(CompanyAdmin)];
+        
+        linkedIn.showActivityIndicator = YES;
+        
+#warning - Your LinkedIn App ClientId - ClientSecret - RedirectUrl - And state
+        
+        [linkedIn requestMeWithSenderViewController:self
+                                           clientId:LINKEDIN_CLIENT_ID
+                                       clientSecret:LINKEDIN_CLIENT_SECRET
+                                        redirectUrl:LINKEDIN_DIRECT_URL
+                                        permissions:permissions
+                                              state:LINKEDIN_CLIENT_STATE
+                                    successUserInfo:^(NSDictionary *userInfo) {
+                                        
+//                                        self.btnLogout.hidden = !linkedIn.isValidToken;
+                                        
+//                                        NSString * desc = [NSString stringWithFormat:@"first name : %@\n last name : %@",
+//                                                           userInfo[@"firstName"], userInfo[@"lastName"] ];
+//                                        [self showAlert:desc];
+                                        
+                                        // Whole User Info
+                                        NSLog(@"user Info : %@", userInfo);
+                                        //SocialUserInfo parse and store.
+                                        NSError *error=nil;
+                                        SocialUserInfo *sUserInfo = [[SocialUserInfo alloc] initWithDictionary:userInfo error:&error];
+                                        NSLog(@"store social user Info : %@", sUserInfo);
+                                        //data store.
+                                        [[DataModel sharedInstance] setSocialUserInfo:sUserInfo];
+//                                        sUserInfo = [[DataModel sharedInstance] getSocialUserInfo];
+//                                        NSLog(@"get social user Info : %@", sUserInfo);
+                                        // You can also fetch user's those informations like below
+                                        NSLog(@"job title : %@",     [LinkedInHelper sharedInstance].title);
+                                        NSLog(@"company Name : %@",  [LinkedInHelper sharedInstance].companyName);
+                                        NSLog(@"email address : %@", [LinkedInHelper sharedInstance].emailAddress);
+                                        NSLog(@"Photo Url : %@",     [LinkedInHelper sharedInstance].photo);
+                                        NSLog(@"Industry : %@",      [LinkedInHelper sharedInstance].industry);
+                                    }
+                                  failUserInfoBlock:^(NSError *error) {
+                                      NSLog(@"error : %@", error.userInfo.description);
+//                                      self.btnLogout.hidden = !linkedIn.isValidToken;
+                                  }
+         ];
+    }
+}
+#pragma Social_wechat
+-(void)socialWeChatAuthorize{
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:WX_ACCESS_TOKEN];
+    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:WX_OPEN_ID];
+    // 如果已经请求过微信授权登录，那么考虑用已经得到的access_token
+    if (accessToken && openID) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:WX_REFRESH_TOKEN];
+        NSString *refreshUrlStr = [NSString stringWithFormat:@"%@/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@", WX_BASE_URL, APP_ID_WX, refreshToken];
+        [manager GET:refreshUrlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"请求reAccess的response = %@", responseObject);
+            NSDictionary *refreshDict = [NSDictionary dictionaryWithDictionary:responseObject];
+            NSString *reAccessToken = [refreshDict objectForKey:WX_ACCESS_TOKEN];
+            // 如果reAccessToken为空,说明reAccessToken也过期了,反之则没有过期
+            if (reAccessToken) {
+                // 更新access_token、refresh_token、open_id
+                [[NSUserDefaults standardUserDefaults] setObject:reAccessToken forKey:WX_ACCESS_TOKEN];
+                [[NSUserDefaults standardUserDefaults] setObject:[refreshDict objectForKey:WX_OPEN_ID] forKey:WX_OPEN_ID];
+                [[NSUserDefaults standardUserDefaults] setObject:[refreshDict objectForKey:WX_REFRESH_TOKEN] forKey:WX_REFRESH_TOKEN];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                // 当存在reAccessToken不为空时直接执行AppDelegate中的wechatLoginByRequestForUserInfo方法
+//                !self.requestForUserInfoBlock ? : self.requestForUserInfoBlock();
+            }
+            else {
+                [self wechatLogin];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"用refresh_token来更新accessToken时出错 = %@", error);
+        }];
+    }
+    else {
+        [self wechatLogin];
+    }
+}
+- (void)wechatLogin {
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq *req = [[SendAuthReq alloc] init];
+        req.scope = @"snsapi_userinfo";
+        req.state = @"wechat_sdk_ddChatBots";
+//        [WXApi sendAuthReq:req viewController:<#(UIViewController *)#> delegate:<#(id<WXApiDelegate>)#>]
+        [WXApi sendReq:req];
+    }
+    else {
+        [self setupAlertController];
+    }
+}
+- (void)setupAlertController {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Notice" message:@"WeChat app did not installed" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:actionConfirm];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 @end

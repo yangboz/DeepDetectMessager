@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "AllChatBotsModel.h"
 #import "SqootDeal.h"
+#import "SocialUserInfo.h"
 
 @interface DataModel : NSObject
 {
@@ -29,6 +30,9 @@
 
 -(NSArray *)getSelectedSqootDeals;
 -(void)setSelectedSqootDeals:(NSArray *)value;
+//
+-(SocialUserInfo *)getSocialUserInfo;
+-(void)setSocialUserInfo:(SocialUserInfo *)value;
 @end
 
 

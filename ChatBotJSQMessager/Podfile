@@ -18,13 +18,16 @@ pod 'SDWebImage', '~>3.8'
 pod 'Cloudinary'
 pod 'RestKit', '0.27.0'
 #pod 'EAIntroView', '~> 2.10.0'
-pod 'AFNetworking', '~> 3.0'
+#pod 'AFNetworking', '~> 3.0'
 pod 'MZTimerLabel'
 pod 'SSStackedPageView', '~> 0.0'
 pod 'ASValueTrackingSlider'
 #pod 'AuthKit'
 #pod 'AuthKit/Facebook'
 #pod 'AuthKit/Twitter'
+pod 'WechatOpenSDK'
+pod 'AFNetworking', '~> 2.5.4'
+pod 'LinkedinIOSHelper', '~> 1.0.7'
 
   target 'DeepDetectChatBotsTests' do
     inherit! :search_paths

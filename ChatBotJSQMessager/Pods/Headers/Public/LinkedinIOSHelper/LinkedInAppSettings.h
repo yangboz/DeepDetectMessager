@@ -1,0 +1,1 @@
+../../../LinkedinIOSHelper/LinkedInIOSHelper/LinkedInHelper/LinkedInAppSettings.h

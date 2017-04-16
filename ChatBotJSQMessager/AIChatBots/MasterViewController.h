@@ -10,6 +10,8 @@
 #import <iAd/iAd.h>
 #import "DataModel.h"
 #import "UIImageUtils.h"
+//#import <linkedin-sdk/LISDK.h>
+#import "Constants.h"
 
 @class DetailViewController;
 

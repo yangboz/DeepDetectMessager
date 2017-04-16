@@ -11,6 +11,13 @@
 #import "AllChatBotsModel.h"
 #import "DataModel.h"
 #import "MasterViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+// access_token openid refresh_token unionid
+#define WX_ACCESS_TOKEN @"access_token"
+#define WX_OPEN_ID @"openid"
+#define WX_REFRESH_TOKEN @"refresh_token"
+#define WX_UNION_ID @"unionid"
+#define WX_BASE_URL @"https://api.weixin.qq.com/sns"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>{
 MasterViewController *masterViewController;
@@ -18,6 +25,14 @@ MasterViewController *masterViewController;
 @end
 
 @implementation AppDelegate
+
+- (id)init{
+    if(self = [super init]){
+        _scene = WXSceneSession;
+    }
+    return self;
+}
+
 
 -(void)setMasterControllerData:(NSMutableArray *)data
 {
@@ -50,6 +65,8 @@ MasterViewController *masterViewController;
                               [allChatBotsModel chatbots] ];
     //
     [appDelegate setMasterControllerData:mArray];
+    //SocialLoginClients register
+    [WXApi registerApp:APP_ID_WX];
     return YES;
 }
 
@@ -89,6 +106,41 @@ MasterViewController *masterViewController;
         return YES;
     } else {
         return NO;
+    }
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//    if ([LISDKCallbackHandler shouldHandleUrl:url]) {
+//        NSLog(@"LISDKCallbackHandler...");
+//        return [LISDKCallbackHandler application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+//    }
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
+}
+#pragma mark WXApiDelegate
+- (void)onResp:(BaseResp *)resp {
+    // 向微信请求授权后,得到响应结果
+    if ([resp isKindOfClass:[SendAuthResp class]]) {
+        SendAuthResp *temp = (SendAuthResp *)resp;
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSString *accessUrlStr = [NSString stringWithFormat:@"%@/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code", WX_BASE_URL, APP_ID_WX, APP_SECRET_WX, temp.code];
+        [manager GET:accessUrlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"请求access的response = %@", responseObject);
+            NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
+            NSString *accessToken = [accessDict objectForKey:WX_ACCESS_TOKEN];
+            NSString *openID = [accessDict objectForKey:WX_OPEN_ID];
+            NSString *refreshToken = [accessDict objectForKey:WX_REFRESH_TOKEN];
+            // 本地持久化，以便access_token的使用、刷新或者持续
+            if (accessToken && ![accessToken isEqualToString:@""] && openID && ![openID isEqualToString:@""]) {
+                [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:WX_ACCESS_TOKEN];
+                [[NSUserDefaults standardUserDefaults] setObject:openID forKey:WX_OPEN_ID];
+                [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:WX_REFRESH_TOKEN];
+                [[NSUserDefaults standardUserDefaults] synchronize]; // 命令直接同步到文件里，来避免数据的丢失
+            }
+                //
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"获取access_token时出错 = %@", error);
+        }];
     }
 }
 

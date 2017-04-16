@@ -55,8 +55,16 @@ typedef void (^completion)(BOOL success);
     
     return self;
 }
+- (instancetype)initWithImage:(UIImage *)image title:(NSString *)title{
+    return [self initWithImage:image title:title action:nil];
+}
 
-- (instancetype)initWithImage:(UIImage *)image title:(NSString *)title {
+- (instancetype)initWithImage:(UIImage *)image title:(NSString *)title disabled:(BOOL) disabled{
+    if(!disabled){
+    self.userInteractionEnabled = NO;
+    self.alpha = 0.3f;
+    self.backgroundColor = [UIColor grayColor];
+    }
     return [self initWithImage:image title:title action:nil];
 }
 

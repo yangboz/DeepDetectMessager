@@ -748,8 +748,16 @@ NSString* curSelectedImageUrl;
      *  Override the defaults in `viewDidLoad`
      */
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+    JSQMessagesAvatarImage *chatBotImage = nil;
+    SocialUserInfo *sUserInfo = [[DataModel sharedInstance] getSocialUserInfo];
+    //
+    if ([message.senderId isEqualToString:self.senderId]) {
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:sUserInfo.pictureUrl]];
+        chatBotImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    }else{
+        chatBotImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:self.detailItem.Image] diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    }
     
-    JSQMessagesAvatarImage *chatBotImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:self.detailItem.Image] diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
     return chatBotImage;
 }
 
