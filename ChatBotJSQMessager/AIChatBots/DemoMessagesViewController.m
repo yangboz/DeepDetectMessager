@@ -48,7 +48,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "SqootPageViewController.h"
 #import "MZTimerLabel.h"
+#import "FTPopOverMenu.h"
 
+#define IBEACON_RANGE_TITLES  [NSArray arrayWithObjects:@"Immediate",@"Near",@"Far",nil]
+#define SOCIAL_TITLES  [NSArray arrayWithObjects: @"Facebook", @"LinkedIn",@"Wechat",@"Twitter",@"Instagram", @"Tumblr", @"Dribbble",@"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",@"Reddit",@"Vine", @"Yelp",@"Youtube",nil]
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -56,7 +59,7 @@
 
 @implementation DemoMessagesViewController
 @synthesize masterPopoverController = _masterPopoverController;
-MBProgressHUD *hud;
+//
 UIPickerView *picker;
 NSArray *dataSource;
 NSString* catKeywords;//for Sqoot API search
@@ -91,7 +94,7 @@ NSString* curSelectedImageUrl;
     //
     NSString *url = [NSString stringWithFormat:@"%@",API_DOMAIN_DD];
     NSURL *nsUrl = [NSURL URLWithString:url];
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
+    //    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:nsUrl];
     [request setTimeOutSeconds:120];
     [request appendPostData:[msgJsonStr dataUsingEncoding:NSUTF8StringEncoding]];
@@ -102,16 +105,16 @@ NSString* curSelectedImageUrl;
     [self showLoading:@"ddAPI"];
 }
 
--(void)showLoading:(NSString *)text{
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.userInteractionEnabled = NO;
+-(MBProgressHUD*)showLoading:(NSString *)text{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //    hud.userInteractionEnabled = NO;
     hud.label.text = text;
+    return hud;
 }
 
 -(void)hideLoading{
-//    [hud hideAnimated:YES];
+    //    [hud hideAnimated:YES];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    hud.userInteractionEnabled = YES;
 }
 
 -(void)loadSqootDeals{
@@ -120,11 +123,11 @@ NSString* curSelectedImageUrl;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //Delegate to Snap415API.
-//        [[Snap415API sharedInstance] getOverviews];
-//        [[Snap415API sharedInstance] getTaxEvents];
+        //        [[Snap415API sharedInstance] getOverviews];
+        //        [[Snap415API sharedInstance] getTaxEvents];
         [[Snap415API sharedInstance]  getDealsBy:catKeywords];
     });
-//    [[Snap415API sharedInstance] getDeals];
+    //    [[Snap415API sharedInstance] getDeals];
     //NotificationCenter handler
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadSqootDealsHandler:) name:kNCpN_load_deals object:nil];
 }
@@ -137,7 +140,7 @@ NSString* curSelectedImageUrl;
         //Delegate to Snap415API.
         //        [[Snap415API sharedInstance] getOverviews];
         //        [[Snap415API sharedInstance] getTaxEvents];
-//        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
+        //        [[COVIASv1API sharedInstance] searchWithId:@"AVsA2ZiSmpceiMr56h1_"];
         //    [[COVIASv1API sharedInstance] searchWithImage:curSelectedImage];
         [[COVIASv1API sharedInstance] searchWithUrl:curSelectedImageUrl];
     });
@@ -149,24 +152,24 @@ NSString* curSelectedImageUrl;
     //    NSLog(@"loadOverviewsHandler:%@",notification.userInfo);
     SqootDealsObject *sqootDealsObject = [[Snap415Model sharedInstance] sqootDealsObject];
     self.sqootDealObjectsResult = [sqootDealsObject deals];
-//    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
+    //    NSLog(@"self.sqootDealObjectsResult:%@",self.sqootDealObjectsResult.description);
     //
     DataModel *dataModel = [DataModel sharedInstance];
     NSMutableArray *selectedSqootDeals = [[NSMutableArray alloc] init];
     for(NSDictionary *sqootDealObjDict in self.sqootDealObjectsResult){
         NSDictionary *sqootDealDict = [sqootDealObjDict objectForKey:@"deal"];
-//        NSLog(@"SqootDealDict:%@",sqootDealDict.description);
+        //        NSLog(@"SqootDealDict:%@",sqootDealDict.description);
         //        [self addDemoMessage:[self getJSQMessage:sqootDeal.description]];
         //EAIntroPages testing
         SqootDeal *sqootDeal = [[SqootDeal alloc] init];
         sqootDeal = [SqootDeal getSqootDealFromDictionary:sqootDealDict];
         NSLog(@"SqootDeal:%@",sqootDeal.description);
-//
+        //
         [selectedSqootDeals addObject:sqootDeal];
-}
+    }
     //
     [dataModel setSelectedSqootDeals:selectedSqootDeals];
-//
+    //
     [self hideLoading];
     //enable button
     _btnSqootDeals.enabled = YES;
@@ -184,8 +187,8 @@ NSString* curSelectedImageUrl;
     //        id<JSQMessageMediaData> newMediaData = nil;
     //        id newMediaAttachmentCopy = nil;
     JSQMessage *newMessage = [JSQMessage messageWithSenderId:self.detailItem.Id.stringValue
-                                     displayName:self.detailItem.Name
-                                            text:message];
+                                                 displayName:self.detailItem.Name
+                                                        text:message];
     return newMessage;
 }
 
@@ -199,7 +202,7 @@ NSString* curSelectedImageUrl;
     NSError *error=nil;
     APIDeepDetectResponseModel *responseVO = [[APIDeepDetectResponseModel alloc] initWithString:responseString error:&error];
     // to the debug console.
-//    NSString *message = responseVO.message.message;
+    //    NSString *message = responseVO.message.message;
     NSLog(@"responseVO => %@\n", responseVO);
     if(responseVO == NULL)
     {
@@ -217,7 +220,7 @@ NSString* curSelectedImageUrl;
     }else{
         NSLog(@"API parse error:%@",error.description);
     }
-
+    
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -285,11 +288,11 @@ NSString* curSelectedImageUrl;
     /**
      *  Allow typing indicator to show
      */
-//        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
-//        [userIds removeObject:self.senderId];
-//        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
-
-//    NSString *bodyMsg = [response.body.predictions description];
+    //        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
+    //        [userIds removeObject:self.senderId];
+    //        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
+    
+    //    NSString *bodyMsg = [response.body.predictions description];
     NSArray *predictions= response.body.predictions;
     APIDeepDetectResponseBodyPrediction *prediction = [[APIDeepDetectResponseBodyPrediction alloc ] initWithDictionary:[predictions objectAtIndex:0] error:nil];
     NSArray *classes = prediction.classes;
@@ -298,11 +301,11 @@ NSString* curSelectedImageUrl;
     NSLog(@"predition classes[0]:%@",[predClass description]);
     catKeywords = [predClass objectForKey:@"cat"];
     CGFloat prob = (CGFloat)[[predClass objectForKey:@"prob"] floatValue]*100;
-        //Always text message with emoji
+    //Always text message with emoji
     NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,catKeywords]stringByReplacingEmojiCheatCodesWithUnicode];
-//
-        [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
-        //then append Sqoot information query by keywords/category.
+    //
+    [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
+    //then append Sqoot information query by keywords/category.
     //FIXME:sequence loading;
     [self esearchSimiliary];
     [self loadSqootDeals];
@@ -354,7 +357,7 @@ NSString* curSelectedImageUrl;
     //                else {
     //                    NSLog(@"%s error: unrecognized media item", __PRETTY_FUNCTION__);
     //                }
-    //                
+    //
     //            });
     //        }
 }
@@ -393,10 +396,10 @@ NSString* curSelectedImageUrl;
     // Start the notifier, which will cause the reachability object to retain itself!
     [reach startNotifier];
     
-//    self.title = self.detailItem.Name;
+    //    self.title = self.detailItem.Name;
     ChatBotVoModel *curChatBot = [[DataModel sharedInstance] getSelectedChatBot];
     self.title = curChatBot.Name;
-
+    
     
     /**
      *  Load up our fake data for the demo
@@ -407,8 +410,8 @@ NSString* curSelectedImageUrl;
     /**
      *  Set up message accessory button delegate and configuration
      */
-//    self.inputToolbar.contentView.textView.hidden = YES;
-//    self.collectionView.accessoryDelegate = self;
+    //    self.inputToolbar.contentView.textView.hidden = YES;
+    //    self.collectionView.accessoryDelegate = self;
     UIImage *headerOrignalIcon =  [UIImage imageNamed:self.detailItem.Image];
     UIImage *headerIcon =  [UIImageUtils imageWithImage:headerOrignalIcon scaledToSize:CGSizeMake(40, 40)];
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
@@ -432,54 +435,54 @@ NSString* curSelectedImageUrl;
                             range:NSMakeRange(1, attributedTitle.length-1)];
     
     UILabel *titleLabel = [UILabel new];
-//    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.f];
+    //    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17.f];
     titleLabel.attributedText = attributedTitle;
     [titleLabel sizeToFit];
     self.navigationItem.titleView = titleLabel;
     //Custom cell.
-//    self.incomingCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
-//    self.incomingMediaCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
-//    
-//    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingCellIdentifier];
-//    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingMediaCellIdentifier];
-/**
+    //    self.incomingCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
+    //    self.incomingMediaCellIdentifier = [SqootJSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
+    //
+    //    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingCellIdentifier];
+    //    [self.collectionView registerNib:[SqootJSQMessagesCollectionViewCellIncoming nib] forCellWithReuseIdentifier:self.incomingMediaCellIdentifier];
+    /**
      *  You can set custom avatar sizes
      */
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeMake(40, 40);
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeMake(40, 40);
-//    if (![NSUserDefaults incomingAvatarSetting]) {
-//        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-//    }
-//    
-//    if (![NSUserDefaults outgoingAvatarSetting]) {
-//        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-//    }
+    //    if (![NSUserDefaults incomingAvatarSetting]) {
+    //        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
+    //    }
+    //
+    //    if (![NSUserDefaults outgoingAvatarSetting]) {
+    //        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+    //    }
     
     self.showLoadEarlierMessagesHeader = NO;
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
-//                                                                              style:UIBarButtonItemStylePlain
-//                                                                             target:self
-//                                                                             action:@selector(receiveMessagePressed:)];
-
+    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
+    //                                                                              style:UIBarButtonItemStylePlain
+    //                                                                             target:self
+    //                                                                             action:@selector(receiveMessagePressed:)];
+    
     /**
      *  Register custom menu actions for cells.
      */
-//    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-
-	
+    //    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
+    
+    
     /**
      *  OPT-IN: allow cells to be deleted
      */
-//    [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
-
+    //    [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
+    
     /**
      *  Customize your toolbar buttons
      *
      *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
      *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
      */
-//self.inputToolbar customization
+    //self.inputToolbar customization
     self.inputToolbar.contentView.textView.pasteDelegate = self;
     self.inputToolbar.contentView.leftBarButtonItem.enabled = YES;
     /**
@@ -575,13 +578,13 @@ NSString* curSelectedImageUrl;
      *  2. Add new id<JSQMessageData> object to your data source
      *  3. Call `finishSendingMessage`
      */
-
     
     
-//    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-//                                             senderDisplayName:senderDisplayName
-//                                                          date:date
-//                                                          text:text];
+    
+    //    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+    //                                             senderDisplayName:senderDisplayName
+    //                                                          date:date
+    //                                                          text:text];
     if(self.detailItem.Media & MediaImage){
         [self sendUrlMessage:text];
     }else if(self.detailItem.Media & MediaText){
@@ -611,32 +614,32 @@ NSString* curSelectedImageUrl;
 }
 -(void)sendUrlMessage:(NSString *)url{
     //validate URL first
-//    if([StringUtil validateUrl:url]){
-        //for demo data
-        [self.demoData addPhotoMediaMessage:url];
-        [self finishSendingMessageAnimated:YES];
-        //for API
-        [self sendMessageToAPI:url];
-        [JSQSystemSoundPlayer jsq_playMessageSentSound];
-//    }else{
-//        [self alertInvalidMessage];
-//    }
+    //    if([StringUtil validateUrl:url]){
+    //for demo data
+    [self.demoData addPhotoMediaMessage:url];
+    [self finishSendingMessageAnimated:YES];
+    //for API
+    [self sendMessageToAPI:url];
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    //    }else{
+    //        [self alertInvalidMessage];
+    //    }
 }
 
 
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
-
-//    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
-//                                                       delegate:self
-//                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-//                                         destructiveButtonTitle:nil
-//                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil)
-//                            , NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil),
-//                            NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil)
-//                            , nil];
-//    [sheet showFromToolbar:self.inputToolbar];
+    
+    //    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
+    //                                                       delegate:self
+    //                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+    //                                         destructiveButtonTitle:nil
+    //                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil)
+    //                            , NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil),
+    //                            NSLocalizedString(@"Send video thumbnail", nil), NSLocalizedString(@"Send audio", nil)
+    //                            , nil];
+    //    [sheet showFromToolbar:self.inputToolbar];
     JSImagePickerViewController *imagePicker = [[JSImagePickerViewController alloc] init];
     imagePicker.delegate = self;
     [imagePicker showImagePickerInController:self animated:YES];
@@ -651,8 +654,8 @@ NSString* curSelectedImageUrl;
     
     switch (buttonIndex) {
         case 0:
-//           [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
-//            [JSQSystemSoundPlayer jsq_playMessageSentSound];
+            //           [self.demoData addPhotoMediaMessage:@"https://deepdetect.com/img/ambulance.jpg"];
+            //            [JSQSystemSoundPlayer jsq_playMessageSentSound];
             //
             
             break;
@@ -819,7 +822,7 @@ NSString* curSelectedImageUrl;
      *  Override point for customizing cells
      */
     JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-
+    
     /**
      *  Configure almost *anything* on the cell
      *
@@ -839,19 +842,19 @@ NSString* curSelectedImageUrl;
     if (!msg.isMediaMessage) {
         
         if ([msg.senderId isEqualToString:self.senderId]) {
-//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.outgoingCellIdentifier  forIndexPath:indexPath];
+            //            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.outgoingCellIdentifier  forIndexPath:indexPath];
             cell.textView.textColor = [UIColor blackColor];
         }
         else {
-//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.incomingCellIdentifier forIndexPath:indexPath];
+            //            cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.incomingCellIdentifier forIndexPath:indexPath];
             cell.textView.textColor = [UIColor whiteColor];
         }
         
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
     }
-
-//    cell.accessoryButton.hidden = ![self shouldShowAccessoryButtonForMessage:msg];
+    
+    //    cell.accessoryButton.hidden = ![self shouldShowAccessoryButtonForMessage:msg];
     return cell;
 }
 
@@ -870,7 +873,7 @@ NSString* curSelectedImageUrl;
     if (action == @selector(customAction:)) {
         return YES;
     }
-
+    
     return [super collectionView:collectionView canPerformAction:action forItemAtIndexPath:indexPath withSender:sender];
 }
 
@@ -880,14 +883,14 @@ NSString* curSelectedImageUrl;
         [self customAction:sender];
         return;
     }
-
+    
     [super collectionView:collectionView performAction:action forItemAtIndexPath:indexPath withSender:sender];
 }
 
 - (void)customAction:(id)sender
 {
     NSLog(@"Custom action received! Sender: %@", sender);
-
+    
     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Custom Action", nil)
                                 message:nil
                                delegate:nil
@@ -959,9 +962,38 @@ NSString* curSelectedImageUrl;
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Tapped avatar!");
+    //    NSLog(@"Tapped avatar!");
+    JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+    //    JSQMessagesAvatarImage *chatBotImage = nil;
+    //    SocialUserInfo *sUserInfo = [[DataModel sharedInstance] getSocialUserInfo];
+    //ibeacon sending message
+    if ([message.senderId isEqualToString:self.senderId]) {
+        [FTPopOverMenu showFromSenderFrame:avatarImageView.frame
+                             withMenuArray:SOCIAL_TITLES
+                                imageArray:SOCIAL_TITLES
+                                 doneBlock:^(NSInteger selectedIndex) {
+                                     //sending hudview simulation
+                                     NSString *info = [NSString stringWithFormat:@"Sharing to %@ ...", IBEACON_RANGE_TITLES[selectedIndex]];
+                                     MBProgressHUD *hud = [self showLoading:info];
+                                     [hud hideAnimated:YES afterDelay:10.0];
+                                 } dismissBlock:^{
+                                     
+                                 }];
+        
+    }else{//User SNS Share
+        [FTPopOverMenu showFromSenderFrame:avatarImageView.frame
+                             withMenuArray:IBEACON_RANGE_TITLES
+                                imageArray:@[self.detailItem.Image,self.detailItem.Image,self.detailItem.Image]
+                                 doneBlock:^(NSInteger selectedIndex) {
+                                     //sending hudview simulation
+                                     NSString *info = [NSString stringWithFormat:@"Sending to %@ Robot...", SOCIAL_TITLES[selectedIndex]];
+                                     MBProgressHUD *hud = [self showLoading:info];
+                                     [hud hideAnimated:YES afterDelay:10.0];
+                                 } dismissBlock:^{
+                                     
+                                 }];
+    }
 }
-
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Tapped message bubble!");
@@ -1005,7 +1037,7 @@ NSString* curSelectedImageUrl;
     CLUploader* mobileUploader = [[CLUploader alloc] init:cloudinary delegate:self];
     curSelectedImage = [images objectAtIndex:0];
     NSData *imageData = UIImageJPEGRepresentation(curSelectedImage, 1.0); // 1.0 is JPG quality
-//
+    //
     //    NSData *imageData = [NSData dataWithContentsOfFile:imageUrl];
     [mobileUploader upload:imageData options:@{}];
     //@see https://github.com/jdg/MBProgressHUD
@@ -1057,4 +1089,6 @@ NSString* curSelectedImageUrl;
     [self.inputToolbar.contentView.textView setText:exampleUrl];
     [self.inputToolbar toggleSendButtonEnabled];
 }
+#pragma mark FTPopOverMenu
+
 @end

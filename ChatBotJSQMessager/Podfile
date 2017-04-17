@@ -28,6 +28,7 @@ pod 'ASValueTrackingSlider'
 pod 'WechatOpenSDK'
 pod 'AFNetworking', '~> 2.5.4'
 pod 'LinkedinIOSHelper', '~> 1.0.7'
+pod 'FTPopOverMenu'
 
   target 'DeepDetectChatBotsTests' do
     inherit! :search_paths
