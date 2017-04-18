@@ -56,7 +56,7 @@
     //@see: https://github.com/balram3429/btSimplePopUp
     _popUpWithDelegate = [[btSimplePopUP alloc]initWithItemImage:@[
                                                                    [UIImage imageNamed:@"Facebook.png"],
-                                                                   [UIImage imageNamed:@"Linkedin.png"],
+                                                                   [UIImage imageNamed:@"LinkedIn.png"],
                                                                    [UIImage imageNamed:@"Wechat.png"],
                                                                    [UIImage imageNamed:@"Twitter.png"],
                                                                    [UIImage imageNamed:@"Instagram.png"],

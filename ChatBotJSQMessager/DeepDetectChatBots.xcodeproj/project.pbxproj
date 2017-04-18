@@ -42,6 +42,7 @@
 		A42F6B751E3F408A0096351C /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B741E3F408A0096351C /* JSImagePickerViewController.m */; };
 		A42F6B7B1E4053D50096351C /* ChatAsyncPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */; };
 		A433D3DC1EA33145003D7154 /* SocialUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A433D3DB1EA33145003D7154 /* SocialUserInfo.m */; };
+		A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A433D3DD1EA4E721003D7154 /* AVFoundation.framework */; };
 		A43794221E497BA300EC44AD /* icon24.png in Resources */ = {isa = PBXBuildFile; fileRef = A43794211E497BA200EC44AD /* icon24.png */; };
 		A455B04F1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */; };
 		A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */; };
@@ -165,7 +166,7 @@
 		A4E3D6C91E9903C300B7F31C /* Github.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BA1E9903C300B7F31C /* Github.png */; };
 		A4E3D6CA1E9903C300B7F31C /* Google+.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BB1E9903C300B7F31C /* Google+.png */; };
 		A4E3D6CB1E9903C300B7F31C /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BC1E9903C300B7F31C /* Instagram.png */; };
-		A4E3D6CC1E9903C300B7F31C /* Linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BD1E9903C300B7F31C /* Linkedin.png */; };
+		A4E3D6CC1E9903C300B7F31C /* LinkedIn.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BD1E9903C300B7F31C /* LinkedIn.png */; };
 		A4E3D6CD1E9903C300B7F31C /* Pinterest.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BE1E9903C300B7F31C /* Pinterest.png */; };
 		A4E3D6CE1E9903C300B7F31C /* Reddit.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6BF1E9903C300B7F31C /* Reddit.png */; };
 		A4E3D6CF1E9903C300B7F31C /* Snapchat.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E3D6C01E9903C300B7F31C /* Snapchat.png */; };
@@ -271,6 +272,7 @@
 		A42F6B7A1E4053D50096351C /* ChatAsyncPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAsyncPhoto.m; sourceTree = "<group>"; };
 		A433D3DA1EA33145003D7154 /* SocialUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialUserInfo.h; sourceTree = "<group>"; };
 		A433D3DB1EA33145003D7154 /* SocialUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialUserInfo.m; sourceTree = "<group>"; };
+		A433D3DD1EA4E721003D7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A43794211E497BA200EC44AD /* icon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon24.png; path = Resources/icon24.png; sourceTree = SOURCE_ROOT; };
 		A455B04D1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Seque_SqootInfo.h; sourceTree = "<group>"; };
 		A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Seque_SqootInfo.m; sourceTree = "<group>"; };
@@ -489,7 +491,7 @@
 		A4E3D6BA1E9903C300B7F31C /* Github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Github.png; path = images/Github.png; sourceTree = "<group>"; };
 		A4E3D6BB1E9903C300B7F31C /* Google+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Google+.png"; path = "images/Google+.png"; sourceTree = "<group>"; };
 		A4E3D6BC1E9903C300B7F31C /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Instagram.png; path = images/Instagram.png; sourceTree = "<group>"; };
-		A4E3D6BD1E9903C300B7F31C /* Linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Linkedin.png; path = images/Linkedin.png; sourceTree = "<group>"; };
+		A4E3D6BD1E9903C300B7F31C /* LinkedIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LinkedIn.png; path = images/LinkedIn.png; sourceTree = "<group>"; };
 		A4E3D6BE1E9903C300B7F31C /* Pinterest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pinterest.png; path = images/Pinterest.png; sourceTree = "<group>"; };
 		A4E3D6BF1E9903C300B7F31C /* Reddit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reddit.png; path = images/Reddit.png; sourceTree = "<group>"; };
 		A4E3D6C01E9903C300B7F31C /* Snapchat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Snapchat.png; path = images/Snapchat.png; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */,
 				A4E3D6931E98F8A600B7F31C /* Accelerate.framework in Frameworks */,
 				A4E3D6911E98F89E00B7F31C /* QuartzCore.framework in Frameworks */,
 				A4A314DB1E1206D4009EDA74 /* iAd.framework in Frameworks */,
@@ -1022,7 +1025,7 @@
 				A4E3D6BA1E9903C300B7F31C /* Github.png */,
 				A4E3D6BB1E9903C300B7F31C /* Google+.png */,
 				A4E3D6BC1E9903C300B7F31C /* Instagram.png */,
-				A4E3D6BD1E9903C300B7F31C /* Linkedin.png */,
+				A4E3D6BD1E9903C300B7F31C /* LinkedIn.png */,
 				A4E3D6BE1E9903C300B7F31C /* Pinterest.png */,
 				A4E3D6BF1E9903C300B7F31C /* Reddit.png */,
 				A4E3D6C01E9903C300B7F31C /* Snapchat.png */,
@@ -1038,6 +1041,7 @@
 		AC7BAD511C658464F307BA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A433D3DD1EA4E721003D7154 /* AVFoundation.framework */,
 				A496A9D81E9C63910075B879 /* linkedin-sdk.framework */,
 				A4E3D6921E98F8A600B7F31C /* Accelerate.framework */,
 				A4E3D6901E98F89E00B7F31C /* QuartzCore.framework */,
@@ -1182,7 +1186,7 @@
 				A4E3D6C61E9903C300B7F31C /* Behance.png in Resources */,
 				A4A622A51E3D748F0014881F /* mreviews.png in Resources */,
 				A4E3D6CB1E9903C300B7F31C /* Instagram.png in Resources */,
-				A4E3D6CC1E9903C300B7F31C /* Linkedin.png in Resources */,
+				A4E3D6CC1E9903C300B7F31C /* LinkedIn.png in Resources */,
 				A455B0611E7F8598002F6F23 /* Screen.storyboard in Resources */,
 				A4E3D6C91E9903C300B7F31C /* Github.png in Resources */,
 				A493CE1C1E3C6DB10097C113 /* gender.png in Resources */,

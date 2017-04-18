@@ -49,6 +49,7 @@
 #import "SqootPageViewController.h"
 #import "MZTimerLabel.h"
 #import "FTPopOverMenu.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define IBEACON_RANGE_TITLES  [NSArray arrayWithObjects:@"Immediate",@"Near",@"Far",nil]
 #define SOCIAL_TITLES  [NSArray arrayWithObjects: @"Facebook", @"LinkedIn",@"Wechat",@"Twitter",@"Instagram", @"Tumblr", @"Dribbble",@"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",@"Reddit",@"Vine", @"Yelp",@"Youtube",nil]
@@ -305,6 +306,12 @@ NSString* curSelectedImageUrl;
     NSString *emotionalMessage = [[NSString stringWithFormat:@":%@:,It is %.2f%% true that %@",response.status.msg.localizedLowercaseString,prob,catKeywords]stringByReplacingEmojiCheatCodesWithUnicode];
     //
     [self addDemoMessage:[self getJSQMessage:emotionalMessage]];
+    //Speak it by TTS api
+    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
+    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:emotionalMessage];
+    utterance.rate = AVSpeechUtteranceDefaultSpeechRate;
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
+    [synthesizer speakUtterance:utterance];
     //then append Sqoot information query by keywords/category.
     //FIXME:sequence loading;
     [self esearchSimiliary];
@@ -973,7 +980,7 @@ NSString* curSelectedImageUrl;
                                 imageArray:SOCIAL_TITLES
                                  doneBlock:^(NSInteger selectedIndex) {
                                      //sending hudview simulation
-                                     NSString *info = [NSString stringWithFormat:@"Sharing to %@ ...", IBEACON_RANGE_TITLES[selectedIndex]];
+                                     NSString *info = [NSString stringWithFormat:@"Sharing to %@ ...", SOCIAL_TITLES[selectedIndex]];
                                      MBProgressHUD *hud = [self showLoading:info];
                                      [hud hideAnimated:YES afterDelay:10.0];
                                  } dismissBlock:^{
@@ -986,7 +993,7 @@ NSString* curSelectedImageUrl;
                                 imageArray:@[self.detailItem.Image,self.detailItem.Image,self.detailItem.Image]
                                  doneBlock:^(NSInteger selectedIndex) {
                                      //sending hudview simulation
-                                     NSString *info = [NSString stringWithFormat:@"Sending to %@ Robot...", SOCIAL_TITLES[selectedIndex]];
+                                     NSString *info = [NSString stringWithFormat:@"Sending to %@ Robot...", IBEACON_RANGE_TITLES[selectedIndex]];
                                      MBProgressHUD *hud = [self showLoading:info];
                                      [hud hideAnimated:YES afterDelay:10.0];
                                  } dismissBlock:^{
