@@ -53,6 +53,7 @@
 
 #define IBEACON_RANGE_TITLES  [NSArray arrayWithObjects:@"Immediate",@"Near",@"Far",nil]
 #define SOCIAL_TITLES  [NSArray arrayWithObjects: @"Facebook", @"LinkedIn",@"Wechat",@"Twitter",@"Instagram", @"Tumblr", @"Dribbble",@"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",@"Reddit",@"Vine", @"Yelp",@"Youtube",nil]
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate,JSImagePickerViewControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -419,6 +420,7 @@ NSString* curSelectedImageUrl;
      */
     //    self.inputToolbar.contentView.textView.hidden = YES;
     //    self.collectionView.accessoryDelegate = self;
+    //UINavigation header with icon functions.
     UIImage *headerOrignalIcon =  [UIImage imageNamed:self.detailItem.Image];
     UIImage *headerIcon =  [UIImageUtils imageWithImage:headerOrignalIcon scaledToSize:CGSizeMake(40, 40)];
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
@@ -507,7 +509,89 @@ NSString* curSelectedImageUrl;
     if(self.detailItem.Media & MediaText){
         self.inputToolbar.contentView.leftBarButtonItem.enabled = NO;
     }
+    //
+    [self startLocationManager];
+}
+
+- (void)startLocationManager
+{
+    // Initialize location manager and set ourselves as the delegate
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone; //whenever we move
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
+    [self.locationManager startUpdatingLocation];
+//    [self.locationManager requestWhenInUseAuthorization]; // Add This Line
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if(IS_OS_8_OR_LATER) {
+        //        [self.locationManager requestAlwaysAuthorization];
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+            NSLog(@"startLocationManager...");
+        }
+    }
+    //
+    [self startIBeaconManager];
+}
+-(void)startIBeaconManager
+{
+    //Detecting Beacons,@see:http://www.appcoda.com/ios7-programming-ibeacons-tutorial/
+    // Create a NSUUID with the same UUID as the broadcasting beacon
+    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:UUID_IBEACON_0];
+    
+    // Setup a new region with that UUID and same identifier as the broadcasting beacon
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+                                                           identifier:RID_UUID_IBEACON_0];
+    
+    // Tell location manager to start monitoring for the beacon region
+    [self.locationManager startMonitoringForRegion:self.beaconRegion];
+    // Check if beacon monitoring is available for this device
+    if (![CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iBeacon Monitoring not available" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }else{
+        NSLog(@"startIBeaconManager...");
+    }
+}
+
+// Location Manager Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"%@", [locations lastObject]);
+}
+
+- (void)requestAlwaysAuthorization
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    // If the status is denied or only granted for when in use, display an alert
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
+        NSString *title;
+        title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Settings", nil];
+        [alertView show];
+    }
+    // The user has not enabled any location services. Request background authorization.
+    else if (status == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // Send the user to the Settings for this app
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -1098,4 +1182,30 @@ NSString* curSelectedImageUrl;
 }
 #pragma mark FTPopOverMenu
 
+#pragma mark iBeacon CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager*)manager didEnterRegion:(CLRegion*)region
+{
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+    NSLog(@"startRangingBeaconsInRegion:didEnter");
+}
+
+-(void)locationManager:(CLLocationManager*)manager didExitRegion:(CLRegion*)region
+{
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    NSLog(@"startRangingBeaconsInRegion:didExit");
+}
+-(void)locationManager:(CLLocationManager*)manager
+       didRangeBeacons:(NSArray*)beacons
+              inRegion:(CLBeaconRegion*)region
+{
+    // Beacon found!
+    
+    CLBeacon *foundBeacon = [beacons firstObject];
+    // You can retrieve the beacon data from its properties
+    NSString *uuid = foundBeacon.proximityUUID.UUIDString;
+    NSString *major = [NSString stringWithFormat:@"%@", foundBeacon.major];
+    NSString *minor = [NSString stringWithFormat:@"%@", foundBeacon.minor];
+    NSLog(@"Beacon found:didRangeBeacons,UUID:%@,major:%@,minor:%@",uuid,major,minor);
+    
+}
 @end

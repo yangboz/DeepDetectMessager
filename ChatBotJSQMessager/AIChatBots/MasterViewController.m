@@ -393,7 +393,7 @@
         SendAuthReq *req = [[SendAuthReq alloc] init];
         req.scope = @"snsapi_userinfo";
         req.state = @"wechat_sdk_ddChatBots";
-//        [WXApi sendAuthReq:req viewController:<#(UIViewController *)#> delegate:<#(id<WXApiDelegate>)#>]
+//        [WXApi sendAuthReq:req viewController:self delegate:self];
         [WXApi sendReq:req];
     }
     else {

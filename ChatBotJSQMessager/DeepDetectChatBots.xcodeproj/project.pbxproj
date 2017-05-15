@@ -58,6 +58,7 @@
 		A4674D3B1E84FAAC00FA67DC /* COVIASv1Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D3A1E84FAAC00FA67DC /* COVIASv1Model.m */; };
 		A4674D3D1E864B7F00FA67DC /* footwears.png in Resources */ = {isa = PBXBuildFile; fileRef = A4674D3C1E864B7F00FA67DC /* footwears.png */; };
 		A4674D401E8695DC00FA67DC /* SearchResponseVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4674D3F1E8695DC00FA67DC /* SearchResponseVO.m */; };
+		A474542E1EC68D6800BF4F9C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A474542D1EC68D6800BF4F9C /* CoreLocation.framework */; };
 		A493CE151E3C6DB10097C113 /* age.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0B1E3C6DB10097C113 /* age.png */; };
 		A493CE161E3C6DB10097C113 /* bags.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0C1E3C6DB10097C113 /* bags.png */; };
 		A493CE171E3C6DB10097C113 /* buildings.png in Resources */ = {isa = PBXBuildFile; fileRef = A493CE0D1E3C6DB10097C113 /* buildings.png */; };
@@ -297,6 +298,7 @@
 		A4674D3C1E864B7F00FA67DC /* footwears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = footwears.png; path = robots/footwears.png; sourceTree = "<group>"; };
 		A4674D3E1E8695DC00FA67DC /* SearchResponseVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResponseVO.h; sourceTree = "<group>"; };
 		A4674D3F1E8695DC00FA67DC /* SearchResponseVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseVO.m; sourceTree = "<group>"; };
+		A474542D1EC68D6800BF4F9C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A493CE0B1E3C6DB10097C113 /* age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = age.png; path = robots/age.png; sourceTree = "<group>"; };
 		A493CE0C1E3C6DB10097C113 /* bags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bags.png; path = robots/bags.png; sourceTree = "<group>"; };
 		A493CE0D1E3C6DB10097C113 /* buildings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buildings.png; path = robots/buildings.png; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A474542E1EC68D6800BF4F9C /* CoreLocation.framework in Frameworks */,
 				A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */,
 				A4E3D6931E98F8A600B7F31C /* Accelerate.framework in Frameworks */,
 				A4E3D6911E98F89E00B7F31C /* QuartzCore.framework in Frameworks */,
@@ -1041,6 +1044,7 @@
 		AC7BAD511C658464F307BA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A474542D1EC68D6800BF4F9C /* CoreLocation.framework */,
 				A433D3DD1EA4E721003D7154 /* AVFoundation.framework */,
 				A496A9D81E9C63910075B879 /* linkedin-sdk.framework */,
 				A4E3D6921E98F8A600B7F31C /* Accelerate.framework */,
@@ -1659,6 +1663,10 @@
 				INFOPLIST_FILE = AIChatBots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AIChatBots",
+				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -1703,6 +1711,10 @@
 				INFOPLIST_FILE = AIChatBots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AIChatBots",
+				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

@@ -46,6 +46,8 @@ MasterViewController *masterViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
+    //SocialLoginClients register
+    [WXApi registerApp:APP_ID_WX enableMTA:YES];
     //API json data initialization
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"chatbots" ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
@@ -65,8 +67,6 @@ MasterViewController *masterViewController;
                               [allChatBotsModel chatbots] ];
     //
     [appDelegate setMasterControllerData:mArray];
-    //SocialLoginClients register
-    [WXApi registerApp:APP_ID_WX];
     return YES;
 }
 
@@ -108,13 +108,23 @@ MasterViewController *masterViewController;
         return NO;
     }
 }
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+    BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
+    NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
+    return  isSuc;
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 //    if ([LISDKCallbackHandler shouldHandleUrl:url]) {
 //        NSLog(@"LISDKCallbackHandler...");
 //        return [LISDKCallbackHandler application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 //    }
-    [WXApi handleOpenURL:url delegate:self];
+    BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
+    NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
     return YES;
 }
 #pragma mark WXApiDelegate
