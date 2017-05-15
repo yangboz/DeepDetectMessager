@@ -363,6 +363,7 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:WX_REFRESH_TOKEN];
         NSString *refreshUrlStr = [NSString stringWithFormat:@"%@/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@", WX_BASE_URL, APP_ID_WX, refreshToken];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
         [manager GET:refreshUrlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"请求reAccess的response = %@", responseObject);
             NSDictionary *refreshDict = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -376,6 +377,8 @@
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 // 当存在reAccessToken不为空时直接执行AppDelegate中的wechatLoginByRequestForUserInfo方法
 //                !self.requestForUserInfoBlock ? : self.requestForUserInfoBlock();
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate wechatLoginByRequestForUserInfo];
             }
             else {
                 [self wechatLogin];

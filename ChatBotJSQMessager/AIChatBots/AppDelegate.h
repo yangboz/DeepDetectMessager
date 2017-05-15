@@ -10,6 +10,7 @@
 //#import <linkedin-sdk/LISDK.h>
 #import "WxApi.h"
 #import "Constants.h"
+#import "SocialUserInfo.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 {
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 -(void)setMasterControllerData:(NSMutableArray *)data;
+- (void)wechatLoginByRequestForUserInfo;
 
 @end
 

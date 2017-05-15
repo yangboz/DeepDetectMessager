@@ -134,6 +134,7 @@ MasterViewController *masterViewController;
         SendAuthResp *temp = (SendAuthResp *)resp;
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSString *accessUrlStr = [NSString stringWithFormat:@"%@/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code", WX_BASE_URL, APP_ID_WX, APP_SECRET_WX, temp.code];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
         [manager GET:accessUrlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"请求access的response = %@", responseObject);
             NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -147,11 +148,41 @@ MasterViewController *masterViewController;
                 [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:WX_REFRESH_TOKEN];
                 [[NSUserDefaults standardUserDefaults] synchronize]; // 命令直接同步到文件里，来避免数据的丢失
             }
+            [self wechatLoginByRequestForUserInfo];
                 //
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"获取access_token时出错 = %@", error);
         }];
     }
 }
-
+- (void)wechatLoginByRequestForUserInfo {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:WX_ACCESS_TOKEN];
+    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:WX_OPEN_ID];
+    NSString *userUrlStr = [NSString stringWithFormat:@"%@/userinfo?access_token=%@&openid=%@", WX_BASE_URL, accessToken, openID];
+    // 请求用户数据
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    [manager GET:userUrlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"请求用户信息的response = %@", responseObject);
+        //
+        NSMutableDictionary *userDict = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+//        NSError *error=nil;
+        SocialUserInfo *sUserInfo = [[SocialUserInfo alloc] init];
+        [sUserInfo setPictureUrl:[userDict objectForKey:@"headimgurl"]];
+         [sUserInfo setLanguage:[userDict objectForKey:@"language"]];
+         [sUserInfo setCity:[userDict objectForKey:@"city"]];
+         [sUserInfo setCountry:[userDict objectForKey:@"country"]];
+         [sUserInfo setNickName:[userDict objectForKey:@"nicName"]];
+         [sUserInfo setOpenid:[userDict objectForKey:@"openid"]];
+        [sUserInfo setPrivilege:[userDict objectForKey:@"privilege"]];
+        [sUserInfo setProvince:[userDict objectForKey:@"province"]];
+        [sUserInfo setSex:[userDict objectForKey:@"sex"]];
+        [sUserInfo setUnionid:[userDict objectForKey:@"unionid"]];
+        NSLog(@"store social user Info : %@", sUserInfo);
+        //data store.
+        [[DataModel sharedInstance] setSocialUserInfo:sUserInfo];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"获取用户信息时出错 = %@", error);
+    }];
+}
 @end

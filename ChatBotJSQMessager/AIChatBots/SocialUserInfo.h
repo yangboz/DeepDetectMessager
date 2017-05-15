@@ -9,7 +9,18 @@
 #import <JSONModel/JSONModel.h>
 
 @interface SocialUserInfo : JSONModel
+//LinkedIn
 @property(nonatomic) NSString *firstName;
 @property(nonatomic) NSString *lastName;
 @property(nonatomic) NSString *pictureUrl;
+//WeChat
+@property(nonatomic) NSString *language;
+@property(nonatomic) NSString *nickName;
+@property(nonatomic) NSNumber *sex;
+@property(nonatomic) NSString *country;
+@property(nonatomic) NSString *province;
+@property(nonatomic) NSString *city;
+@property(nonatomic) NSObject *privilege;
+@property(nonatomic) NSString *unionid;
+@property(nonatomic) NSString *openid;
 @end

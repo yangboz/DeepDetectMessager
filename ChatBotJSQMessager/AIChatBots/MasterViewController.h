@@ -12,6 +12,7 @@
 #import "UIImageUtils.h"
 //#import <linkedin-sdk/LISDK.h>
 #import "Constants.h"
+#import "AppDelegate.h"
 
 @class DetailViewController;
 
@@ -26,7 +27,5 @@
 
 @property (nonatomic, retain) NSMutableArray *listOfRatings;
 @property (nonatomic, retain) NSMutableArray *groupedChatbots;
-
-
 @end
 
