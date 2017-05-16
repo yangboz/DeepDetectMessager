@@ -25,6 +25,10 @@
 		A409A1A31E1153800083A3CA /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A19B1E1153800083A3CA /* MasterViewController.m */; };
 		A409A1A51E1156D40083A3CA /* chatbots.json in Resources */ = {isa = PBXBuildFile; fileRef = A409A1A41E1156D30083A3CA /* chatbots.json */; };
 		A409A1A81E11580C0083A3CA /* ChatBotVoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A409A1A71E11580C0083A3CA /* ChatBotVoModel.m */; };
+		A4110D7C1ECAB7DF00C9FB13 /* face.png in Resources */ = {isa = PBXBuildFile; fileRef = A4110D781ECAB7DF00C9FB13 /* face.png */; };
+		A4110D7D1ECAB7DF00C9FB13 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = A4110D791ECAB7DF00C9FB13 /* music.png */; };
+		A4110D7E1ECAB7DF00C9FB13 /* prisma.png in Resources */ = {isa = PBXBuildFile; fileRef = A4110D7A1ECAB7DF00C9FB13 /* prisma.png */; };
+		A4110D7F1ECAB7DF00C9FB13 /* translator.png in Resources */ = {isa = PBXBuildFile; fileRef = A4110D7B1ECAB7DF00C9FB13 /* translator.png */; };
 		A41288C11E13BA43002CFAAC /* VC_Segue_ChatBotInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A41288C01E13BA43002CFAAC /* VC_Segue_ChatBotInfo.m */; };
 		A41288C51E13E14A002CFAAC /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A41288C41E13E14A002CFAAC /* Default-Portrait@2x.png */; };
 		A42F6B511E3DD4620096351C /* APIDeepDetectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B501E3DD4620096351C /* APIDeepDetectModel.m */; };
@@ -240,6 +244,10 @@
 		A409A1A41E1156D30083A3CA /* chatbots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chatbots.json; sourceTree = "<group>"; };
 		A409A1A61E11580C0083A3CA /* ChatBotVoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBotVoModel.h; sourceTree = "<group>"; };
 		A409A1A71E11580C0083A3CA /* ChatBotVoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBotVoModel.m; sourceTree = "<group>"; };
+		A4110D781ECAB7DF00C9FB13 /* face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = face.png; path = robots/face.png; sourceTree = "<group>"; };
+		A4110D791ECAB7DF00C9FB13 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music.png; path = robots/music.png; sourceTree = "<group>"; };
+		A4110D7A1ECAB7DF00C9FB13 /* prisma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prisma.png; path = robots/prisma.png; sourceTree = "<group>"; };
+		A4110D7B1ECAB7DF00C9FB13 /* translator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = translator.png; path = robots/translator.png; sourceTree = "<group>"; };
 		A41288BF1E13BA43002CFAAC /* VC_Segue_ChatBotInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Segue_ChatBotInfo.h; sourceTree = "<group>"; };
 		A41288C01E13BA43002CFAAC /* VC_Segue_ChatBotInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Segue_ChatBotInfo.m; sourceTree = "<group>"; };
 		A41288C41E13E14A002CFAAC /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
@@ -730,6 +738,10 @@
 		A4A314DD1E120B28009EDA74 /* robots */ = {
 			isa = PBXGroup;
 			children = (
+				A4110D781ECAB7DF00C9FB13 /* face.png */,
+				A4110D791ECAB7DF00C9FB13 /* music.png */,
+				A4110D7A1ECAB7DF00C9FB13 /* prisma.png */,
+				A4110D7B1ECAB7DF00C9FB13 /* translator.png */,
 				A4674D3C1E864B7F00FA67DC /* footwears.png */,
 				A43794211E497BA200EC44AD /* icon24.png */,
 				A4A622A11E3D748F0014881F /* ad-blocking.png */,
@@ -1198,6 +1210,7 @@
 				A4A3163D1E1263CC009EDA74 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				A409A1A21E1153800083A3CA /* Info.plist in Resources */,
 				A455B05D1E7F818A002F6F23 /* icon.png in Resources */,
+				A4110D7F1ECAB7DF00C9FB13 /* translator.png in Resources */,
 				A4A3161F1E1263CC009EDA74 /* JSQMessagesViewController.xib in Resources */,
 				A49ADB1D1E77CAC60085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				A493CE161E3C6DB10097C113 /* bags.png in Resources */,
@@ -1206,6 +1219,7 @@
 				A466770B1E7FA2D7003680B6 /* LaunchScreen.storyboard in Resources */,
 				A493CE151E3C6DB10097C113 /* age.png in Resources */,
 				A4A622A41E3D748F0014881F /* ad-blocking.png in Resources */,
+				A4110D7D1ECAB7DF00C9FB13 /* music.png in Resources */,
 				A496A9D71E9BBB600075B879 /* Wechat.png in Resources */,
 				A4A316151E1263CC009EDA74 /* JSQMessagesAssets.bundle in Resources */,
 				A409A19E1E1153800083A3CA /* Assets.xcassets in Resources */,
@@ -1218,11 +1232,13 @@
 				A493CE221E3C941A0097C113 /* imagenet.png in Resources */,
 				A493CE181E3C6DB10097C113 /* clothing.png in Resources */,
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
+				A4110D7C1ECAB7DF00C9FB13 /* face.png in Resources */,
 				A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */,
 				A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316361E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4E3D6D21E9903C300B7F31C /* Vine.png in Resources */,
 				A4E3D6CE1E9903C300B7F31C /* Reddit.png in Resources */,
+				A4110D7E1ECAB7DF00C9FB13 /* prisma.png in Resources */,
 				A4E3D6C71E9903C300B7F31C /* Deviantart.png in Resources */,
 				A4E3D6D91E99044300B7F31C /* Twitter.png in Resources */,
 				A4674D3D1E864B7F00FA67DC /* footwears.png in Resources */,

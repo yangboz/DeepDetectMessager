@@ -1,12 +1,35 @@
 {
     "chatbots": [
                  {
+                 "Image": "face.png",
+                 "Id": 0,
+                 "Service": "face",
+                 "Name": "Face detection",
+                 "numberOfClasses": 5,
+                 "Development": 1,
+                 "AI": "•••••••••",
+                 "Bio": "Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Neural Networks ",
+                 "Entity": "Mythical",
+                 "Personality": "Helper",
+                 "Temperament": "Friendly",
+                 "Basis": "Original",
+                 "From": "https://github.com/kpzhang93/MTCNN_face_detection_alignment",
+                 "Country": "Github",
+                 "Gender": "M",
+                 "Created": "May 16, 2017",
+                 "Updated": "Cold",
+                 "Interests": "Person’s face",
+                 "Rating": "H",
+                 "Example": "http://118.190.3.169/images/President_Barack_Obama.jpg"
+                 ,"Media":2
+                 },
+                 {
                  "Image": "age.png",
                  "Id": 1,
                  "Service": "age",
                  "Name": "Age detection",
                  "numberOfClasses": 8,
-                 "Development": 29715,
+                 "Development": 1,
                  "AI": "•••••••••",
                  "Bio": "Estimates person’s age as within one of eight buckets:0_2, 4_6, 8_13, 15_20, 25_32, 38_43, 48_53, 60+ ",
                  "Entity": "Mythical",
@@ -16,7 +39,7 @@
                  "From": "DeepDetect",
                  "Country": "China",
                  "Gender": "M",
-                 "Created": "January 28, 2017",
+                 "Created": "May 16, 2017",
                  "Updated": "Cold",
                  "Interests": "Person’s age",
                  "Rating": "H",
@@ -45,6 +68,29 @@
                  "Rating": "H",
                  "Example": "http://118.190.3.169/images/President_Barack_Obama.jpg"
                  ,"Media":32
+                 },
+                 {
+                 "Image": "translator.png",
+                 "Id": 3,
+                 "Service": "translator",
+                 "Name": "Facebook AI Research Sequence-to-Sequence Translator",
+                 "numberOfClasses": 4,
+                 "Development": 1,
+                 "AI": "•••••••••",
+                 "Bio": "This is fairseq, provide pre-trained models for English to French, English to German and English to Romanian translation.",
+                 "Entity": "Mythical",
+                 "Personality": "Helper",
+                 "Temperament": "Friendly",
+                 "Basis": "Original",
+                 "From": "https://github.com/facebookresearch/fairseq",
+                 "Country": "Github",
+                 "Gender": "M",
+                 "Created": "January 28, 2017",
+                 "Updated": "Cold",
+                 "Interests": "Person’s languages",
+                 "Rating": "H",
+                 "Example": "Why is it rare to discover new marine mam@@ mal species ?"
+                 ,"Media":1
                  },
                  {
                  "Image": "bags.png",
@@ -321,6 +367,52 @@
                  "Rating": "E",
                  "Example": "http://dd.smartkit.info"
                  ,"Media":32
+                 },
+                 {
+                 "Image": "prisma.png",
+                 "Id": 15,
+                 "Service": "prisma",
+                 "Name": "Prisma transforms your photos and videos into works of art.",
+                 "numberOfClasses": 10,
+                 "Development": 29715,
+                 "AI": "•••••••••",
+                 "Bio": "Prisma using the styles of famous artists: Van Gogh, Picasso, Levitan, as well as world famous ornaments and patterns.",
+                 "Entity": "Artists",
+                 "Personality": "Helper",
+                 "Temperament": "Friendly",
+                 "Basis": "Original",
+                 "From": "https://github.com/jcjohnson/neural-style",
+                 "Country": "Github",
+                 "Gender": "M",
+                 "Created": "January 28, 2017",
+                 "Updated": "Cold",
+                 "Interests": "Movie Reviews",
+                 "Rating": "E",
+                 "Example": "This movie is awsome."
+                 ,"Media":2
+                 },
+                 {
+                 "Image": "music.png",
+                 "Id": 16,
+                 "Service": "music",
+                 "Name": "NSynth music",
+                 "numberOfClasses": 999,
+                 "Development": 1,
+                 "AI": "•••••••••",
+                 "Bio": " NSynth music is A large-scale and high-quality dataset of annotated musical notes.",
+                 "Entity": "Artists",
+                 "Personality": "Helper",
+                 "Temperament": "Friendly",
+                 "Basis": "Original",
+                 "From": "https://github.com/faroit/nsynth-convert",
+                 "Country": "Github",
+                 "Gender": "M",
+                 "Created": "January 28, 2017",
+                 "Updated": "Cold",
+                 "Interests": "Ad",
+                 "Rating": "E",
+                 "Example": "http://dd.smartkit.info"
+                 ,"Media":1
                  }
                  ]
 }
