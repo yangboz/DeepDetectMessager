@@ -48,6 +48,7 @@
 		A433D3DC1EA33145003D7154 /* SocialUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A433D3DB1EA33145003D7154 /* SocialUserInfo.m */; };
 		A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A433D3DD1EA4E721003D7154 /* AVFoundation.framework */; };
 		A43794221E497BA300EC44AD /* icon24.png in Resources */ = {isa = PBXBuildFile; fileRef = A43794211E497BA200EC44AD /* icon24.png */; };
+		A451ADA01ECDB0BA007F6397 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */; };
 		A455B04F1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */; };
 		A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */; };
 		A455B0561E7F7EE8002F6F23 /* SqootPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0541E7F7EE8002F6F23 /* SqootPageViewController.m */; };
@@ -162,6 +163,11 @@
 		A4AAAC841E8753A20040891E /* SearchResponseImageHitsVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AAAC831E8753A20040891E /* SearchResponseImageHitsVO.m */; };
 		A4AAAC871E87585B0040891E /* SearchResponseImageHitVO.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AAAC861E87585B0040891E /* SearchResponseImageHitVO.m */; };
 		A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AAAC8A1E875BC60040891E /* CVCSequeSimilarityCell.xib */; };
+		A4D95F7A1ECCA0BA00F9711E /* APIDeepDetectInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D95F791ECCA0BA00F9711E /* APIDeepDetectInfoService.m */; };
+		A4D95F801ECCA1C000F9711E /* APIDeepDetectInfoHead.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D95F7F1ECCA1C000F9711E /* APIDeepDetectInfoHead.m */; };
+		A4D95F831ECCA2B800F9711E /* APIDeepDetectInfoStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D95F821ECCA2B800F9711E /* APIDeepDetectInfoStatus.m */; };
+		A4D95F861ECCABB600F9711E /* APIDeepDetectInfoServices.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D95F851ECCABB600F9711E /* APIDeepDetectInfoServices.m */; };
+		A4D95F881ECD303600F9711E /* objector.png in Resources */ = {isa = PBXBuildFile; fileRef = A4D95F871ECD303600F9711E /* objector.png */; };
 		A4E3D68F1E98F88400B7F31C /* btSimplePopUP.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E3D68E1E98F88400B7F31C /* btSimplePopUP.m */; };
 		A4E3D6911E98F89E00B7F31C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E3D6901E98F89E00B7F31C /* QuartzCore.framework */; };
 		A4E3D6931E98F8A600B7F31C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E3D6921E98F8A600B7F31C /* Accelerate.framework */; };
@@ -283,6 +289,7 @@
 		A433D3DB1EA33145003D7154 /* SocialUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialUserInfo.m; sourceTree = "<group>"; };
 		A433D3DD1EA4E721003D7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A43794211E497BA200EC44AD /* icon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon24.png; path = Resources/icon24.png; sourceTree = SOURCE_ROOT; };
+		A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A455B04D1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Seque_SqootInfo.h; sourceTree = "<group>"; };
 		A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Seque_SqootInfo.m; sourceTree = "<group>"; };
 		A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CatColors.m"; sourceTree = "<group>"; };
@@ -490,6 +497,15 @@
 		A4AAAC851E87585B0040891E /* SearchResponseImageHitVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResponseImageHitVO.h; sourceTree = "<group>"; };
 		A4AAAC861E87585B0040891E /* SearchResponseImageHitVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseImageHitVO.m; sourceTree = "<group>"; };
 		A4AAAC8A1E875BC60040891E /* CVCSequeSimilarityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCSequeSimilarityCell.xib; sourceTree = "<group>"; };
+		A4D95F781ECCA0BA00F9711E /* APIDeepDetectInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDeepDetectInfoService.h; sourceTree = "<group>"; };
+		A4D95F791ECCA0BA00F9711E /* APIDeepDetectInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDeepDetectInfoService.m; sourceTree = "<group>"; };
+		A4D95F7E1ECCA1C000F9711E /* APIDeepDetectInfoHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDeepDetectInfoHead.h; sourceTree = "<group>"; };
+		A4D95F7F1ECCA1C000F9711E /* APIDeepDetectInfoHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDeepDetectInfoHead.m; sourceTree = "<group>"; };
+		A4D95F811ECCA2B800F9711E /* APIDeepDetectInfoStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDeepDetectInfoStatus.h; sourceTree = "<group>"; };
+		A4D95F821ECCA2B800F9711E /* APIDeepDetectInfoStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDeepDetectInfoStatus.m; sourceTree = "<group>"; };
+		A4D95F841ECCABB600F9711E /* APIDeepDetectInfoServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDeepDetectInfoServices.h; sourceTree = "<group>"; };
+		A4D95F851ECCABB600F9711E /* APIDeepDetectInfoServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDeepDetectInfoServices.m; sourceTree = "<group>"; };
+		A4D95F871ECD303600F9711E /* objector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objector.png; path = robots/objector.png; sourceTree = "<group>"; };
 		A4DB6AAC06B0303FB7D6251C /* Pods-DeepDetectChatBotsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepDetectChatBotsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepDetectChatBotsUITests/Pods-DeepDetectChatBotsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E3D68D1E98F88400B7F31C /* btSimplePopUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btSimplePopUP.h; sourceTree = "<group>"; };
 		A4E3D68E1E98F88400B7F31C /* btSimplePopUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = btSimplePopUP.m; sourceTree = "<group>"; };
@@ -523,6 +539,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A451ADA01ECDB0BA007F6397 /* CoreBluetooth.framework in Frameworks */,
 				A474542E1EC68D6800BF4F9C /* CoreLocation.framework in Frameworks */,
 				A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */,
 				A4E3D6931E98F8A600B7F31C /* Accelerate.framework in Frameworks */,
@@ -738,6 +755,7 @@
 		A4A314DD1E120B28009EDA74 /* robots */ = {
 			isa = PBXGroup;
 			children = (
+				A4D95F871ECD303600F9711E /* objector.png */,
 				A4110D781ECAB7DF00C9FB13 /* face.png */,
 				A4110D791ECAB7DF00C9FB13 /* music.png */,
 				A4110D7A1ECAB7DF00C9FB13 /* prisma.png */,
@@ -952,6 +970,14 @@
 				A42F6B6B1E3DFBE60096351C /* APIDeepDetectResponseBodyPrediction.m */,
 				A42F6B6D1E3DFC2E0096351C /* APIDeepDetectResponseBodyPredictionClass.h */,
 				A42F6B6E1E3DFC2E0096351C /* APIDeepDetectResponseBodyPredictionClass.m */,
+				A4D95F781ECCA0BA00F9711E /* APIDeepDetectInfoService.h */,
+				A4D95F791ECCA0BA00F9711E /* APIDeepDetectInfoService.m */,
+				A4D95F7E1ECCA1C000F9711E /* APIDeepDetectInfoHead.h */,
+				A4D95F7F1ECCA1C000F9711E /* APIDeepDetectInfoHead.m */,
+				A4D95F811ECCA2B800F9711E /* APIDeepDetectInfoStatus.h */,
+				A4D95F821ECCA2B800F9711E /* APIDeepDetectInfoStatus.m */,
+				A4D95F841ECCABB600F9711E /* APIDeepDetectInfoServices.h */,
+				A4D95F851ECCABB600F9711E /* APIDeepDetectInfoServices.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1056,6 +1082,7 @@
 		AC7BAD511C658464F307BA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */,
 				A474542D1EC68D6800BF4F9C /* CoreLocation.framework */,
 				A433D3DD1EA4E721003D7154 /* AVFoundation.framework */,
 				A496A9D81E9C63910075B879 /* linkedin-sdk.framework */,
@@ -1234,6 +1261,7 @@
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
 				A4110D7C1ECAB7DF00C9FB13 /* face.png in Resources */,
 				A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */,
+				A4D95F881ECD303600F9711E /* objector.png in Resources */,
 				A49ADB0E1E77C0560085E5A7 /* SqootJSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4A316361E1263CC009EDA74 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				A4E3D6D21E9903C300B7F31C /* Vine.png in Resources */,
@@ -1418,6 +1446,7 @@
 				A455B0561E7F7EE8002F6F23 /* SqootPageViewController.m in Sources */,
 				A4A3161E1E1263CC009EDA74 /* JSQMessagesViewController.m in Sources */,
 				A49ADB1B1E77C76B0085E5A7 /* SqootJSQMessagesCollectionViewCellOutgoing.m in Sources */,
+				A4D95F831ECCA2B800F9711E /* APIDeepDetectInfoStatus.m in Sources */,
 				A4A3163A1E1263CC009EDA74 /* JSQMessagesInputToolbar.m in Sources */,
 				A4AAAC871E87585B0040891E /* SearchResponseImageHitVO.m in Sources */,
 				A4AA50411E63C8FE00F4BB8D /* SqootDealObject.m in Sources */,
@@ -1445,6 +1474,7 @@
 				A42F6B631E3DF9D50096351C /* APIDeepDetectResponseStatus.m in Sources */,
 				A4A316371E1263CC009EDA74 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */,
+				A4D95F801ECCA1C000F9711E /* APIDeepDetectInfoHead.m in Sources */,
 				A433D3DC1EA33145003D7154 /* SocialUserInfo.m in Sources */,
 				A4AA503F1E63C8FE00F4BB8D /* SqootDeal.m in Sources */,
 				A4A3161D1E1263CC009EDA74 /* JSQMessagesKeyboardController.m in Sources */,
@@ -1472,6 +1502,7 @@
 				A4A316181E1263CC009EDA74 /* NSString+JSQMessages.m in Sources */,
 				A42F6B691E3DF9F70096351C /* APIDeepDetectResponseBody.m in Sources */,
 				A4674D381E84F5C100FA67DC /* SearchExistedVO.m in Sources */,
+				A4D95F861ECCABB600F9711E /* APIDeepDetectInfoServices.m in Sources */,
 				A42F6B601E3DF9AC0096351C /* APIDeepDetectResponseModel.m in Sources */,
 				A4AA50371E63C8FE00F4BB8D /* LabelGroupObject.m in Sources */,
 				A42F6B6C1E3DFBE60096351C /* APIDeepDetectResponseBodyPrediction.m in Sources */,
@@ -1483,6 +1514,7 @@
 				A4AA50451E63C8FE00F4BB8D /* SqootQueryLocation.m in Sources */,
 				A4A3163E1E1263CC009EDA74 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				A4A316331E1263CC009EDA74 /* JSQMessagesCollectionView.m in Sources */,
+				A4D95F7A1ECCA0BA00F9711E /* APIDeepDetectInfoService.m in Sources */,
 				A4A316231E1263CC009EDA74 /* JSQMessagesTimestampFormatter.m in Sources */,
 				A4A316211E1263CC009EDA74 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				A4A3151B1E124EA9009EDA74 /* NSUserDefaults+DemoSettings.m in Sources */,

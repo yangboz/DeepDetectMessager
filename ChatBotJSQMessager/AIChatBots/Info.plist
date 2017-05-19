@@ -40,9 +40,23 @@
 				<string>wx581549aa4e7989bb</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Facebook</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb2002024036693110</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>2002024036693110</string>
+	<key>FacebookDisplayName</key>
+	<string>ddChatBots</string>
 	<key>LIAppId</key>
 	<string>4959465</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -51,6 +65,10 @@
 		<string>mqqapi</string>
 		<string>mqq</string>
 		<string>weixin</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -59,6 +77,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to use bluetooth.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) take the photo</string>
 	<key>NSLocationAlwaysUsageDescription</key>

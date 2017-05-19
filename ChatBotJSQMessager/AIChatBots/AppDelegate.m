@@ -164,12 +164,19 @@ MasterViewController *masterViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
-    //SocialLoginClients register
-    [WXApi registerApp:APP_ID_WX enableMTA:YES];
     //API json data initialization
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"chatbots" ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+//    NSData *jsonData = nil;
     NSError *error;
+    //Http fetch {
+    NSURL* deepDetectInfoUrl = [NSURL URLWithString:@"http://118.190.96.120:8090/info"];
+    [[[NSURLSession sharedSession] dataTaskWithURL:deepDetectInfoUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        //TODO:handle data here
+        self.apiDeepDetectInfos = [APIDeepDetectInfoServices arrayOfModelsFromData:data error:nil];
+        NSLog(@"self.apiDeepDetectInfos: %@",[self.apiDeepDetectInfos debugDescription]);
+    }] resume];
+//Local fetch
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"chatbots" ofType:@"json"];
+NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
     AllChatBotsModel *allChatBotsModel = [[AllChatBotsModel alloc] initWithData:jsonData error:&error];
     // 4) Dump the contents of the person object
     // to thedebug console.
@@ -185,7 +192,10 @@ MasterViewController *masterViewController;
                               [allChatBotsModel chatbots] ];
     //
     [appDelegate setMasterControllerData:mArray];
-    
+    //SocialLoginClients register
+    [WXApi registerApp:APP_ID_WX enableMTA:YES];
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -216,7 +226,6 @@ MasterViewController *masterViewController;
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
@@ -228,9 +237,18 @@ MasterViewController *masterViewController;
     }
 }
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-    BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
-    NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
-    return  isSuc;
+    NSString *fbIdStr = [@"fb" stringByAppendingString:APP_ID_FB];
+    if ([url.scheme isEqualToString:fbIdStr])
+    {
+        return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
+    }
+    if ([url.scheme isEqualToString:APP_ID_WX])
+    {
+        BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
+        NSLog(@"WXApi url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
+        return  isSuc;
+    }
+    return YES;
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -243,7 +261,15 @@ MasterViewController *masterViewController;
 //        return [LISDKCallbackHandler application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 //    }
     BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
-    NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
+    NSLog(@"WxAPI url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation
+                    ];
+    NSLog(@"FbAPI handled %@ isSuc %d",url,handled);
+
     return YES;
 }
 #pragma mark WXApiDelegate

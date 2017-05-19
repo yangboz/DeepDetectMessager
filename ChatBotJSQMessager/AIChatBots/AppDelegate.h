@@ -11,6 +11,8 @@
 #import "WxApi.h"
 #import "Constants.h"
 #import "SocialUserInfo.h"
+#import "APIDeepDetectInfoServices.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 {
@@ -18,6 +20,8 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSArray* apiDeepDetectInfos;
+
 
 -(void)setMasterControllerData:(NSMutableArray *)data;
 - (void)wechatLoginByRequestForUserInfo;

@@ -33,13 +33,13 @@ nohup ./main/dede -host 118.190.3.169 -port 8090 > dede.out 2>&1&
 2.create ImageNet/ggnet service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image", "width":224, "height":224 }, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"../templates/caffe/", "repository":"/root/models/imgnet"} }'
+curl -X PUT "http://118.190.96.120:8090/services/imageserv" -d '{"mllib":"caffe", "description":"image classification service", "type":"supervised", "parameters":{"input":{"connector":"image", "width":224, "height":224 }, "mllib":{"template":"googlenet", "nclasses":1000 } }, "model":{"templates":"../templates/caffe/", "repository":"/root/models/imgnet"} }'
 `
 
 3.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"imageserv\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"https://deepdetect.com/img/ambulance.jpg\"]}"
 `
 
 4.kill docker
@@ -60,13 +60,13 @@ curl -X DELETE "http://localhost:8080/services/imageserv?clear=full"
 1.create bags service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/bags" -d '{"mllib":"caffe", "description":"bags classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":37 } }, "model":{"repository":"/root/models/bags"} }'
+curl -X PUT "http://118.190.96.120:8090/services/bags" -d '{"mllib":"caffe", "description":"bags classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":37 } }, "model":{"repository":"/root/models/bags"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/nike-golf-bag.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/nike-golf-bag.jpg\"]}"
 `
 
 ##Footwear Classification Service
@@ -75,13 +75,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"bags\",\"par
 1.create footwear service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/footwear" -d '{"mllib":"caffe", "description":"footwear classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":51 } }, "model":{"repository":"/root/models/footwear"} }'
+curl -X PUT "http://118.190.96.120:8090/services/footwear" -d '{"mllib":"caffe", "description":"footwear classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":51 } }, "model":{"repository":"/root/models/footwear"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"footwear\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/men-footwear.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"footwear\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/men-footwear.jpg\"]}"
 `
 
 ##Clothing Classification Service
@@ -120,13 +120,13 @@ curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"buildings\"
 1.create fabric service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/fabric" -d '{"mllib":"caffe", "description":"fabric classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":233 } }, "model":{"repository":"/root/models/fabric"} }'
+curl -X PUT "http://118.190.96.120:8090/services/fabric" -d '{"mllib":"caffe", "description":"fabric classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":233 } }, "model":{"repository":"/root/models/fabric"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
 `
 
 ##Age Classification Service
@@ -135,13 +135,15 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"fabric\",\"p
 1.create age service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/age" -d '{"mllib":"caffe", "description":"age classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":8 } }, "model":{"repository":"/root/models/age_model"} }'
+curl -X PUT "http://118.190.96.120:8090/services/age" -d '{"mllib":"caffe", "description":"age classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":8 } }, "model":{"repository":"/root/models/age_model"} }'
 `
 
 2.test service
 
+
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"age\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"age\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
+`
 
 ##Gender Classification Service
 
@@ -149,13 +151,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"age\",\"para
 1.create gender service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/gender" -d '{"mllib":"caffe", "description":"gender classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/gender"} }'
+curl -X PUT "http://118.190.96.120:8090/services/gender" -d '{"mllib":"caffe", "description":"gender classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/gender"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"gender\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"gender\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
 `
 
 ##Sports Classification Service
@@ -164,13 +166,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"gender\",\"p
 1.create sports service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/sports" -d '{"mllib":"caffe", "description":"sports classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":143 } }, "model":{"repository":"/root/models/sports"} }'
+curl -X PUT "http://118.190.96.120:8090/services/sports" -d '{"mllib":"caffe", "description":"sports classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":143 } }, "model":{"repository":"/root/models/sports"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Jordan_by_Lipofsky_16577.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Jordan_by_Lipofsky_16577.jpg\"]}"
 `
 
 ##Trees Classification Service
@@ -179,13 +181,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"sports\",\"p
 1.create trees service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/trees" -d '{"mllib":"caffe", "description":"trees classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":890 } }, "model":{"repository":"/root/models/trees"} }'
+curl -X PUT "http://118.190.96.120:8090/services/trees" -d '{"mllib":"caffe", "description":"trees classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":890 } }, "model":{"repository":"/root/models/trees"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/cherry-plum-tree.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/cherry-plum-tree.jpg\"]}"
 `
 
 ##Sentiment analysis Service
@@ -194,13 +196,13 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"pa
 1.create sentiment service
 
 `
-curl -X PUT 'http://118.190.3.169:8080/services/sent_en' -d '{"mllib":"caffe", "description":"English sentiment classification", "type":"supervised", "parameters":{"input":{"connector":"txt", "characters":true, "alphabet":"abcdefghijklmnopqrstuvwxyz0123456789,;.!?'\''", "sequence":140 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/sent_en_char"} }'
+curl -X PUT 'http://118.190.96.120:8090/services/sent_en' -d '{"mllib":"caffe", "description":"English sentiment classification", "type":"supervised", "parameters":{"input":{"connector":"txt", "characters":true, "alphabet":"abcdefghijklmnopqrstuvwxyz0123456789,;.!?'\''", "sequence":140 }, "mllib":{"nclasses":2 } }, "model":{"repository":"/root/models/sent_en_char"} }'
 `
 
 2.test service
 
 `
-curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
+curl -X POST 'http://118.190.96.120:8090/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
 `
 
 ##Furnitrues classification Service(179)
@@ -209,13 +211,13 @@ curl -X POST 'http://118.190.3.169:8080/predict' -d '{"service":"sent_en", "para
 1.create furnitrues service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/furnitrues" -d '{"mllib":"caffe", "description":"Furnitrues classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":143 } }, "model":{"repository":"/root/models/furnitures"} }'
+curl -X PUT "http://118.190.96.120:8090/services/furnitrues" -d '{"mllib":"caffe", "description":"Furnitrues classification", "type":"supervised", "parameters":{"input":{"connector":"image", "height":224, "width":224 }, "mllib":{"nclasses":143 } }, "model":{"repository":"/root/models/furnitures"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
+curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
 `
 ##Object detection Service(21)
 
@@ -223,16 +225,18 @@ curl -X POST "http://118.190.3.169:8080/predict" -d "{\"service\":\"trees\",\"pa
 1.create object detection service
 
 `
-curl -X PUT "http://118.190.3.169:8080/services/objectdetect" -d '{"mllib":"caffe", "description":"object detection service", "type":"supervised", "parameters":{"input":{"connector":"image", "height": 300, "width": 300 }, "mllib":{"nclasses":21 } }, "model":{"repository":"/root/models/voc0712/"} }'
+curl -X PUT "http://118.190.96.120:8090/services/objectdetect" -d '{"mllib":"caffe", "description":"object detection service", "type":"supervised", "parameters":{"input":{"connector":"image", "height": 300, "width": 300 }, "mllib":{"nclasses":21 } }, "model":{"repository":"/root/models/voc0712/"} }'
 `
 
 2.test service
 
 `
-curl -X POST "http://118.190.3.169:8080/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
+curl -X POST "http://118.190.96.120:8090/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
 `
 
 # COVIAS Server
+
+
 
 ## Elastic Image Search
 

@@ -32,7 +32,10 @@
 #define WX_BASE_URL @"https://api.weixin.qq.com/sns"
 
 
+
 @interface MasterViewController ()<btSimplePopUpDelegate>
+{
+}
 @property(nonatomic, retain) btSimplePopUP *popUp, *popUpWithDelegate;
 @end
 
@@ -82,6 +85,8 @@
     //    [popUp setPopUpBackgroundColor:[UIColor colorWithRed:0.1 green:0.2 blue:0.6 alpha:0.7]];
     //    [_popUp show:BTPopUPAnimateNone];
     [_popUpWithDelegate show:BTPopUPAnimateNone];
+    //
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
 }
 
@@ -270,6 +275,10 @@
 -(void)btSimplePopUP:(btSimplePopUP *)popUp didSelectItemAtIndex:(NSInteger)index{
     //    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"PopItem" message:[NSString stringWithFormat:@"iAM from Delegate. My Index is %ld", (long)index] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
     //    [alert show];
+    if(0==index)//Facebook
+    {
+        [self socialFacebookAuthorize];
+    }
     if(1==index)//LinkedIN
     {
         [self socialLinkedInAuthorize];
@@ -277,6 +286,63 @@
     if(2==index)//WeChat
     {
         [self socialWeChatAuthorize];
+    }
+}
+#pragma Social_Facebook
+-(void)socialFacebookAuthorize{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in,do fetch user info.
+        [self fetchUserInfo];
+    }else{
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            if (error) {
+                // Process error
+                NSLog(@"FacebookLogin error %@",error);
+            } else if (result.isCancelled) {
+                // Handle cancellations
+                NSLog(@"FacebookLogin Cancelled.");
+            } else {
+//                if ([result.grantedPermissions containsObject:@"email"]) {
+                    // Do work
+                    [self fetchUserInfo];
+//                }
+            }
+        }];
+    }
+}
+
+-(void)fetchUserInfo {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"FBSDKAccessToken is available");
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name,email,first_name,last_name,gender"}]//@see:https://developers.facebook.com/docs/graph-api/reference/user
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 NSDictionary *userDict = (NSDictionary *)result;
+                 NSLog(@"Fetched FBUser Information:%@", userDict);
+                 //SocialUserInfo parse and store.
+//                 NSError *error=nil;
+                 SocialUserInfo *sUserInfo = [[SocialUserInfo alloc] init];
+                 //http://graph.facebook.com/67563683055/picture?type=square
+                 NSString *fbProfilePicUrl = [[@"http://graph.facebook.com/" stringByAppendingString:[userDict objectForKey:@"id"]] stringByAppendingString:@"/picture?type=square"];
+                 [sUserInfo setPictureUrl:fbProfilePicUrl];
+                 [sUserInfo setName:[userDict objectForKey:@"name"]];
+                 [sUserInfo setFirstName:[userDict objectForKey:@"last_name"]];
+                 [sUserInfo setLastName:[userDict objectForKey:@"first_name"]];
+                 [sUserInfo setSex:[userDict objectForKey:@"gender"]];
+                 [sUserInfo setEmail:[userDict objectForKey:@"email"]];
+                NSLog(@"store social user Info : %@", sUserInfo);
+                 //data store.
+                 [[DataModel sharedInstance] setSocialUserInfo:sUserInfo];
+
+                 //More:https://developers.facebook.com/docs/ios/graph
+             }
+             else {
+                 NSLog(@"FbUserInfo Error %@",error);
+             }
+         }];
+    } else {
+        NSLog(@"User is not Logged in");
     }
 }
 #pragma Social_linkedIn
@@ -410,4 +476,60 @@
     [alert addAction:actionConfirm];
     [self presentViewController:alert animated:YES completion:nil];
 }
+#pragma mark CoreBluetooth
+- (void) centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    switch (central.state) {
+        case CBCentralManagerStatePoweredOff:
+            NSLog(@"CoreBluetooth BLE hardware is powered off");
+            break;
+        case CBCentralManagerStatePoweredOn:
+            NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
+            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+            break;
+        case CBCentralManagerStateResetting:
+            NSLog(@"CoreBluetooth BLE hardware is resetting");
+            break;
+        case CBCentralManagerStateUnauthorized:
+            NSLog(@"CoreBluetooth BLE state is unauthorized");
+            break;
+        case CBCentralManagerStateUnknown:
+            NSLog(@"CoreBluetooth BLE state is unknown");
+            break;
+        case CBCentralManagerStateUnsupported:
+            NSLog(@"CoreBluetooth BLE hardware is unsupported on this platform");
+            break;
+        default:
+            break;
+    }
+}
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
+{
+    CBPeripheral* currentPer = peripheral;
+    if(![self.knownPeripherals containsObject:currentPer])
+    {
+        NSLog(@"didDiscoverPeripheral:%@",[currentPer debugDescription]);
+        [self.knownPeripherals addObject:currentPer];
+        [self.centralManager connectPeripheral:currentPer options:nil];
+    }
+}
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+    
+    NSLog(@"Connection successfull to peripheral: %@",peripheral);
+    //Do somenthing after successfull connection.
+}
+- (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
+    NSLog(@"Connection didDisconnectPeripheral: %@",peripheral);
+}
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"Connection failed to peripheral: %@",peripheral);
+    //Do something when a connection to a peripheral failes.
+}
+//- (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
+//- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;
+//- (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error;
+//- (void) centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error;
+//- (void) centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals;
+//- (void) centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals;
 @end

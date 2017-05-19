@@ -23,4 +23,9 @@
 @property(nonatomic) NSObject *privilege;
 @property(nonatomic) NSString *unionid;
 @property(nonatomic) NSString *openid;
+//Facebook
+//@property(nonatomic) NSString *id;
+@property(nonatomic) NSString *name;
+@property(nonatomic) NSString *email;
+@property(nonatomic) NSString *gender;
 @end

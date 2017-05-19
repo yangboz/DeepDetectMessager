@@ -29,6 +29,9 @@ pod 'WechatOpenSDK'
 pod 'AFNetworking', '~> 2.5.4'
 pod 'LinkedinIOSHelper', '~> 1.0.7'
 pod 'FTPopOverMenu'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit' 
 
   target 'DeepDetectChatBotsTests' do
     inherit! :search_paths

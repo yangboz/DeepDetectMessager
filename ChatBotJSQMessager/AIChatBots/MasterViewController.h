@@ -13,10 +13,14 @@
 //#import <linkedin-sdk/LISDK.h>
 #import "Constants.h"
 #import "AppDelegate.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+#import <CoreBluetooth/CoreBluetooth.h>
+
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController<CBCentralManagerDelegate, CBPeripheralDelegate>
 {
     NSMutableArray *_chatbots;
 }
@@ -27,5 +31,10 @@
 
 @property (nonatomic, retain) NSMutableArray *listOfRatings;
 @property (nonatomic, retain) NSMutableArray *groupedChatbots;
+
+@property (nonatomic, strong) CBCentralManager *centralManager;
+@property (nonatomic, retain) NSMutableArray *knownPeripherals;
+
+
 @end
 
