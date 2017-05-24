@@ -16,6 +16,12 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #import <CoreBluetooth/CoreBluetooth.h>
+// Blance Vehicle05 UUIDs
+#define UUID_SERVICE_BT05 @"FFE0"
+#define UUID_DATA_BT05    @"FFE1"
+#define UUID_CONFIG_BT05  @"F000AA02-0451-4000-B000-000000000000"
+//#define DNAME_BT05 @"F000AA00-0451-4000-B000-000000000000"
+#define UUID_BT05 @"9E745F45-6483-4836-95B5-71B6149DFC2B"
 
 
 @class DetailViewController;
@@ -33,7 +39,9 @@
 @property (nonatomic, retain) NSMutableArray *groupedChatbots;
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
-@property (nonatomic, retain) NSMutableArray *knownPeripherals;
+@property (strong,nonatomic) CBPeripheral *curPeripheral;
+@property (strong,nonatomic) NSMutableArray *knownPeripherals;
+@property (nonatomic) BOOL keepScanning;
 
 
 @end

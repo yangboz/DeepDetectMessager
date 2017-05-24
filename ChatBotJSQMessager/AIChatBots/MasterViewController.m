@@ -35,6 +35,7 @@
 
 @interface MasterViewController ()<btSimplePopUpDelegate>
 {
+//    CBPeripheral *curPeripheral;
 }
 @property(nonatomic, retain) btSimplePopUP *popUp, *popUpWithDelegate;
 @end
@@ -87,7 +88,7 @@
     [_popUpWithDelegate show:BTPopUPAnimateNone];
     //
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    
+    self.knownPeripherals = [NSMutableArray new];
 }
 
 
@@ -95,7 +96,6 @@
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -193,7 +193,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (NSString *) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section {
@@ -505,21 +505,38 @@
 }
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    CBPeripheral* currentPer = peripheral;
-    if(![self.knownPeripherals containsObject:currentPer])
+    
+    if(![self.knownPeripherals containsObject:_curPeripheral])
     {
-        NSLog(@"didDiscoverPeripheral:%@",[currentPer debugDescription]);
-        [self.knownPeripherals addObject:currentPer];
-        [self.centralManager connectPeripheral:currentPer options:nil];
+        NSLog(@"didDiscoverPeripheral:%@",[peripheral debugDescription]);
+        [self.knownPeripherals addObject:peripheral];
+        
+        if([peripheral.identifier.UUIDString isEqualToString:UUID_BT05]){//BT05 only.
+            // 1 - we can stop scanning now.
+            self.keepScanning = NO;
+            // 2 - save a reference to the sensor tag
+            _curPeripheral = peripheral;
+            // 3 - set the delegate property to point to the view controller
+            _curPeripheral.delegate = self;
+            // 4 - Request a connection to the peripheral
+            [self.centralManager connectPeripheral:_curPeripheral options:nil];
+        }
     }
+//    [self.centralManager retrievePeripheralsWithIdentifiers:self.knownPeripherals];
 }
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     
     NSLog(@"Connection successfull to peripheral: %@",peripheral);
-    //Do somenthing after successfull connection.
+    //discoverServices().
+    // 这里会触发外设的代理方法 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+//    [self.centralManager retrieveConnectedPeripheralsWithServices:@[peripheral.identifier]];
+    [peripheral discoverServices:nil];
+    //
 }
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     NSLog(@"Connection didDisconnectPeripheral: %@",peripheral);
+    //try again
+    [self.centralManager connectPeripheral:self.curPeripheral options:nil];
 }
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
@@ -530,6 +547,87 @@
 //- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;
 //- (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error;
 //- (void) centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error;
-//- (void) centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals;
-//- (void) centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals;
+- (void) centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals{
+    NSLog(@"didRetrieveConnectedPeripherals:%@",[peripherals debugDescription]);
+}
+- (void) centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals{
+    NSLog(@"didRetrievePeripherals:%@",[peripherals debugDescription]);
+}
+//
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+    // Core Bluetooth creates an array of CBService objects —-
+    // one for each Service that is discovered on the peripheral.
+    NSLog(@"didDiscoverServices:%@",[peripheral.services debugDescription]);
+    for (CBService *service in peripheral.services) {
+//         1.Discovering Characteristics only BT05
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:UUID_SERVICE_BT05]]) {
+            // 2.discoverCharacteristics for a Service
+            [peripheral discoverCharacteristics:nil forService:service];
+        }
+    }
+}
+//
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+    NSLog(@"didDiscoverCharacteristicsForService:%@",[service debugDescription]);
+    // 1
+    for (CBCharacteristic *characteristic in service.characteristics) {
+        NSLog(@"service.characteristics:%@",[characteristic debugDescription]);
+        // 2
+        uint8_t enableValue = 1;
+        NSData *enableBytes = [NSData dataWithBytes:&enableValue length:sizeof(uint8_t)];
+        
+        // DATA_BT05
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_DATA_BT05]]) {
+            // 3a
+//             Enable notification
+            [self.curPeripheral setNotifyValue:YES forCharacteristic:characteristic];
+        }
+//
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_CONFIG_BT05]]) {
+            // Write value
+            [self.curPeripheral writeValue:enableBytes forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+        }
+        //     //这是MinibalanceV1.0的APP发送指令
+        //      case 0x01: Flag_Qian = 1, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 0;   break;              //前进
+        //      case 0x02: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;              //右转
+        //      case 0x03: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;              //右转
+        //      case 0x04: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;              //右转
+        //      case 0x05:  Flag_Qian = 0, Flag_Hou = 1, Flag_Left = 0, Flag_Right = 0;   break;             //后退
+        //      case 0x06: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0;  break;               //左转
+        //      case 0x07: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0; break;                //左转
+        //      case 0x08: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0;   break;              //左转
+        //      //这是MinibalanceV3.5的APP发送指令
+        //      case 0x41: Flag_Qian = 1, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 0;   break;              //前进
+        //      case 0x42: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;             //右转
+        //      case 0x43: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;             //右转
+        //      case 0x44: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 1;   break;              //右转
+        //      case 0x45:  Flag_Qian = 0, Flag_Hou = 1, Flag_Left = 0, Flag_Right = 0;   break;             //后退
+        //      case 0x46: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0;  break;               //左转
+        //      case 0x47: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0; break;               //左转
+        //      case 0x48: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 1, Flag_Right = 0;   break;             //左转
+        //      default: Flag_Qian = 0, Flag_Hou = 0, Flag_Left = 0, Flag_Right = 0; break;                //停止
+        //
+        uint16_t forwardValue = 0x01;
+        NSData *forwardBytes = [NSData dataWithBytes:&forwardValue length:sizeof(uint16_t)];
+        // Write value testing
+        [self.curPeripheral writeValue:forwardBytes forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+        //
+        
+    }
+}
+//
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    if (error) {
+        NSLog(@"Error changing notification state: %@", [error localizedDescription]);
+    } else {
+        // 1
+        // Extract the data from the Characteristic's value property
+        // and display the value based on the Characteristic type
+        NSData *dataBytes = characteristic.value;
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_DATA_BT05]]) {
+            // 2
+//            NSLog(@"dataBytes:%@",[dataBytes description]);
+        }
+    }
+}
 @end

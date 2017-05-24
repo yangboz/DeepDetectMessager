@@ -33,5 +33,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //UISwipeGestureRecognizer
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognizer:)];
+    recognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    recognizer.delegate = self;
+    [self.view addGestureRecognizer:recognizer];
+}
+
+-(void)swipeRecognizer:(UISwipeGestureRecognizer *)sender {
+    if ( sender.direction == UISwipeGestureRecognizerDirectionLeft )
+    NSLog(@" *** SWIPE LEFT ***");
+    if ( sender.direction == UISwipeGestureRecognizerDirectionRight )
+    NSLog(@" *** SWIPE RIGHT ***");
+    if ( sender.direction == UISwipeGestureRecognizerDirectionDown )
+    NSLog(@" *** SWIPE DOWN ***");
+    if ( sender.direction == UISwipeGestureRecognizerDirectionUp )
+    NSLog(@" *** SWIPE UP ***");
+}
 
 @end

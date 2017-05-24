@@ -48,7 +48,9 @@
 		A433D3DC1EA33145003D7154 /* SocialUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A433D3DB1EA33145003D7154 /* SocialUserInfo.m */; };
 		A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A433D3DD1EA4E721003D7154 /* AVFoundation.framework */; };
 		A43794221E497BA300EC44AD /* icon24.png in Resources */ = {isa = PBXBuildFile; fileRef = A43794211E497BA200EC44AD /* icon24.png */; };
+		A44088A51ED5B5400044BED8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44088A41ED5B5400044BED8 /* CoreMotion.framework */; };
 		A451ADA01ECDB0BA007F6397 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */; };
+		A451ADA21ED24BEB007F6397 /* chessboardbot.png in Resources */ = {isa = PBXBuildFile; fileRef = A451ADA11ED24BEB007F6397 /* chessboardbot.png */; };
 		A455B04F1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */; };
 		A455B0521E7F6FA1002F6F23 /* UIColor+CatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */; };
 		A455B0561E7F7EE8002F6F23 /* SqootPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A455B0541E7F7EE8002F6F23 /* SqootPageViewController.m */; };
@@ -289,7 +291,9 @@
 		A433D3DB1EA33145003D7154 /* SocialUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialUserInfo.m; sourceTree = "<group>"; };
 		A433D3DD1EA4E721003D7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A43794211E497BA200EC44AD /* icon24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon24.png; path = Resources/icon24.png; sourceTree = SOURCE_ROOT; };
+		A44088A41ED5B5400044BED8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A451ADA11ED24BEB007F6397 /* chessboardbot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chessboardbot.png; path = robots/chessboardbot.png; sourceTree = "<group>"; };
 		A455B04D1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_Seque_SqootInfo.h; sourceTree = "<group>"; };
 		A455B04E1E7F6CAD002F6F23 /* VC_Seque_SqootInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_Seque_SqootInfo.m; sourceTree = "<group>"; };
 		A455B0501E7F6FA1002F6F23 /* UIColor+CatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CatColors.m"; sourceTree = "<group>"; };
@@ -539,6 +543,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44088A51ED5B5400044BED8 /* CoreMotion.framework in Frameworks */,
 				A451ADA01ECDB0BA007F6397 /* CoreBluetooth.framework in Frameworks */,
 				A474542E1EC68D6800BF4F9C /* CoreLocation.framework in Frameworks */,
 				A433D3DE1EA4E721003D7154 /* AVFoundation.framework in Frameworks */,
@@ -755,6 +760,7 @@
 		A4A314DD1E120B28009EDA74 /* robots */ = {
 			isa = PBXGroup;
 			children = (
+				A451ADA11ED24BEB007F6397 /* chessboardbot.png */,
 				A4D95F871ECD303600F9711E /* objector.png */,
 				A4110D781ECAB7DF00C9FB13 /* face.png */,
 				A4110D791ECAB7DF00C9FB13 /* music.png */,
@@ -1082,6 +1088,7 @@
 		AC7BAD511C658464F307BA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A44088A41ED5B5400044BED8 /* CoreMotion.framework */,
 				A451AD9F1ECDB0BA007F6397 /* CoreBluetooth.framework */,
 				A474542D1EC68D6800BF4F9C /* CoreLocation.framework */,
 				A433D3DD1EA4E721003D7154 /* AVFoundation.framework */,
@@ -1259,6 +1266,7 @@
 				A493CE221E3C941A0097C113 /* imagenet.png in Resources */,
 				A493CE181E3C6DB10097C113 /* clothing.png in Resources */,
 				A409A0941E10E1C80083A3CA /* Main.storyboard in Resources */,
+				A451ADA21ED24BEB007F6397 /* chessboardbot.png in Resources */,
 				A4110D7C1ECAB7DF00C9FB13 /* face.png in Resources */,
 				A4AAAC8B1E875BC60040891E /* CVCSequeSimilarityCell.xib in Resources */,
 				A4D95F881ECD303600F9711E /* objector.png in Resources */,

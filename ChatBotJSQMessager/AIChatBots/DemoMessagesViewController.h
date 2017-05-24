@@ -22,6 +22,7 @@
 #import "DemoModelData.h"
 #import "NSUserDefaults+DemoSettings.h"
 #import "ChatBotVoModel.h"
+#import <CoreMotion/CoreMotion.h>
 
 
 @class DemoMessagesViewController;
@@ -36,7 +37,7 @@
 
 
 @interface DemoMessagesViewController : JSQMessagesViewController <UISplitViewControllerDelegate,UIActionSheetDelegate,JSQMessagesComposerTextViewPasteDelegate,UIPageViewControllerDataSource
-,CLLocationManagerDelegate>
+,CLLocationManagerDelegate,UIGestureRecognizerDelegate>
 - (IBAction)searchInformation:(id)sender;
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
@@ -58,4 +59,5 @@
 //
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 @end
