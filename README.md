@@ -1,6 +1,7 @@
 # DeepDetectMessager
-iMessager for DeepDetect demostration.
+SNS+iMessager for DeepDetect demostration.
 
+![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/Simulator%20Screen%20Shot%2010%20Apr%202017%2C%2011.30.25.png)
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/master.jpeg)
 ![Screenshot of detail view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/detail.jpeg)
 
