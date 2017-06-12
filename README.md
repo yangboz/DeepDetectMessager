@@ -235,7 +235,17 @@ curl -X PUT "http://118.190.96.120:8090/services/objectdetect" -d '{"mllib":"caf
 curl -X POST "http://118.190.96.120:8090/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
 `
 
-# COVIAS Server
+##Face detection Service(5)
+
+##Prisma art style Service(12)
+
+##Prisma art style Service(12)
+
+##Fairseq translation Service(4)
+
+##Chessboard FEN detection Service(7)
+
+## COVIAS Server
 
 
 
