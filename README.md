@@ -239,7 +239,7 @@ curl -X POST "http://118.190.96.120:8090/predict" -d '{"service":"objectdetect",
 
 ##Prisma art style Service(12)
 
-##Prisma art style Service(12)
+##Nsynth music generator Service(12)
 
 ##Fairseq translation Service(4)
 
