@@ -1,5 +1,5 @@
 # DeepDetectMessager
-SNS+iMessager for DeepDetect demostration.
+SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/Simulator%20Screen%20Shot%2010%20Apr%202017%2C%2011.30.25.png)
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/master.jpeg)
@@ -244,6 +244,14 @@ curl -X POST "http://118.190.96.120:8090/predict" -d '{"service":"objectdetect",
 ##Fairseq translation Service(4)
 
 ##Chessboard FEN detection Service(7)
+
+##Realtime object recognition using Tensorflow
+
+https://medium.com/towards-data-science/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
+
+##Banking chatbots with Watson
+
+https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/
 
 ## COVIAS Server
 
