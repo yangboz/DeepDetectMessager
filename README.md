@@ -253,6 +253,10 @@ https://medium.com/towards-data-science/building-a-real-time-object-recognition-
 
 https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/
 
+##Cats faces generator
+
+https://github.com/AlexiaJM/Deep-learning-with-cats
+
 ## COVIAS Server
 
 
