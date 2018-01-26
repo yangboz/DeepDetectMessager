@@ -13,7 +13,6 @@ SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 
 3.deepdetect:https://deepdetect.com/overview/installing/
 
-
 ## ImageNet Classification Service
 
 1.pull and run docker
