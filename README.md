@@ -5,7 +5,7 @@ SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/master.jpeg)
 ![Screenshot of detail view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/detail.jpeg)
 
-#DeepDetect Server（4G RAM+）
+# DeepDetect Server（4G RAM+）
 
 1.caffe:https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide
 
@@ -13,7 +13,8 @@ SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 
 3.deepdetect:https://deepdetect.com/overview/installing/
 
-##ImageNet Classification Service
+
+## ImageNet Classification Service
 
 1.pull and run docker
 
@@ -55,7 +56,7 @@ docker rm -fv 1ca885426d1a
 curl -X DELETE "http://localhost:8080/services/imageserv?clear=full"
 `
 
-##Bags Classification Service
+## Bags Classification Service
 
 
 1.create bags service
@@ -70,7 +71,7 @@ curl -X PUT "http://118.190.96.120:8090/services/bags" -d '{"mllib":"caffe", "de
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"bags\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/nike-golf-bag.jpg\"]}"
 `
 
-##Footwear Classification Service
+## Footwear Classification Service
 
 
 1.create footwear service
@@ -85,7 +86,7 @@ curl -X PUT "http://118.190.96.120:8090/services/footwear" -d '{"mllib":"caffe",
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"footwear\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/men-footwear.jpg\"]}"
 `
 
-##Clothing Classification Service
+## Clothing Classification Service
 
 
 1.create clothing service (Error while proceeding with prediction forward pass, not enough memory?)
@@ -100,7 +101,7 @@ curl -X PUT "http://118.190.96.120:8090/services/clothing" -d '{"mllib":"caffe",
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"clothing\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/faux-fur-coat-winter-2014-big-trend-10.jpg\"]}"
 `
 
-##Buildings Classification Service
+## Buildings Classification Service
 
 
 1.create buildings service(Error while proceeding with prediction forward pass, not enough memory?)
@@ -115,7 +116,7 @@ curl -X PUT "http://118.190.96.120:8090/services/buildings" -d '{"mllib":"caffe"
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"buildings\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Temple-of-Heaven.jpg\"]}"
 `
 
-##Fabric Classification Service
+## Fabric Classification Service
 
 
 1.create fabric service
@@ -130,7 +131,7 @@ curl -X PUT "http://118.190.96.120:8090/services/fabric" -d '{"mllib":"caffe", "
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"fabric\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/tropical-beach-house.jpg\"]}"
 `
 
-##Age Classification Service
+## Age Classification Service
 
 
 1.create age service
@@ -146,7 +147,7 @@ curl -X PUT "http://118.190.96.120:8090/services/age" -d '{"mllib":"caffe", "des
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"age\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
 `
 
-##Gender Classification Service
+## Gender Classification Service
 
 
 1.create gender service
@@ -161,7 +162,7 @@ curl -X PUT "http://118.190.96.120:8090/services/gender" -d '{"mllib":"caffe", "
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"gender\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":2},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/President_Barack_Obama.jpg\"]}"
 `
 
-##Sports Classification Service
+## Sports Classification Service
 
 
 1.create sports service
@@ -176,7 +177,7 @@ curl -X PUT "http://118.190.96.120:8090/services/sports" -d '{"mllib":"caffe", "
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"sports\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/Jordan_by_Lipofsky_16577.jpg\"]}"
 `
 
-##Trees Classification Service
+## Trees Classification Service
 
 
 1.create trees service
@@ -191,7 +192,7 @@ curl -X PUT "http://118.190.96.120:8090/services/trees" -d '{"mllib":"caffe", "d
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/cherry-plum-tree.jpg\"]}"
 `
 
-##Sentiment analysis Service
+## Sentiment analysis Service
 
 
 1.create sentiment service
@@ -206,7 +207,7 @@ curl -X PUT 'http://118.190.96.120:8090/services/sent_en' -d '{"mllib":"caffe", 
 curl -X POST 'http://118.190.96.120:8090/predict' -d '{"service":"sent_en", "parameters":{"mllib":{"gpu":true } }, "data":["Chilling in the West Indies"] }'
 `
 
-##Furnitrues classification Service(179)
+## Furnitrues classification Service(179)
 
 
 1.create furnitrues service
@@ -220,7 +221,7 @@ curl -X PUT "http://118.190.96.120:8090/services/furnitrues" -d '{"mllib":"caffe
 `
 curl -X POST "http://118.190.96.120:8090/predict" -d "{\"service\":\"trees\",\"parameters\":{\"input\":{\"width\":224,\"height\":224},\"output\":{\"best\":3},\"mllib\":{\"gpu\":false}},\"data\":[\"http://118.190.3.169/images/furnitures-friends.jpg\"]}"
 `
-##Object detection Service(21)
+## Object detection Service(21)
 
 
 1.create object detection service
@@ -235,25 +236,25 @@ curl -X PUT "http://118.190.96.120:8090/services/objectdetect" -d '{"mllib":"caf
 curl -X POST "http://118.190.96.120:8090/predict" -d '{"service":"objectdetect", "parameters":{"output":{"bbox": true, "confidence_threshold": 0.1 } }, "data":["http://118.190.3.169/images/France_object_detect.jpeg"] }'
 `
 
-##Face detection Service(5)
+## Face detection Service(5)
 
-##Prisma art style Service(12)
+## Prisma art style Service(12)
 
-##Nsynth music generator Service(12)
+## Nsynth music generator Service(12)
 
-##Fairseq translation Service(4)
+## Fairseq translation Service(4)
 
-##Chessboard FEN detection Service(7)
+## Chessboard FEN detection Service(7)
 
-##Realtime object recognition using Tensorflow
+## Realtime object recognition using Tensorflow
 
 https://medium.com/towards-data-science/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
 
-##Banking chatbots with Watson
+## Banking chatbots with Watson
 
 https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/
 
-##Cats faces generator
+## Cats faces generator
 
 https://github.com/AlexiaJM/Deep-learning-with-cats
 
@@ -274,6 +275,8 @@ DeepDetect(LGPL): https://deepdetect.com/
 DeepDetect Models: https://deepdetect.com/applications/model/
 
 iOS ChatbotMessager: https://github.com/yangboz/ChatBotsMessager
+
+MicroServices: https://spring.io/blog/2015/07/14/microservices-with-spring
 
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!

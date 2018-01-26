@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.pivotal.microservices.accounts.AccountsControllerIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.706 sec - in io.pivotal.microservices.accounts.AccountsControllerIntegrationTests

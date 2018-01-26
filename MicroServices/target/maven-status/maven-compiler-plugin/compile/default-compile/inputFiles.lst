@@ -1,0 +1,15 @@
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/accounts/AccountsController.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/Main.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/exceptions/AccountNotFoundException.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/registration/RegistrationServer.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/accounts/AccountsServer.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/accounts/AccountRepository.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/SearchCriteria.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/HomeController.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/Account.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/WebServer.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/WebAccountsController.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/accounts/Account.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/accounts/HomeController.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/services/web/WebAccountsService.java
+/Users/yangboz/git/DeepDetectMessager/MicroServices/src/main/java/io/pivotal/microservices/accounts/AccountsConfiguration.java
