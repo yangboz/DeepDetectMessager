@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Osx-Dz-sQE" id="xHq-zv-Db1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -129,23 +129,21 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" style="plain" systemItem="search" id="HPl-cS-6bO">
+                            <barButtonItem style="plain" systemItem="compose" id="HPl-cS-6bO">
                                 <connections>
+                                    <action selector="popupSearchMenu:" destination="tKu-Pn-6oY" id="dB9-Sr-Rro"/>
                                     <segue destination="tWJ-jy-jnl" kind="modal" id="7Xi-uk-z3h"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" style="plain" systemItem="search" id="txp-i8-j16">
+                            <barButtonItem style="plain" systemItem="search" id="txp-i8-j16">
                                 <connections>
+                                    <action selector="searchInformation:" destination="tKu-Pn-6oY" id="Soz-Qy-gNy"/>
                                     <segue destination="hdC-g1-erV" kind="modal" id="Qe4-hg-KJv"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="btnSimilarity" destination="txp-i8-j16" id="feM-iP-Fex"/>
-                        <outlet property="btnSqootDeals" destination="HPl-cS-6bO" id="hHq-n4-2V2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVc-Ak-6k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
