@@ -6,7 +6,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "Towxml Demo",
+    "navigationBarTitleText": "ddChatBots",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
