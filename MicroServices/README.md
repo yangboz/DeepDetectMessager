@@ -40,4 +40,12 @@ in the second and third windows.
      * `java -jar target/microservice-demo-1.1.0.RELEASE.jar accounts 2223`
  1. Allow it to register itself
  1. Kill the first account-server and see the web-server switch to using the new account-server - no loss of service.
+ 
+ ## TODO 
+ 
+ Implementing feature toggles for a Spring Boot application:
+ 
+ 1.https://sdqali.in/blog/2016/11/21/implementing-feature-toggles-for-a-spring-boot-application---part-1/
+ 
+ 2.http://dolszewski.com/spring/feature-toggle-spring-boot/
 

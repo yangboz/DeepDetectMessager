@@ -52,7 +52,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 #define IBEACON_RANGE_TITLES  [NSArray arrayWithObjects:@"Immediate",@"Near",@"Far",nil]
-#define SOCIAL_TITLES  [NSArray arrayWithObjects: @"Facebook", @"LinkedIn",@"Wechat",@"Twitter",@"Instagram", @"Tumblr", @"Dribbble",@"Google+",@"Snapchat", @"Stumbleupon", @"Tumblr",@"Reddit",@"Vine", @"Yelp",@"Youtube",nil]
+#define SOCIAL_TITLES  [NSArray arrayWithObjects: @"SEND", @"SHARE",nil]
+//#define IBEACON_RANGE_TITLES  [NSArray arrayWithObjects:@"Immediate",@"Near",@"Far",nil]
+#define SEARCH_TITLES  [NSArray arrayWithObjects: @"byKeywords", @"bySimilarity",nil]
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define degrees(x) (180 * x / M_PI)
 
@@ -70,6 +72,8 @@ UIImage* curSelectedImage;
 NSString* curSelectedImageUrl;
 
 #pragma mark - Split view
+- (IBAction)popupSearchMenu:(id)sender {
+}
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
@@ -174,16 +178,12 @@ for(NSDictionary *sqootDealObjDict in self.sqootDealObjectsResult){
 [dataModel setSelectedSqootDeals:selectedSqootDeals];
 //
 [self hideLoading];
-//enable button
-_btnSqootDeals.enabled = YES;
 //resign pickerview
 [self.inputToolbar.inputView resignFirstResponder];
 }
 -(void)loadSimiliaryHandler:(NSNotification *) notification{
 //
 [self hideLoading];
-//enable button.
-_btnSimilarity.enabled = YES;
 }
 -(JSQMessage *)getJSQMessage:(NSString *)message{
 //        JSQMessage *newMessage = nil;
@@ -316,8 +316,8 @@ utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
 [synthesizer speakUtterance:utterance];
 //then append Sqoot information query by keywords/category.
 //FIXME:sequence loading;
-[self esearchSimiliary];
-[self loadSqootDeals];
+//[self esearchSimiliary];
+//[self loadSqootDeals];
 }
 -(void)addDemoMessage:(JSQMessage *)jsqMessage{
 /**
@@ -635,25 +635,9 @@ if (self.delegateModal) {
 }
 //UISwipeGestureRecognizer
 UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognizer:)];
-recognizer.direction = UISwipeGestureRecognizerDirectionRight;
+//recognizer.direction = UISwipeGestureRecognizerDirectionLeft;
 recognizer.delegate = self;
 [self.view addGestureRecognizer:recognizer];
-}
-
-#pragma mark Swipe Gesture
--(void)swipeRecognizer:(UISwipeGestureRecognizer *)sender {
-if ( sender.direction == UISwipeGestureRecognizerDirectionLeft ){
-    NSLog(@" *** SWIPE LEFT ***");
-}
-if ( sender.direction == UISwipeGestureRecognizerDirectionRight ){
-    NSLog(@" *** SWIPE RIGHT ***");
-}
-if ( sender.direction == UISwipeGestureRecognizerDirectionDown ){
-    NSLog(@" *** SWIPE DOWN ***");
-}
-if ( sender.direction == UISwipeGestureRecognizerDirectionUp ){
-    NSLog(@" *** SWIPE UP ***");
-}
 }
 
 
@@ -736,7 +720,7 @@ if(self.detailItem.Media & MediaImage){
 
 }
 -(void)alertInvalidMessage{
-UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry!"
+UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry:("
                                                  message:@"Deep Detect failed."
                                                 delegate:self
                                        cancelButtonTitle:@"OK"
@@ -1259,5 +1243,27 @@ NSString *major = [NSString stringWithFormat:@"%@", foundBeacon.major];
 NSString *minor = [NSString stringWithFormat:@"%@", foundBeacon.minor];
 NSLog(@"Beacon found:didRangeBeacons,UUID:%@,major:%@,minor:%@",uuid,major,minor);
 
+}
+#pragma mark popup search menu;
+- (IBAction)searchInformation:(id)sender{
+    [FTPopOverMenu showFromEvent:sender
+                         withMenuArray:SEARCH_TITLES
+                             doneBlock:^(NSInteger selectedIndex) {
+                                 //sending hudview simulation
+                                 NSString *info = [NSString stringWithFormat:@"Sharing to %@ ...", SOCIAL_TITLES[selectedIndex]];
+                                 switch(selectedIndex){
+                                     case 0:
+                                         [self loadSqootDeals];
+                                         break;
+                                     case 1:
+                                         [self esearchSimiliary];
+                                         break;
+                                 }
+                                 MBProgressHUD *hud = [self showLoading:info];
+                                 [hud hideAnimated:YES afterDelay:10.0];
+                                 
+                             } dismissBlock:^{
+                                 
+                             }];
 }
 @end
