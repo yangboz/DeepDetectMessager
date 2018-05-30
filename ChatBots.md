@@ -1,4 +1,4 @@
 ### ChatBots
 
-<video class="video" src="<iframe width="653" height="460" src="https://www.youtube.com/watch?v=BJA6jLYrKKs&feature=youtu.be">视频</video>
+<video class="vidoe" src="http://baobab.kaiyanapp.com/api/v1/playUrl?vid=17129&editionType=normal&source=qcloud">视频</video>
 
