@@ -1,7 +1,7 @@
 # DeepDetectMessager
 SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 
-![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/Simulator%20Screen%20Shot%2010%20Apr%202017%2C%2011.30.25.png)
+![Screenshot of master view](https://raw.githubusercontent.com/yangboz/DeepDetectMessager/master/screenshots/Simulator%20Screen%20Shot%2010%20Apr%202017%2C%2011.30.25.png)
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/master.jpeg)
 ![Screenshot of detail view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/detail.jpeg)
 
