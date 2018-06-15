@@ -5,6 +5,9 @@ SNS+iMessager for DeepDetect(Earth most centric chatbots app) demostration.
 ![Screenshot of master view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/master.jpeg)
 ![Screenshot of detail view](https://github.com/yangboz/DeepDetectMessager/blob/master/ChatBotJSQMessager/screenshots/detail.jpeg)
 
+## WeChat version
+![Screenshot of master view](https://raw.githubusercontent.com/yangboz/DeepDetectMessager/master/screenshots/wechatminiprogram.jpeg)
+
 # DeepDetect Server（4G RAM+）
 
 1.caffe:https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide
