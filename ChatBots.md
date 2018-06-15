@@ -7,7 +7,7 @@
 
 ### ChatBots
 
-1. Face detection Face detection ![Face detection](https://raw.githubusercontent.com/yangboz/DeepDetectMessager/master/ChatBotJSQMessager/AIChatBots/robots/face.png)
+1. ![Face detection](https://raw.githubusercontent.com/yangboz/DeepDetectMessager/master/ChatBotJSQMessager/AIChatBots/robots/128/face.png) Face detection
 2. Age detection
 3. Gender classification
 #### 
